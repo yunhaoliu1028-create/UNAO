@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estimate -> Consumable Invoice Prototype</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --line: #d6dce8;
+      --text: #111827;
+      --muted: #6b7280;
+      --primary: #2563eb;
+      --primary-soft: #dbeafe;
+      --danger: #dc2626;
+      --ok: #0f766e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 16px 24px;
+    }
+
+    .header {
+      margin-bottom: 16px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .header p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .card h2 {
+      font-size: 16px;
+      margin: 0 0 12px;
+    }
+
+    .drop-zone {
+      border: 2px dashed #8aa7ff;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      background: #f8faff;
+      color: #1d4ed8;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .drop-zone.dragging {
+      background: #edf4ff;
+      border-color: #1d4ed8;
+    }
+
+    .drop-zone p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .actions {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 1px solid transparent;
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-soft {
+      background: var(--primary-soft);
+      color: #1d4ed8;
+    }
+
+    .btn-danger {
+      background: #fee2e2;
+      color: var(--danger);
+    }
+
+    .status {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      min-height: 18px;
+    }
+
+    .status.ok {
+      color: var(--ok);
+    }
+
+    .status.error {
+      color: var(--danger);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 7px 8px;
+      font-size: 13px;
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 94px;
+      resize: vertical;
+    }
+
+    .ops-list {
+      margin-top: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px;
+      max-height: 220px;
+      overflow: auto;
+      background: #fafcff;
+    }
+
+    .op-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 0;
+      font-size: 13px;
+    }
+
+    .invoice-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .invoice-title h2 {
+      margin: 0;
+    }
+
+    .table-wrap {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: auto;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 860px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 7px;
+      text-align: left;
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    th {
+      background: #f8fafc;
+      font-size: 12px;
+      color: #334155;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    td.amount-cell {
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+      min-width: 86px;
+    }
+
+    td.amount-cell strong {
+      display: inline-block;
+      min-width: 70px;
+    }
+
+    .totals {
+      margin-top: 10px;
+      margin-left: auto;
+      width: 320px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+      padding: 10px;
+    }
+
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 4px 0;
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .totals-row.final {
+      border-top: 1px solid var(--line);
+      margin-top: 8px;
+      padding-top: 8px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .raw-preview {
+      margin-top: 10px;
+      font-size: 12px;
+      white-space: pre-wrap;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+      padding: 8px;
+      max-height: 180px;
+      overflow: auto;
+      color: #334155;
+    }
+
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .totals {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1>Estimate -> Consumable Invoice</h1>
+      <p>Upload or drag a PDF estimate. The page extracts text and generates editable consumable lines.</p>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <h2>1) Estimate Intake</h2>
+        <div class="drop-zone" id="dropZone">
+          <p><strong>Drag PDF here</strong> or click to select</p>
+          <p style="margin-top: 6px; color: #4b5563;">Supported: .pdf</p>
+        </div>
+        <input id="fileInput" type="file" accept=".pdf,application/pdf" hidden />
+
+        <div class="actions">
+          <button id="parseBtn" class="btn-primary" disabled>Parse Estimate</button>
+          <button id="clearBtn" class="btn-soft">Clear</button>
+        </div>
+        <div id="status" class="status">Waiting for file...</div>
+
+        <div class="meta-grid">
+          <div>
+            <label for="invoiceNo">Invoice #</label>
+            <input id="invoiceNo" type="text" value="INV-DRAFT-001" />
+          </div>
+          <div>
+            <label for="roNo">RO #</label>
+            <input id="roNo" type="text" placeholder="e.g. 9293" />
+          </div>
+          <div>
+            <label for="vin">VIN</label>
+            <input id="vin" type="text" placeholder="VIN extracted from PDF" />
+          </div>
+          <div>
+            <label for="yearMakeModel">Year / Make / Model</label>
+            <input id="yearMakeModel" type="text" placeholder="e.g. 2020 TOYOTA RAV4 XLE" />
+          </div>
+          <div>
+            <label for="repairDate">Repair Date</label>
+            <input id="repairDate" type="text" placeholder="e.g. Dec 15, 2025" />
+          </div>
+          <div>
+            <label for="currency">Currency</label>
+            <input id="currency" type="text" value="USD" />
+          </div>
+        </div>
+
+        <div style="margin-top: 10px;">
+          <label for="notes">Notes</label>
+          <textarea id="notes" placeholder="Optional notes for the invoice..."></textarea>
+        </div>
+
+        <h2 style="margin-top: 14px;">2) Detected Repair Operations</h2>
+        <div id="opsList" class="ops-list"></div>
+        <div class="actions">
+          <button id="generateBtn" class="btn-primary" disabled>Generate Consumable Lines</button>
+        </div>
+
+        <div id="rawPreview" class="raw-preview">Parsed text preview will appear here.</div>
+      </section>
+
+      <section class="card">
+        <div class="invoice-title">
+          <h2>3) Editable Consumable Invoice</h2>
+          <div class="actions" style="margin-top: 0;">
+            <button id="addLineBtn" class="btn-soft">Add Line</button>
+            <button id="deleteLinesBtn" class="btn-danger">Delete Selected</button>
+            <button id="exportJsonBtn" class="btn-primary">Export JSON</button>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table id="invoiceTable">
+            <thead>
+              <tr>
+                <th style="width: 28px;">#</th>
+                <th style="width: 28px;">Sel</th>
+                <th style="width: 180px;">Operation</th>
+                <th>Description</th>
+                <th style="width: 90px;">Qty</th>
+                <th style="width: 90px;">Unit</th>
+                <th style="width: 110px;">Unit Price</th>
+                <th style="width: 96px;">Line Total</th>
+                <th style="width: 120px;">Source</th>
+              </tr>
+            </thead>
+            <tbody id="invoiceTbody"></tbody>
+          </table>
+        </div>
+
+        <div class="totals">
+          <div class="totals-row"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+          <div class="totals-row"><span>Tax</span><strong id="tax">$0.00</strong></div>
+          <div class="totals-row final"><span>Total</span><strong id="grandTotal">$0.00</strong></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+    const state = {
+      file: null,
+      rawText: "",
+      operations: [],
+      selectedOps: new Set(),
+      lines: [],
+      taxRate: 0
+    };
+
+    const els = {
+      dropZone: document.getElementById("dropZone"),
+      fileInput: document.getElementById("fileInput"),
+      parseBtn: document.getElementById("parseBtn"),
+      clearBtn: document.getElementById("clearBtn"),
+      generateBtn: document.getElementById("generateBtn"),
+      status: document.getElementById("status"),
+      opsList: document.getElementById("opsList"),
+      rawPreview: document.getElementById("rawPreview"),
+      invoiceTbody: document.getElementById("invoiceTbody"),
+      subtotal: document.getElementById("subtotal"),
+      tax: document.getElementById("tax"),
+      grandTotal: document.getElementById("grandTotal"),
+      addLineBtn: document.getElementById("addLineBtn"),
+      deleteLinesBtn: document.getElementById("deleteLinesBtn"),
+      exportJsonBtn: document.getElementById("exportJsonBtn"),
+      roNo: document.getElementById("roNo"),
+      vin: document.getElementById("vin"),
+      yearMakeModel: document.getElementById("yearMakeModel"),
+      repairDate: document.getElementById("repairDate"),
+      invoiceNo: document.getElementById("invoiceNo"),
+      currency: document.getElementById("currency"),
+      notes: document.getElementById("notes")
+    };
+
+    const catalogRules = [
+      {
+        id: "rule-body-panel",
+        triggers: ["body panel", "quarter", "door", "fender", "panel", "roof"],
+        lines: [
+          { description: "3M Panel Bonding Adhesive", qty: 1.0, unit: "Cartridge", unitPrice: 122.01 },
+          { description: "3M Urethane Seam Sealer - White", qty: 1.0, unit: "Sachet", unitPrice: 53.46 }
+        ]
+      },
+      {
+        id: "rule-floor-rail",
+        triggers: ["floor", "rail", "frame", "extension", "rocker"],
+        lines: [
+          { description: "3M Weld-Thru Coating II", qty: 0.4, unit: "Can", unitPrice: 78.17 },
+          { description: "3M Cavity Wax Plus", qty: 0.8, unit: "Can", unitPrice: 58.21 },
+          { description: "3M Rubberized Undercoating", qty: 1.0, unit: "Can", unitPrice: 40.17 }
+        ]
+      },
+      {
+        id: "rule-surface-refinish",
+        triggers: ["blend", "refinish", "paint", "bumper", "hood", "liftgate"],
+        lines: [
+          { description: "3M Cubitron II Cut-Off Wheel", qty: 1.0, unit: "Wheel", unitPrice: 16.82 },
+          { description: "3M Cubitron II File Belt 786F, 80+", qty: 2.0, unit: "Belt", unitPrice: 6.43 },
+          { description: "3M NVH Dampening Material", qty: 0.3, unit: "Cartridge", unitPrice: 118.76 }
+        ]
+      }
+    ];
+
+    function setStatus(message, type = "") {
+      els.status.textContent = message;
+      els.status.className = "status";
+      if (type) {
+        els.status.classList.add(type);
+      }
+    }
+
+    function formatMoney(value) {
+      const num = Number.isFinite(value) ? value : 0;
+      return `$${num.toFixed(2)}`;
+    }
+
+    function parseNumber(v, fallback = 0) {
+      const n = Number(v);
+      return Number.isFinite(n) ? n : fallback;
+    }
+
+    function handleFileSelection(file) {
+      if (!file) {
+        return;
+      }
+      if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) {
+        setStatus("Only PDF files are allowed.", "error");
+        return;
+      }
+
+      state.file = file;
+      els.parseBtn.disabled = false;
+      setStatus(`Loaded file: ${file.name}`);
+    }
+
+    async function extractPdfText(file) {
+      const buffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+      const pagesText = [];
+
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum += 1) {
+        const page = await pdf.getPage(pageNum);
+        const content = await page.getTextContent();
+        const text = content.items.map((item) => item.str).join(" ");
+        pagesText.push(text);
+      }
+
+      return pagesText.join("\n");
+    }
+
+    function unique(list) {
+      return [...new Set(list)];
+    }
+
+    function detectOperations(rawText) {
+      const opKeywords = [
+        "panel", "bumper", "fender", "hood", "door", "quarter", "rail",
+        "frame", "roof", "floor", "liftgate", "blend", "refinish", "repair", "replace"
+      ];
+      const lines = rawText
+        .split(/\n+/)
+        .map((line) => line.trim())
+        .filter((line) => line.length >= 4 && line.length <= 120);
+
+      const ops = [];
+      for (const line of lines) {
+        const lower = line.toLowerCase();
+        if (opKeywords.some((k) => lower.includes(k))) {
+          // Skip obvious header rows.
+          if (lower.includes("description") && lower.includes("qty")) {
+            continue;
+          }
+          ops.push(line.replace(/\s+/g, " "));
+        }
+      }
+
+      const cleaned = unique(ops).slice(0, 20);
+      if (cleaned.length > 0) {
+        return cleaned;
+      }
+
+      return ["General Repair Operation (manual review needed)"];
+    }
+
+    function extractMetadata(rawText) {
+      const roMatch = rawText.match(/\bRO\s*#?\s*[:\-]?\s*([A-Z0-9\-]+)/i);
+      const vinMatch = rawText.match(/\bVIN\s*[:\-]?\s*([A-HJ-NPR-Z0-9]{11,17})/i);
+      const yearMatch = rawText.match(/\b(19\d{2}|20\d{2})\b/);
+      const makeMatch = rawText.match(/\b(TOYOTA|HONDA|FORD|CHEVROLET|NISSAN|BMW|AUDI|LEXUS|KIA|HYUNDAI)\b/i);
+      const modelMatch = rawText.match(/\b(RAV4|CAMRY|COROLLA|CIVIC|ACCORD|F150|SILVERADO|CR-V|MODEL\s?[A-Z0-9\-]+)\b/i);
+      const dateMatch = rawText.match(/\b([A-Za-z]+,\s+[A-Za-z]+\s+\d{1,2},\s+\d{4})\b/);
+
+      if (roMatch) {
+        els.roNo.value = roMatch[1];
+      }
+      if (vinMatch) {
+        els.vin.value = vinMatch[1];
+      }
+
+      const year = yearMatch ? yearMatch[1] : "";
+      const make = makeMatch ? makeMatch[1].toUpperCase() : "";
+      const model = modelMatch ? modelMatch[1].toUpperCase() : "";
+
+      const ymm = [year, make, model].filter(Boolean).join(" ").trim();
+      if (ymm) {
+        els.yearMakeModel.value = ymm;
+      }
+      if (dateMatch) {
+        els.repairDate.value = dateMatch[1];
+      }
+    }
+
+    function renderOps() {
+      if (!state.operations.length) {
+        els.opsList.innerHTML = "<div style='color:#6b7280;font-size:12px;'>No operation detected yet.</div>";
+        return;
+      }
+
+      els.opsList.innerHTML = "";
+      state.operations.forEach((op, idx) => {
+        const wrapper = document.createElement("label");
+        wrapper.className = "op-item";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = true;
+        checkbox.dataset.op = op;
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) {
+            state.selectedOps.add(op);
+          } else {
+            state.selectedOps.delete(op);
+          }
+        });
+        state.selectedOps.add(op);
+
+        const text = document.createElement("span");
+        text.textContent = `${idx + 1}. ${op}`;
+        wrapper.appendChild(checkbox);
+        wrapper.appendChild(text);
+        els.opsList.appendChild(wrapper);
+      });
+    }
+
+    function chooseRule(operation) {
+      const lower = operation.toLowerCase();
+      for (const rule of catalogRules) {
+        if (rule.triggers.some((key) => lower.includes(key))) {
+          return rule;
+        }
+      }
+      return null;
+    }
+
+    function buildLinesFromSelectedOps() {
+      const lines = [];
+      const selected = [...state.selectedOps];
+
+      selected.forEach((op) => {
+        const rule = chooseRule(op);
+        const source = rule ? `auto:${rule.id}` : "auto:fallback";
+        const seed = rule ? rule.lines : [
+          { description: "Shop Consumable Material", qty: 1.0, unit: "Each", unitPrice: 24.99 },
+          { description: "Surface Prep / Masking Supplies", qty: 1.0, unit: "Set", unitPrice: 16.5 }
+        ];
+
+        seed.forEach((item) => {
+          lines.push({
+            id: crypto.randomUUID(),
+            operation: op,
+            description: item.description,
+            qty: item.qty,
+            unit: item.unit,
+            unitPrice: item.unitPrice,
+            source
+          });
+        });
+      });
+
+      return lines;
+    }
+
+    function calcLineAmount(line) {
+      return parseNumber(line.qty) * parseNumber(line.unitPrice);
+    }
+
+    function recalcTotals() {
+      const subtotal = state.lines.reduce((sum, line) => sum + calcLineAmount(line), 0);
+      const tax = subtotal * state.taxRate;
+      const total = subtotal + tax;
+      els.subtotal.textContent = formatMoney(subtotal);
+      els.tax.textContent = formatMoney(tax);
+      els.grandTotal.textContent = formatMoney(total);
+    }
+
+    function renderInvoiceTable() {
+      els.invoiceTbody.innerHTML = "";
+      if (!state.lines.length) {
+        const tr = document.createElement("tr");
+        tr.innerHTML =
+          "<td colspan='9' style='text-align:center;color:#6b7280;padding:20px;'>No invoice lines. Generate from operations or add manually.</td>";
+        els.invoiceTbody.appendChild(tr);
+        recalcTotals();
+        return;
+      }
+
+      state.lines.forEach((line, idx) => {
+        const tr = document.createElement("tr");
+        tr.dataset.id = line.id;
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td><input type="checkbox" data-role="select-line" data-id="${line.id}" /></td>
+          <td><input type="text" data-role="operation" data-id="${line.id}" value="${escapeAttr(line.operation)}" /></td>
+          <td><input type="text" data-role="description" data-id="${line.id}" value="${escapeAttr(line.description)}" /></td>
+          <td><input type="number" step="0.01" data-role="qty" data-id="${line.id}" value="${line.qty}" /></td>
+          <td><input type="text" data-role="unit" data-id="${line.id}" value="${escapeAttr(line.unit)}" /></td>
+          <td><input type="number" step="0.01" data-role="unitPrice" data-id="${line.id}" value="${line.unitPrice}" /></td>
+          <td class="amount-cell"><strong>${formatMoney(calcLineAmount(line))}</strong></td>
+          <td>${line.source}</td>
+        `;
+        els.invoiceTbody.appendChild(tr);
+      });
+
+      recalcTotals();
+    }
+
+    function escapeAttr(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+
+    function updateLine(lineId, field, value) {
+      const line = state.lines.find((x) => x.id === lineId);
+      if (!line) {
+        return;
+      }
+      if (field === "qty" || field === "unitPrice") {
+        line[field] = parseNumber(value, 0);
+      } else {
+        line[field] = value;
+      }
+      renderInvoiceTable();
+    }
+
+    function clearAll() {
+      state.file = null;
+      state.rawText = "";
+      state.operations = [];
+      state.selectedOps.clear();
+      state.lines = [];
+      els.fileInput.value = "";
+      els.parseBtn.disabled = true;
+      els.generateBtn.disabled = true;
+      els.rawPreview.textContent = "Parsed text preview will appear here.";
+      renderOps();
+      renderInvoiceTable();
+      setStatus("Cleared.");
+    }
+
+    function exportJson() {
+      const payload = {
+        invoiceNo: els.invoiceNo.value.trim(),
+        roNo: els.roNo.value.trim(),
+        vin: els.vin.value.trim(),
+        yearMakeModel: els.yearMakeModel.value.trim(),
+        repairDate: els.repairDate.value.trim(),
+        currency: els.currency.value.trim() || "USD",
+        notes: els.notes.value.trim(),
+        operations: [...state.selectedOps],
+        lines: state.lines.map((line) => ({
+          operation: line.operation,
+          description: line.description,
+          qty: Number(line.qty),
+          unit: line.unit,
+          unitPrice: Number(line.unitPrice),
+          amount: Number(calcLineAmount(line).toFixed(2)),
+          source: line.source
+        })),
+        totals: {
+          subtotal: Number(state.lines.reduce((sum, line) => sum + calcLineAmount(line), 0).toFixed(2)),
+          tax: Number((state.lines.reduce((sum, line) => sum + calcLineAmount(line), 0) * state.taxRate).toFixed(2))
+        }
+      };
+      payload.totals.total = Number((payload.totals.subtotal + payload.totals.tax).toFixed(2));
+
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = `${payload.invoiceNo || "invoice-draft"}.json`;
+      anchor.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Drag and drop handlers.
+    ["dragenter", "dragover"].forEach((evt) => {
+      els.dropZone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        els.dropZone.classList.add("dragging");
+      });
+    });
+    ["dragleave", "drop"].forEach((evt) => {
+      els.dropZone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        els.dropZone.classList.remove("dragging");
+      });
+    });
+    els.dropZone.addEventListener("drop", (e) => {
+      const file = e.dataTransfer && e.dataTransfer.files ? e.dataTransfer.files[0] : null;
+      handleFileSelection(file);
+    });
+    els.dropZone.addEventListener("click", () => els.fileInput.click());
+    els.fileInput.addEventListener("change", (e) => {
+      const file = e.target.files && e.target.files.length ? e.target.files[0] : null;
+      handleFileSelection(file);
+    });
+
+    els.parseBtn.addEventListener("click", async () => {
+      if (!state.file) {
+        setStatus("Please choose a PDF first.", "error");
+        return;
+      }
+
+      try {
+        setStatus("Parsing PDF...");
+        const rawText = await extractPdfText(state.file);
+        state.rawText = rawText;
+        state.operations = detectOperations(rawText);
+        state.selectedOps = new Set();
+        extractMetadata(rawText);
+        renderOps();
+        els.rawPreview.textContent = rawText.slice(0, 1800) || "(No text extracted)";
+        els.generateBtn.disabled = state.operations.length === 0;
+        setStatus(`Parse complete. Detected ${state.operations.length} operation(s).`, "ok");
+      } catch (error) {
+        console.error(error);
+        setStatus("Failed to parse PDF. Try another file.", "error");
+      }
+    });
+
+    els.generateBtn.addEventListener("click", () => {
+      if (state.selectedOps.size === 0) {
+        setStatus("Please select at least one operation.", "error");
+        return;
+      }
+      state.lines = buildLinesFromSelectedOps();
+      renderInvoiceTable();
+      setStatus(`Generated ${state.lines.length} invoice line(s).`, "ok");
+    });
+
+    els.invoiceTbody.addEventListener("input", (e) => {
+      const role = e.target.dataset.role;
+      const lineId = e.target.dataset.id;
+      if (!role || !lineId) {
+        return;
+      }
+      updateLine(lineId, role, e.target.value);
+    });
+
+    els.addLineBtn.addEventListener("click", () => {
+      state.lines.push({
+        id: crypto.randomUUID(),
+        operation: "Manual",
+        description: "",
+        qty: 1,
+        unit: "Each",
+        unitPrice: 0,
+        source: "manual"
+      });
+      renderInvoiceTable();
+    });
+
+    els.deleteLinesBtn.addEventListener("click", () => {
+      const checkboxes = els.invoiceTbody.querySelectorAll("input[data-role='select-line']:checked");
+      const selectedIds = [...checkboxes].map((cb) => cb.dataset.id);
+      if (!selectedIds.length) {
+        setStatus("Select line(s) to delete.", "error");
+        return;
+      }
+      state.lines = state.lines.filter((line) => !selectedIds.includes(line.id));
+      renderInvoiceTable();
+      setStatus(`Deleted ${selectedIds.length} line(s).`, "ok");
+    });
+
+    els.exportJsonBtn.addEventListener("click", exportJson);
+    els.clearBtn.addEventListener("click", clearAll);
+
+    renderOps();
+    renderInvoiceTable();
+  </script>
+</body>
+</html>

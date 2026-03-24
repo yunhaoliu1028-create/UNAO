@@ -1,0 +1,516 @@
+openapi: 3.0.3
+info:
+  title: Unao Solution API
+  version: 0.1.0
+  description: Core APIs for estimate ingestion, consumable invoice generation, editing, export, and history.
+servers:
+  - url: https://api.unao.local
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Auth
+  - name: Estimates
+  - name: Invoices
+
+paths:
+  /v1/auth/login:
+    post:
+      tags: [Auth]
+      summary: Login with email and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTokens'
+
+  /v1/estimates:
+    post:
+      tags: [Estimates]
+      summary: Upload estimate PDF and trigger parsing
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file:
+                  type: string
+                  format: binary
+                source_system:
+                  type: string
+                  example: CCC
+      responses:
+        '202':
+          description: Accepted for async parsing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimateAccepted'
+    get:
+      tags: [Estimates]
+      summary: List estimates
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [UPLOADED, PARSING, PARSED, FAILED]
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+        - in: query
+          name: page_size
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Estimate list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EstimateSummary'
+                  page:
+                    type: integer
+                  page_size:
+                    type: integer
+                  total:
+                    type: integer
+
+  /v1/estimates/{estimate_id}:
+    get:
+      tags: [Estimates]
+      summary: Get estimate details with normalized operations
+      parameters:
+        - $ref: '#/components/parameters/EstimateId'
+      responses:
+        '200':
+          description: Estimate detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimateDetail'
+
+  /v1/estimates/{estimate_id}/retry-parse:
+    post:
+      tags: [Estimates]
+      summary: Retry parse for a failed estimate
+      parameters:
+        - $ref: '#/components/parameters/EstimateId'
+      responses:
+        '202':
+          description: Retry accepted
+
+  /v1/invoices/generate:
+    post:
+      tags: [Invoices]
+      summary: Generate draft invoice from estimate and strategy profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [estimate_id, insurance_carrier_id, strategy_profile_id]
+              properties:
+                estimate_id:
+                  type: string
+                insurance_carrier_id:
+                  type: string
+                strategy_profile_id:
+                  type: string
+                idempotency_key:
+                  type: string
+      responses:
+        '201':
+          description: Draft invoice created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceDetail'
+
+  /v1/invoices:
+    get:
+      tags: [Invoices]
+      summary: List invoices with filters
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+        - in: query
+          name: claim_number
+          schema:
+            type: string
+        - in: query
+          name: vin
+          schema:
+            type: string
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+        - in: query
+          name: page_size
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Invoice list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/InvoiceSummary'
+                  page:
+                    type: integer
+                  page_size:
+                    type: integer
+                  total:
+                    type: integer
+
+  /v1/invoices/{invoice_id}:
+    get:
+      tags: [Invoices]
+      summary: Get invoice with lines and metadata
+      parameters:
+        - $ref: '#/components/parameters/InvoiceId'
+      responses:
+        '200':
+          description: Invoice detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceDetail'
+    put:
+      tags: [Invoices]
+      summary: Update editable invoice fields and lines
+      parameters:
+        - $ref: '#/components/parameters/InvoiceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [lines]
+              properties:
+                lines:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/InvoiceLineUpsert'
+                status:
+                  type: string
+                  enum: [DRAFT, APPROVED]
+      responses:
+        '200':
+          description: Updated invoice
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceDetail'
+
+  /v1/invoices/{invoice_id}/duplicate:
+    post:
+      tags: [Invoices]
+      summary: Duplicate historical invoice into a new draft
+      parameters:
+        - $ref: '#/components/parameters/InvoiceId'
+      responses:
+        '201':
+          description: Duplicate created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceDetail'
+
+  /v1/invoices/{invoice_id}/export:
+    post:
+      tags: [Invoices]
+      summary: Export invoice to PDF and optional JPG
+      parameters:
+        - $ref: '#/components/parameters/InvoiceId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                formats:
+                  type: array
+                  items:
+                    type: string
+                    enum: [PDF, JPG]
+      responses:
+        '202':
+          description: Export job accepted
+
+  /v1/invoices/{invoice_id}/attachments:
+    get:
+      tags: [Invoices]
+      summary: List export attachments for invoice
+      parameters:
+        - $ref: '#/components/parameters/InvoiceId'
+      responses:
+        '200':
+          description: Attachment list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Attachment'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    EstimateId:
+      in: path
+      name: estimate_id
+      required: true
+      schema:
+        type: string
+    InvoiceId:
+      in: path
+      name: invoice_id
+      required: true
+      schema:
+        type: string
+
+  schemas:
+    AuthTokens:
+      type: object
+      properties:
+        access_token:
+          type: string
+        refresh_token:
+          type: string
+
+    EstimateAccepted:
+      type: object
+      properties:
+        estimate_id:
+          type: string
+        status:
+          type: string
+          enum: [UPLOADED, PARSING]
+
+    RepairOperation:
+      type: object
+      properties:
+        operation_id:
+          type: string
+        operation_type:
+          type: string
+        panel_name:
+          type: string
+        labor_hours:
+          type: string
+        paint_hours:
+          type: string
+        area_sq_ft:
+          type: string
+        is_replacement:
+          type: boolean
+
+    EstimateSummary:
+      type: object
+      properties:
+        estimate_id:
+          type: string
+        source_system:
+          type: string
+        claim_number:
+          type: string
+        vin:
+          type: string
+        status:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    EstimateDetail:
+      allOf:
+        - $ref: '#/components/schemas/EstimateSummary'
+        - type: object
+          properties:
+            operations:
+              type: array
+              items:
+                $ref: '#/components/schemas/RepairOperation'
+            normalized_payload:
+              type: object
+              additionalProperties: true
+
+    InvoiceLine:
+      type: object
+      properties:
+        line_no:
+          type: integer
+        description:
+          type: string
+        qty:
+          type: string
+        unit:
+          type: string
+        unit_price:
+          type: string
+        amount:
+          type: string
+        source_type:
+          type: string
+          enum: [GENERATED, MANUAL]
+        source_rule_id:
+          type: string
+          nullable: true
+        source_operation_ref:
+          type: string
+          nullable: true
+        source_metadata:
+          type: object
+          additionalProperties: true
+
+    InvoiceLineUpsert:
+      type: object
+      required: [line_no, description, qty, unit, unit_price]
+      properties:
+        line_no:
+          type: integer
+        description:
+          type: string
+        qty:
+          type: string
+        unit:
+          type: string
+        unit_price:
+          type: string
+        source_type:
+          type: string
+          enum: [GENERATED, MANUAL]
+        source_rule_id:
+          type: string
+          nullable: true
+        source_operation_ref:
+          type: string
+          nullable: true
+        source_metadata:
+          type: object
+          additionalProperties: true
+
+    InvoiceSummary:
+      type: object
+      properties:
+        invoice_id:
+          type: string
+        invoice_number:
+          type: string
+        status:
+          type: string
+        claim_number:
+          type: string
+        vin:
+          type: string
+        total_amount:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    InvoiceDetail:
+      allOf:
+        - $ref: '#/components/schemas/InvoiceSummary'
+        - type: object
+          properties:
+            estimate_id:
+              type: string
+            insurance_carrier_id:
+              type: string
+            strategy_profile_id:
+              type: string
+            currency:
+              type: string
+            subtotal:
+              type: string
+            tax_amount:
+              type: string
+            lines:
+              type: array
+              items:
+                $ref: '#/components/schemas/InvoiceLine'
+            generation_context:
+              type: object
+              properties:
+                ruleset_version:
+                  type: string
+                ai_model:
+                  type: string
+                ai_prompt_version:
+                  type: string
+
+    Attachment:
+      type: object
+      properties:
+        attachment_id:
+          type: string
+        type:
+          type: string
+          enum: [PDF, JPG]
+        file_name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
+        request_id:
+          type: string
