@@ -6,20 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:estimate-rules": "node ./scripts/test-estimate-rules.mjs"
   },
   "dependencies": {
+    "csv-parse": "^6.2.1",
+    "html2canvas": "^1.4.1",
     "next": "latest",
+    "openai": "^6.32.0",
     "pdfjs-dist": "latest",
     "react": "latest",
     "react-dom": "latest"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "latest",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "autoprefixer": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest",
     "typescript": "latest"
   }
 }

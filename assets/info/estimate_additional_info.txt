@@ -1,0 +1,74 @@
+CCC estimate有两个常见format：
+第一种“Estimate” or “Final Bill” 通常第一页会写
+里面的operation列通常不会缩写
+Remove/Replace
+Repair
+Remove/Install
+Blend
+Parts Type列和Type(column behind Labor)会有缩写，这是他们的解释：
+T = Taxable Item, RPD = Related Prior Damage, AA = Appearance Allowance, UPD = Unrelated Prior Damage, PDR = Paintless Dent Repair, A/M = Aftermarket, Rechr = Rechromed, Reman =
+Remanufactured, OEM = New Original Equipment Manufacturer, Recor = Re-cored, RECOND = Reconditioned, LKQ = Like Kind Quality or Used, Diag = Diagnostic, Elec = Electrical, Mech =
+Mechanical, Ref = Refinish, Struc = Structural
+
+
+第二种 “Estimate of Record” “Preliminary Estimate” “Supplement of Record xx with Summary” ““Preliminary Supplement xx with Summary”
+Adj.=Adjacent. 
+里面简写会多些，比如Oper这列
+Algn.=Align. 
+ALU=Aluminum. 
+A/M=Aftermarket part. 
+Blnd=Blend. 
+BOR=Boron steel.
+CAPA=Certified Automotive Parts Association. 
+CFC=Carbon Fiber.
+D&R=Disconnect and Reconnect. 
+HSS=High Strength Steel. 
+HYD=Hydroformed Steel. 
+Incl.=Included. 
+LKQ=Like Kind and Quality. 
+LT=Left. 
+MAG=Magnesium. Non-Adj.=Non Adjacent. 
+NSF=NSF International Certified Part.
+O/H=Overhaul. 
+Qty=Quantity. 
+Refn=Refinish. 
+Repl=Replace. 
+R&I=Remove and Install. 
+R&R=Remove and Replace. 
+Rpr=Repair. 
+RT=Right. 
+SAS=Sandwiched Steel. 
+Sect=Section. 
+STS=Stainless Steel. 
+Subl=Sublet.
+UHS=Ultra High Strength Steel. 
+N=Note(s) associated with the estimate line.
+
+MOTOR ABBREVIATIONS/SYMBOLS: 
+D=DISCONTINUED PART,
+A=APPROXIMATE PRICE. 
+LABOR TYPES: 
+B=BODY LABOR, D=DIAGNOSTIC, E=ELECTRICAL, F=FRAME, G=GLASS, M=MECHANICAL, P=PAINT LABOR, S=STRUCTURAL, T=TAXED MISCELLANEOUS, X=NON TAXED
+MISCELLANEOUS. CCC ONE: ADJ=ADJACENT, ALGN=ALIGN,
+A/M=AFTERMARKET, BLND=BLEND, CAPA=CERTIFIED AUTOMOTIVE
+PARTS ASSOCIATION, D&R=DISCONNECT AND RECONNECT,
+EST=ESTIMATE, EXT. PRICE=UNIT PRICE MULTIPLIED BY THE QUANTITY,
+INCL=INCLUDED, MISC=MISCELLANEOUS, NAGS=NATIONAL AUTO GLASS
+SPECIFICATIONS, NON-ADJ=NON ADJACENT, O/H=OVERHAUL,
+OP=OPERATION, NO=LINE NUMBER, QTY=QUANTITY,
+RECOND=RECONDITION, REFN=REFINISH, REPL=REPLACE, R&I=REMOVE
+AND INSTALL, R&R=REMOVE AND REPLACE, RPR=REPAIR, RT=RIGHT,
+SECT=SECTION, SUBL=SUBLET, LT=LEFT, W/O=WITHOUT, W/_=WITH/_
+SYMBOLS: #=MANUAL LINE ENTRY, 
+*=OTHER [IE..MOTORS DATABASE INFORMATION WAS CHANGED], 
+**=DATABASE LINE WITH AFTERMARKET,
+N=NOTES ATTACHED TO LINE. 
+OPT OEM=ORIGINAL EQUIPMENT MANUFACTURER PARTS EITHER OPTIONALLY SOURCED OR OTHERWISE PROVIDED WITH SOME UNIQUE PRICING OR DISCOUNT.
+
+""CURE TIME"" MEANS THE LENGTH OF TIME THAT, PER THE ADHESIVE
+MANUFACTURER, THE WINDSHIELD ADHESIVE NEEDS TO CURE UNTIL THE WINDSHIELD CAN PROPERLY FUNCTION AS A SAFETY DEVICE PURSUANT
+
+请注意，在第二种format估价下，尤其是第一页标题包含 “with Summary” 代表这个估价包含了前几页的总估价，再加上一个SUPPLEMENT SUMMARY，请务必只读取总估价避免overlap.
+
+
+所有的估价都是从上往下读，主要信息是从Oper(operation), Description和Line Notes提取，有时你会看到rpr rocker mldg 0.3body hour but without refinish time, with a notes saying"drop," that mean partially R/I, its not for repair&refinish.类似的还有rpr qtr glass 0.3b with notes "rope," rpr w'shield with note "rope," etc..请务必理解。

@@ -1,0 +1,98 @@
+[
+  {
+    "partNumber": "08115",
+    "description": "3M Panel Bonding Adhesive, 200 mL Cartridge",
+    "category": "ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",
+    "containerCost": 122.01,
+    "piecesPerContainer": null,
+    "invoiceUnit": null,
+    "packageType": "Cartridge",
+    "taxable": false,
+    "recoverable": true,
+    "pricingMode": "percent_of_container"
+  },
+  {
+    "partNumber": "08360",
+    "description": "3M Urethane Seam Sealer - White, 310 mL Sachet",
+    "category": "ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",
+    "containerCost": 53.46,
+    "piecesPerContainer": null,
+    "invoiceUnit": null,
+    "packageType": "Sachet",
+    "taxable": false,
+    "recoverable": true,
+    "pricingMode": "percent_of_container"
+  },
+  {
+    "partNumber": "05917",
+    "description": "3M Weld-Thru Coating II, 12.75 oz Net Wt/361 g Can",
+    "category": "ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",
+    "containerCost": 78.17,
+    "piecesPerContainer": null,
+    "invoiceUnit": null,
+    "packageType": "Can",
+    "taxable": false,
+    "recoverable": true,
+    "pricingMode": "percent_of_container"
+  },
+  {
+    "partNumber": "08852",
+    "description": "3M Cavity Wax Plus, 18 oz Net Wt / 511g Can",
+    "category": "ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",
+    "containerCost": 58.21,
+    "piecesPerContainer": null,
+    "invoiceUnit": null,
+    "packageType": "Can",
+    "taxable": false,
+    "recoverable": true,
+    "pricingMode": "percent_of_container"
+  },
+  {
+    "partNumber": "08883",
+    "description": "3M Rubberized Undercoating, 19.7 oz Net Wt Can",
+    "category": "ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",
+    "containerCost": 40.17,
+    "piecesPerContainer": null,
+    "invoiceUnit": null,
+    "packageType": "Can",
+    "taxable": false,
+    "recoverable": true,
+    "pricingMode": "percent_of_container"
+  },
+  {
+    "partNumber": "04274",
+    "description": "3M NVH Dampening Material, 200 mL Cartridge",
+    "category": "ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",
+    "containerCost": 118.76,
+    "piecesPerContainer": null,
+    "invoiceUnit": null,
+    "packageType": "Cartridge",
+    "taxable": false,
+    "recoverable": true,
+    "pricingMode": "percent_of_container"
+  },
+  {
+    "partNumber": "33455",
+    "description": "3M Cubitron II Cut-Off Wheel, 75 mm x 1.6 mm x 9.53 mm",
+    "category": "ALLIED - ABRASIVES (ABR)",
+    "containerCost": 84.12,
+    "piecesPerContainer": 5,
+    "invoiceUnit": null,
+    "packageType": "Carton",
+    "taxable": false,
+    "recoverable": true,
+    "pricingMode": "per_piece"
+  },
+  {
+    "partNumber": "33440",
+    "description": "3M Cubitron II File Belt 786F, 10 mm x 330 mm, 80+",
+    "category": "ALLIED - ABRASIVES (ABR)",
+    "containerCost": 44.53,
+    "piecesPerContainer": 10,
+    "invoiceUnit": null,
+    "packageType": "Carton",
+    "taxable": false,
+    "recoverable": true,
+    "pricingMode": "per_piece"
+  }
+]

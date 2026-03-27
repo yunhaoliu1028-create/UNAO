@@ -1,0 +1,535 @@
+﻿{
+  "_meta": {
+    "version": "1.0.0",
+    "created": "2026-03-26",
+    "sources": [
+      "assets/info/estimate_additional_info.txt",
+      "assets/info/read_ccc_estimate_of_record.pdf",
+      "assets/info/ccc_motor_guide.pdf (MOTOR Guide to Estimating, 148 pages, Rev 11-25)"
+    ],
+    "description": "CCC ONE / MOTOR estimate PDF 解析规则手册。后端解析时按 Stage 顺序执行。"
+  },
+
+  "stage_1_format_detection": {
+    "_comment": "第一步：判断估价格式类型，决定后续解析策略",
+    "format_types": {
+      "FORMAT_A": {
+        "label": "Estimate / Final Bill",
+        "title_keywords": ["estimate", "final bill"],
+        "operation_column_style": "full_text",
+        "note": "Operation 列通常不缩写，直接写 Remove/Replace, Repair, Remove/Install, Blend"
+      },
+      "FORMAT_B": {
+        "label": "Estimate of Record / Preliminary / Supplement",
+        "title_keywords": ["estimate of record", "preliminary estimate", "supplement of record", "preliminary supplement"],
+        "operation_column_style": "abbreviated",
+        "note": "Oper 列使用大量缩写，需要执行 Stage 3 缩写展开"
+      },
+      "FORMAT_B_WITH_SUMMARY": {
+        "label": "Supplement ... with Summary",
+        "title_keywords": ["with summary"],
+        "operation_column_style": "abbreviated",
+        "reading_strategy": "SUMMARY_ONLY",
+        "critical_rule": "标题含 'with Summary' 代表包含多个 Supplement 汇总。必须只读取 GRAND TOTAL / SUPPLEMENT SUMMARY 部分，禁止重复累加各分页行项，避免 overlap。"
+      }
+    },
+    "detection_priority": ["FORMAT_B_WITH_SUMMARY", "FORMAT_B", "FORMAT_A"]
+  },
+
+  "stage_2_document_structure": {
+    "_comment": "第二步：识别文档结构层次",
+    "primary_extraction_fields": ["Oper", "Description", "Line Notes"],
+    "secondary_fields": ["Labor Type", "Parts Type", "Symbols"],
+    "skip_sections": [
+      "OTHER CHARGES header block",
+      "MOTOR abbreviations legend page",
+      "Paint threshold disclosure page",
+      "Alternative parts disclosure page",
+      "Category Subtotals",
+      "Adjustments section",
+      "Customer and Insurance pay amounts"
+    ],
+    "group_headings": {
+      "description": "Group Headings 由 MOTOR 数据库自动生成，全大写，不含 action 动词，token count <= 6。遇到时更新 activeGroup 上下文。",
+      "detection_pattern": "line is ALL_CAPS AND no action verb (replace/repair/blend/refinish) AND token count <= 6"
+    }
+  },
+
+  "stage_3_abbreviation_normalization": {
+    "_comment": "第三步：术语标准化。FORMAT_A 基本不需要，FORMAT_B 必须执行。",
+    "operation_abbreviations": {
+      "Repl": "Replace", "REPL": "Replace",
+      "R&R": "Replace", "R/R": "Replace", "Remove & Replace": "Replace", "Remove/Replace": "Replace",
+      "R&I": "Remove Install", "R/I": "Remove Install", "Remove & Install": "Remove Install", "Remove/Install": "Remove Install",
+      "Rpr": "Repair", "RPR": "Repair",
+      "Refn": "Refinish", "REFN": "Refinish", "Ref": "Refinish",
+      "Blnd": "Blend", "BLND": "Blend",
+      "Subl": "Sublet", "SUBL": "Sublet",
+      "Algn": "Align", "ALGN": "Align",
+      "O/H": "Overhaul",
+      "D&R": "Disconnect Reconnect",
+      "Sect": "Section", "SECT": "Section",
+      "Adj": "Adjacent", "ADJ": "Adjacent",
+      "Non-Adj": "Non-Adjacent",
+      "Incl": "Included", "INCL": "Included",
+      "W/O": "Without"
+    },
+    "parts_type_abbreviations": {
+      "T": "Taxable Item", "RPD": "Related Prior Damage", "AA": "Appearance Allowance",
+      "UPD": "Unrelated Prior Damage", "PDR": "Paintless Dent Repair",
+      "A/M": "Aftermarket", "Rechr": "Rechromed", "Reman": "Remanufactured",
+      "OEM": "OEM New Part", "Recor": "Re-cored", "RECOND": "Reconditioned",
+      "LKQ": "Like Kind Quality Used", "RCY": "Recycled Used",
+      "Diag": "Diagnostic", "Elec": "Electrical", "Mech": "Mechanical",
+      "Ref": "Refinish", "Struc": "Structural",
+      "NSF": "NSF Certified Part", "CAPA": "CAPA Certified Part",
+      "OPT OEM": "OEM Optional Sourced Part"
+    },
+    "material_abbreviations": {
+      "ALU": "Aluminum", "BOR": "Boron Steel", "HSS": "High Strength Steel",
+      "UHS": "Ultra High Strength Steel", "HYD": "Hydroformed Steel",
+      "SAS": "Sandwiched Steel", "STS": "Stainless Steel",
+      "MAG": "Magnesium", "CFC": "Carbon Fiber"
+    },
+    "labor_type_codes": {
+      "B": "Body Labor", "D": "Diagnostic", "E": "Electrical",
+      "F": "Frame", "G": "Glass", "M": "Mechanical",
+      "P": "Paint Labor", "S": "Structural",
+      "T": "Taxed Miscellaneous", "X": "Non-Taxed Miscellaneous"
+    },
+    "line_symbols": {
+      "#": "Manual line entry - estimator added, not from MOTOR DB",
+      "*": "MOTOR DB line modified by estimator (price, description, or labor time changed)",
+      "**": "Database line with Aftermarket part A/M",
+      "N": "Notes attached to this line",
+      "D": "Discontinued part",
+      "A": "Approximate price"
+    },
+    "direction_abbreviations": {
+      "LT": "Left", "RT": "Right", "LH": "Left", "RH": "Right"
+    }
+  },
+
+  "stage_4_operation_extraction": {
+    "_comment": "第四步：提取有效维修操作。核心提取逻辑。",
+    "valid_action_tokens": [
+      "Replace", "Repair", "Remove Install", "Remove Replace",
+      "Refinish", "Blend", "Overhaul", "Section", "Align",
+      "Drill", "Weld", "Cut", "Straighten"
+    ],
+    "structural_actions_for_consumables": [
+      "Replace", "Repair", "Remove Install", "Section", "Weld", "Cut", "Straighten", "Overhaul"
+    ],
+    "line_note_semantic_overrides": {
+      "_comment": "Line Notes 会对同一行的 Oper 语义进行覆盖。必须优先解读 notes 再判断操作类型。",
+      "rules": [
+        {
+          "id": "NOTE_DROP",
+          "pattern": ["drop", "drop only"],
+          "example": "rpr rocker mldg 0.3B — note: drop",
+          "interpretation": "partial R/I (remove and drop only, not repair and refinish). 不计入结构修复操作，不触发耗材。",
+          "action": "SKIP_CONSUMABLE"
+        },
+        {
+          "id": "NOTE_ROPE",
+          "pattern": ["rope", "rope only"],
+          "example": "rpr qtr glass 0.3B — note: rope / rpr w'shield — note: rope",
+          "interpretation": "使用 rope 方式部分 R/I 玻璃，不是完整修复/喷漆工序。不触发耗材。",
+          "action": "SKIP_CONSUMABLE"
+        },
+        {
+          "id": "NOTE_INCL",
+          "pattern": ["incl", "included"],
+          "interpretation": "该操作已包含在另一行工时内，不重复计算。",
+          "action": "SKIP_DUPLICATE"
+        },
+        {
+          "id": "NOTE_BETTERMENT",
+          "pattern": ["b\\d+%"],
+          "example": "B20% in Description field",
+          "interpretation": "有折旧扣减，记录 betterment 百分比，不影响耗材识别。",
+          "action": "RECORD_BETTERMENT_METADATA"
+        }
+      ]
+    }
+  },
+
+  "stage_5_filter_rules": {
+    "_comment": "第五步：过滤不触发耗材的行。命中任意一条即跳过。",
+    "always_skip": [
+      {
+        "id": "SKIP_SUBLET",
+        "condition": "Oper contains Sublet or SUBL",
+        "reason": "外委工序，不使用本店耗材"
+      },
+      {
+        "id": "SKIP_COSMETIC_ONLY",
+        "condition": "action is ONLY Blend or Refinish, no Replace/Repair/Remove/Install/Weld/Section",
+        "reason": "纯 blend/refinish 无结构操作，不触发结构耗材"
+      },
+      {
+        "id": "SKIP_INCLUDED_LINE",
+        "condition": "Labor column shows Incl. value",
+        "reason": "该操作工时已包含在主操作内，不重复"
+      },
+      {
+        "id": "SKIP_OVERLAP_ADJUSTMENT",
+        "condition": "negative labor value AND description contains overlap",
+        "reason": "CCC ONE 自动产生的扣减行，不是独立操作"
+      },
+      {
+        "id": "SKIP_OTHER_CHARGES",
+        "condition": "line is under OTHER CHARGES section",
+        "reason": "拖车、存储、EPC 等，不触发结构耗材"
+      },
+      {
+        "id": "SKIP_DIAGNOSTIC_ELECTRICAL",
+        "condition": "Labor Type is D Diagnostic or E Electrical",
+        "reason": "诊断/电气操作不使用碰撞修复耗材"
+      },
+      {
+        "id": "SKIP_TIRE_WHEEL_ALIGN",
+        "condition": "Description contains tire OR wheel alignment OR wheel balance OR alignment check",
+        "reason": "轮胎/四轮定位不使用碰撞耗材"
+      },
+      {
+        "id": "SKIP_PURELY_MECHANICAL",
+        "condition": "Labor Type is M AND component classification is (m)",
+        "reason": "纯机械部件维修不需要碰撞类耗材"
+      },
+      {
+        "id": "SKIP_GLASS_ROPE",
+        "condition": "operation is R&I on glass AND Line Notes contains rope",
+        "reason": "rope 方式 R/I 玻璃无焊接/切割需求"
+      },
+      {
+        "id": "SKIP_IRRELEVANT_PARTS",
+        "condition": "Description contains any of: weatherstrip, emblem, nameplate, molding clip, bracket bolt, lamp bulb, reflector, trim clip, garnish clip",
+        "reason": "小件 R&I 不触发大类耗材"
+      },
+      {
+        "id": "SKIP_DROP_NOTE",
+        "condition": "Line Notes contains drop",
+        "reason": "见 stage_4 NOTE_DROP 规则"
+      },
+      {
+        "id": "SKIP_DR_DISCONNECT",
+        "condition": "Oper is D&R only (Disconnect and Reconnect)",
+        "reason": "D&R 工时已包含在主操作内，不独立触发耗材"
+      },
+      {
+        "id": "SKIP_CAMERA_SENSOR_AIMING",
+        "condition": "Description contains camera aiming OR sensor aiming",
+        "reason": "ADAS 校准操作不触发碰撞耗材"
+      },
+      {
+        "id": "SKIP_FRAME_MACHINE_SETUP",
+        "condition": "Description contains frame machine setup OR frame machine set-up",
+        "reason": "钢架机调设不触发结构耗材"
+      }
+    ]
+  },
+
+  "stage_6_operation_canonicalization": {
+    "_comment": "第六步：操作规范化为标准 canonical key，用于匹配 material_logic.csv",
+    "canonical_format": "[Action] [Location]",
+    "examples": [
+      { "raw": "Repl Qtr Pnl LT", "canonical": "Replace Quarter Panel" },
+      { "raw": "Rpr Front Door Outer", "canonical": "Repair Front Door" },
+      { "raw": "R&R Rear Body Panel", "canonical": "Replace Rear Body Panel" },
+      { "raw": "Blnd Hood", "canonical": "Blend Hood" },
+      { "raw": "Refn Roof", "canonical": "Refinish Roof" },
+      { "raw": "Repl Lift Gate", "canonical": "Replace Liftgate" },
+      { "raw": "R&I Bumper Cover", "canonical": "Remove Install Bumper Cover" },
+      { "raw": "rpr rocker mldg 0.3b note:drop", "canonical": null, "skip_reason": "NOTE_DROP" },
+      { "raw": "rpr qtr glass 0.3b note:rope", "canonical": null, "skip_reason": "NOTE_ROPE" }
+    ],
+    "location_normalization": {
+      "special_mappings": {
+        "lift gate": "liftgate", "lift-gate": "liftgate",
+        "qtr": "quarter panel", "qtr pnl": "quarter panel",
+        "frt": "front", "rr": "rear",
+        "w'shield": "windshield", "wshld": "windshield",
+        "bumper cover": "bumper cover", "fascia": "bumper cover"
+      },
+      "noise_tokens_remove": [
+        "assy", "assembly", "complete", "us built",
+        "a/m", "capa", "keysiq", "nsf", "oem", "opt oem", "alt oem",
+        "recond", "recore", "lkq", "rcy", "used",
+        "line", "outer", "inner"
+      ]
+    }
+  },
+
+  "stage_7_confidence_scoring": {
+    "_comment": "第七步：为提取出的操作评分。高置信走规则引擎，低置信走 LLM 兜底。",
+    "thresholds": {
+      "HIGH": { "min_score": 4, "routing": "直接 material_logic.csv 匹配，不调用 LLM" },
+      "MEDIUM": { "min_score": 2, "routing": "先规则匹配，失败则发候选行+上下文给 LLM" },
+      "LOW": { "min_score": 0, "routing": "发该行+前后1行+group 给 LLM，附 system_prompt_v1" }
+    },
+    "scoring_factors": [
+      { "factor": "valid_action_token_found", "score": 3 },
+      { "factor": "location_in_known_panels_list", "score": 3 },
+      { "factor": "line_number_present", "score": 1 },
+      { "factor": "group_heading_context_available", "score": 2 },
+      { "factor": "note_is_clean_no_override", "score": 1 },
+      { "factor": "symbol_is_standard_not_manual", "score": 1 },
+      { "factor": "labor_type_is_B_body_or_S_structural", "score": 1 },
+      { "factor": "symbol_is_manual_entry", "score": -1 },
+      { "factor": "symbol_is_modified_db_line", "score": -1 }
+    ]
+  },
+
+  "stage_8_llm_fallback": {
+    "_comment": "第八步：LLM 兜底策略。只在低/中置信触发，只发必要上下文，控制 token 成本。",
+    "trigger_condition": "confidence_score < 2",
+    "system_prompt_version": "v1.0.0",
+    "system_prompt": "You are a CCC ONE collision repair estimate parser. Your task is to identify repair operations from estimate line items. CCC ONE estimates use two formats: (1) Estimate/Final Bill with full operation names; (2) Estimate of Record/Supplement with abbreviations (Repl=Replace, Rpr=Repair, R&I=Remove Install, R&R=Remove Replace, Refn=Refinish, Blnd=Blend, Subl=Sublet). Extract ONLY structural repair operations relevant to consumable materials. SKIP: Sublet, cosmetic-only Blend/Refinish without structural action, lines noted drop or rope, Incl. lines, diagnostic/electrical/glass operations, camera/sensor aiming, D&R only lines. Return JSON only: {\"operations\": [{\"canonical\": string, \"action\": string, \"location\": string, \"confidence\": number}]}",
+    "user_prompt_template": "Group context: {group_heading}\nPrev line: {prev_line}\nSuspect line: {suspect_line}\nNext line: {next_line}\n\nExtract the repair operation if valid, or return {\"operations\": []}.",
+    "max_tokens_per_request": 300,
+    "temperature": 0,
+    "token_control_rules": [
+      "发送候选行而非整份 PDF 文本",
+      "context window: 前1行 + 当前行 + 后1行 + activeGroup",
+      "同 group 内同类操作合并为一次请求",
+      "相同 PDF hash 命中缓存，不重复调用",
+      "每份估价最多 LLM 兜底 10 次，超限标记 MANUAL_REVIEW"
+    ]
+  },
+
+  "stage_9_deduplication": {
+    "_comment": "第九步：去重",
+    "dedup_key": "canonical.toLowerCase() + action",
+    "special_cases": [
+      {
+        "id": "DEDUP_WITH_SUMMARY",
+        "rule": "FORMAT_B_WITH_SUMMARY 文档：只读取最后一个 SUPPLEMENT SUMMARY 汇总段，忽略各分页行项，彻底避免 supplement overlap"
+      },
+      {
+        "id": "DEDUP_LT_RT",
+        "rule": "Left 和 Right 同一 location 的相同操作（如 Replace Front Door Left/Right）保留为两条独立操作，耗材各自计算"
+      },
+      {
+        "id": "DEDUP_INCLUDED_OPS",
+        "rule": "Incl. 行对应的操作已包含在主操作内，跳过不重复提取"
+      }
+    ]
+  },
+
+  "stage_10_metadata_extraction": {
+    "_comment": "第十步：从 PDF 头部提取车辆信息元数据",
+    "fields": {
+      "ro_no": { "pattern": "RO\\s*#?\\s*[:\\-]?\\s*([A-Z0-9\\-]+)", "label": "Repair Order Number" },
+      "vin": { "pattern": "[A-HJ-NPR-Z0-9]{17}", "label": "VIN (no I O Q letters)", "note": "VIN 不含 I, O, Q 三个字母" },
+      "year_make_model": {
+        "strategy": "Find 4-digit year (19xx/20xx) adjacent to recognized make keyword",
+        "known_makes": ["Toyota","Honda","Ford","Chevrolet","Nissan","BMW","Audi","Lexus","Kia","Hyundai","Subaru","Mazda","Volkswagen","Dodge","Jeep","Ram","GMC","Cadillac","Lincoln","Volvo","Mercedes","Acura","Infiniti","Buick","Chrysler"]
+      },
+      "repair_date": { "pattern": "[A-Za-z]+,\\s+[A-Za-z]+\\s+\\d{1,2},\\s+\\d{4}" },
+      "point_of_impact": { "label": "Used to infer primary damage zone for context scoring" }
+    }
+  },
+
+  "known_panels_for_consumables": {
+    "_comment": "触发耗材的 panel/location 白名单",
+    "structural_panels": [
+      "Quarter Panel", "Rear Body Panel", "Floor Pan", "Rocker Panel",
+      "Center Pillar", "Hinge Pillar", "Cowl", "Radiator Support",
+      "Front Rail", "Rear Rail", "Frame", "Apron"
+    ],
+    "body_panels": [
+      "Hood", "Front Fender", "Rear Fender", "Front Door", "Rear Door",
+      "Liftgate", "Trunk Lid", "Roof", "Rear Quarter"
+    ],
+    "bumper_panels": [
+      "Front Bumper Cover", "Rear Bumper Cover", "Front Bumper", "Rear Bumper"
+    ],
+    "glass_panels_no_consumable": [
+      "Windshield", "Back Glass", "Front Door Glass", "Rear Door Glass", "Quarter Glass"
+    ]
+  },
+
+  "operation_consumable_trigger_matrix": {
+    "_comment": "操作 + 部位 => 是否触发耗材匹配 material_logic.csv",
+    "Replace_structural_panel": true,
+    "Replace_body_panel": true,
+    "Replace_bumper_panel": true,
+    "Repair_structural_panel": true,
+    "Repair_body_panel": true,
+    "Repair_bumper_panel": true,
+    "Remove_Install_structural_panel": true,
+    "Remove_Install_body_panel": false,
+    "Remove_Install_bumper_panel": false,
+    "Refinish_any": false,
+    "Blend_any": false,
+    "Sublet_any": false,
+    "Align_any": false,
+    "Diagnostic_any": false,
+    "Replace_glass": false,
+    "Repair_glass": false,
+    "Remove_Install_glass": false
+  },
+
+  "error_patterns": {
+    "_comment": "已知容易误判的模式，解析时需特别检查",
+    "common_mistakes": [
+      {
+        "id": "ERR_GROUP_HEADING_AS_OP",
+        "description": "Group Heading 行被误识别为操作（全大写、无动词）",
+        "fix": "跳过，更新 activeGroup 上下文"
+      },
+      {
+        "id": "ERR_DROP_ROPE_NOTE_IGNORED",
+        "description": "Line Note 中的 drop 或 rope 被忽略，非耗材操作被计入",
+        "fix": "必须在确定 canonical 前先检查 Line Notes 列"
+      },
+      {
+        "id": "ERR_INCL_DOUBLE_COUNT",
+        "description": "Incl. 行与主操作行重复计算",
+        "fix": "Labor column = Incl. => SKIP_DUPLICATE"
+      },
+      {
+        "id": "ERR_OVERLAP_ADJUSTMENT_INCLUDED",
+        "description": "Paint/Labor Overlap 扣减行被当作独立操作",
+        "fix": "negative labor + overlap in description => SKIP_OVERLAP_ADJUSTMENT"
+      },
+      {
+        "id": "ERR_SUPPLEMENT_DOUBLE_COUNT",
+        "description": "with Summary 文档中各 Supplement 分页行被重复计入",
+        "fix": "FORMAT_B_WITH_SUMMARY: 只读 SUPPLEMENT SUMMARY 部分"
+      },
+      {
+        "id": "ERR_MANUAL_LINE_OVERWEIGHT",
+        "description": "手动行（# 符号）被当作 MOTOR 标准操作对待",
+        "fix": "标记 source=manual，confidence -= 1，走 MEDIUM 路径校验"
+      },
+      {
+        "id": "ERR_MODIFIED_DB_LINE",
+        "description": "被修改过的 DB 行（* 符号）canonical 可能不准",
+        "fix": "标记 source=modified_db，confidence -= 1，记录 source_metadata"
+      },
+      {
+        "id": "ERR_ADD_IF_REQUIRED_AUTO_INCLUDED",
+        "description": "Add If Required 条件追加项被误当作必然操作",
+        "fix": "标记为 conditional，不默认触发耗材，需结合 VIN/options 判断"
+      },
+      {
+        "id": "ERR_UNPRIMED_BUMPER_IGNORED",
+        "description": "未涂装保险杠的底漆准备工序未被识别",
+        "fix": "bumper R&R + unprimed marker => 触发 bumper_cover_unprimed 耗材规则"
+      },
+      {
+        "id": "ERR_BETTERMENT_NOT_NOTED",
+        "description": "带折旧扣减的行（B20%）未记录 betterment",
+        "fix": "检测 description 中 B 后跟数字和百分号 => 记录 betterment_pct 至 source_metadata"
+      },
+      {
+        "id": "ERR_GLASS_RI_COUNTED",
+        "description": "玻璃 R&I 操作被计入耗材",
+        "fix": "glass_panels 类型操作一律不触发耗材，见 operation_consumable_trigger_matrix"
+      }
+    ]
+  },
+
+  "motor_guide_panel_included_lists": {
+    "_comment": "从 MOTOR Guide to Estimating 提取的每类面板 Included 操作列表。Included = 已包含在 R&R 时间内，不重复计算。",
+    "door_shell_rr": {
+      "included": [
+        "Align to vehicle", "Belt molding", "Electrical wiring (standard features)",
+        "Glass (fixed/moveable)", "Hinge halves bolted to door", "Inside handles and bezels",
+        "Internal mechanisms", "Latch mechanisms", "Lock and cylinder assembly if necessary",
+        "Mirror", "Outside handle", "R&I Door Module if applicable", "Regulator",
+        "Speakers", "Trim panel R&I", "Vents", "Water shield", "Weatherstrips if attached to door",
+        "Window run channel"
+      ],
+      "not_included": [
+        "Hinge halves bolted to pillar", "Welded hinge type",
+        "Body side moldings", "Bonded glass removal from damaged door shell",
+        "Lock cylinder recoding", "Stripe tape decals overlays",
+        "Power lock option", "Power window option", "Sunshade"
+      ]
+    },
+    "front_bumper_cover_rr": {
+      "special_note": "Unprimed bumper preparation (mold-release agent removal, priming) is NOT INCLUDED in R&R time and must be added separately.",
+      "included": [
+        "Align to vehicle", "Energy absorber when mounted to cover",
+        "Grille when mounted to bumper", "Lamps when mounted to bumper",
+        "Molding and impact strip", "Reflectors", "Tow eye caps",
+        "Valance panel if mounted to bumper"
+      ],
+      "not_included": [
+        "Bumper brackets/frame rail extensions if mounted to frame rail",
+        "Distance sensor", "Energy absorber if mounted to frame rail",
+        "Reinforcement/impact bar", "Lamp aiming",
+        "Lamps not mounted to bumper", "License plate bracket",
+        "Stripe tape decals overlays", "Valance panel not mounted to bumper"
+      ]
+    },
+    "fender_outer_panel": {
+      "included": [
+        "Align to vehicle", "Fender liner", "Cornering lamps if mounted to fender",
+        "Side marker", "Side repeater lamp if mounted to fender"
+      ],
+      "not_included": [
+        "Antenna", "Bumper R&I", "Battery", "Emblems and nameplates",
+        "Grille", "Hood", "Inner panels", "Mirror", "Moldings",
+        "Mud guard", "Road wheel", "Spoilers and flares", "Stripe tape"
+      ]
+    },
+    "center_pillar_rr": {
+      "included": [
+        "Carpet and insulation turn back", "Caulk/seam sealer",
+        "Cutting and welding as necessary", "Door striker",
+        "Grind fill and smooth welded seams up to 150 grit",
+        "Interior trim panels", "Rivet removal and installation if required",
+        "Seat belt anchor", "Sill plates", "Weatherstrips", "Adhesive application if required"
+      ],
+      "not_included": [
+        "Airbag components", "Carpet insulation or seat R&I",
+        "Doors", "Door hinge", "Electrical wiring",
+        "Emblems and nameplates", "Foam", "Headliner",
+        "Hinge plate transfer", "Lamp", "Moldings", "Roof cover"
+      ]
+    },
+    "floor_pan": {
+      "included": [
+        "Adhesive application if required", "Cutting and welding as necessary",
+        "Caulk/seam sealer", "Rivet removal and installation if required"
+      ],
+      "not_included": [
+        "Bolted on parts", "Electrical wiring",
+        "Exhaust system", "Sound deadening pad"
+      ]
+    },
+    "radiator_support": {
+      "included": [
+        "Caulk/seam sealer", "Welding as necessary",
+        "Included parts as listed in footnote for each chapter"
+      ],
+      "not_included": ["See ESTIMATED WORK TIME PREMISE DOES NOT INCLUDE section"]
+    }
+  },
+
+  "caching_strategy": {
+    "_comment": "运行时缓存策略，减少重复计算和 LLM 调用",
+    "rules": [
+      {
+        "id": "CACHE_BY_HASH",
+        "rule": "对 PDF 文本计算 SHA-256 hash，相同 hash 直接复用上次解析结果，不重新执行"
+      },
+      {
+        "id": "CACHE_RULES_IN_MEMORY",
+        "rule": "本规则文件和 material_logic.csv / material_info.csv 在服务启动时一次性加载内存，请求期间不重读文件"
+      },
+      {
+        "id": "CACHE_LLM_RESPONSES",
+        "rule": "相同的 group_heading + suspect_line 组合缓存 LLM 响应，有效期 24 小时"
+      },
+      {
+        "id": "VERSION_CHECK",
+        "rule": "规则文件 _meta.version 变更时清除所有缓存，强制重新解析"
+      }
+    ]
+  }
+}

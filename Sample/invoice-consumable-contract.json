@@ -1,0 +1,35 @@
+{
+  "productCatalogItem": {
+    "partNumber": "string",
+    "description": "string",
+    "category": "string|null",
+    "containerCost": "number|null",
+    "piecesPerContainer": "number|null",
+    "invoiceUnit": "string|null",
+    "packageType": "string|null",
+    "taxable": "boolean|null",
+    "recoverable": "boolean|null",
+    "pricingMode": "per_piece|percent_of_container|unknown"
+  },
+  "repairUsageInput": {
+    "repairOperationKey": "string",
+    "partNumber": "string",
+    "usage": {
+      "qty": "number|null",
+      "percentOfContainer": "number|null"
+    },
+    "note": "string|null"
+  },
+  "invoiceLineOutput": {
+    "description": "string",
+    "qty": "number",
+    "unit": "string",
+    "unitPrice": "number",
+    "amount": "number",
+    "source": {
+      "type": "rule",
+      "partNumber": "string",
+      "repairOperationKey": "string"
+    }
+  }
+}

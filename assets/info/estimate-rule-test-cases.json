@@ -1,0 +1,73 @@
+{
+  "version": "v1.0.0",
+  "description": "Regression cases for CCC estimate operation parsing.",
+  "cases": [
+    {
+      "id": "layoutA-basic-repair-replace",
+      "format_hint": "Estimate",
+      "input_text": "Estimate\n12 Replace LT Front Door Shell 3.5\n13 Repair LT Fender 1.8\n14 Blend LT Front Door 0.7",
+      "expected_keep_operations": [
+        "Replace Left Front Door Shell",
+        "Repair Left Fender"
+      ],
+      "expected_review_operations": [],
+      "expected_drop_contains": [
+        "Blend Left Front Door"
+      ],
+      "notes": "Standalone blend should not drive consumable operation."
+    },
+    {
+      "id": "layoutB-abbrev-normalization",
+      "format_hint": "Estimate of Record",
+      "input_text": "Estimate of Record\n25 Rpr LT Qtr Pnl 2.4 B\n26 Repl RR Dr Shell 3.0 B\n27 R&I Frt Bmpr Assy 1.2 B",
+      "expected_keep_operations": [
+        "Repair Left Quarter Panel",
+        "Replace Rear Door Shell",
+        "Remove Install Front Bumper Assy"
+      ],
+      "expected_review_operations": [],
+      "expected_drop_contains": [],
+      "notes": "Validates abbreviation normalization from Oper column."
+    },
+    {
+      "id": "with-summary-overlap-avoid-duplicates",
+      "format_hint": "Supplement of Record with Summary",
+      "input_text": "Supplement of Record 02 with Summary\n10 Repair LT Quarter Panel 2.0\n11 Repair LT Quarter Panel Summary carry forward\n12 Paint Overlap deduction",
+      "expected_keep_operations": [
+        "Repair Left Quarter Panel"
+      ],
+      "expected_review_operations": [],
+      "expected_drop_contains": [
+        "Summary carry forward",
+        "Paint Overlap"
+      ],
+      "notes": "Summary duplicate and overlap lines must be dropped."
+    },
+    {
+      "id": "line-note-drop-overrides-rpr",
+      "format_hint": "Estimate of Record",
+      "input_text": "Estimate of Record\n42 rpr rocker mldg 0.3 body\n42 note drop",
+      "expected_keep_operations": [
+        "Remove Install Rocker Mldg"
+      ],
+      "expected_review_operations": [],
+      "expected_drop_contains": [
+        "Repair Rocker Mldg"
+      ],
+      "notes": "Note keyword 'drop' should downgrade repair to remove/install."
+    },
+    {
+      "id": "line-note-rope-overrides-glass",
+      "format_hint": "Estimate of Record",
+      "input_text": "Estimate of Record\n57 rpr w'shield 0.3 b\n57 note rope",
+      "expected_keep_operations": [
+        "Remove Install Windshield"
+      ],
+      "expected_review_operations": [],
+      "expected_drop_contains": [
+        "Repair Windshield"
+      ],
+      "notes": "Note keyword 'rope' should downgrade glass repair semantics."
+    }
+  ]
+}

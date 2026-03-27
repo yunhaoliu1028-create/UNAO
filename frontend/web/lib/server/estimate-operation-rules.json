@@ -1,0 +1,108 @@
+{
+  "version": "v1.0.0",
+  "formatHints": {
+    "layoutA": [
+      "estimate",
+      "final bill"
+    ],
+    "layoutB": [
+      "estimate of record",
+      "preliminary estimate",
+      "supplement of record",
+      "preliminary supplement"
+    ],
+    "withSummary": [
+      "with summary"
+    ]
+  },
+  "actionMap": {
+    "repl": "replace",
+    "rpl": "replace",
+    "r&r": "replace",
+    "r/r": "replace",
+    "remove & replace": "replace",
+    "r&i": "remove install",
+    "r/i": "remove install",
+    "remove & install": "remove install",
+    "rpr": "repair",
+    "rep": "repair",
+    "refn": "refinish",
+    "refin": "refinish",
+    "blnd": "blend",
+    "subl": "sublet",
+    "sublt": "sublet",
+    "sect": "section",
+    "o/h": "overhaul",
+    "d&r": "disconnect reconnect"
+  },
+  "locationMap": {
+    "lt": "left",
+    "rt": "right",
+    "frt": "front",
+    "rr": "rear",
+    "dr": "door",
+    "bmpr": "bumper",
+    "adj.": "adjacent",
+    "non-adj.": "non adjacent",
+    "w/o": "without",
+    "w/": "with",
+    "qtr": "quarter",
+    "pnl": "panel",
+    "w'shield": "windshield"
+  },
+  "lineDropContains": [
+    "paint overlap",
+    "labor overlap",
+    "category subtotal",
+    "grand total",
+    "customer pay",
+    "insurance pay",
+    "deductible",
+    "betterment",
+    "other charges",
+    "estimate notes"
+  ],
+  "standaloneDropActions": [
+    "sublet",
+    "refinish",
+    "blend"
+  ],
+  "operationKeywords": [
+    "panel",
+    "bumper",
+    "fender",
+    "hood",
+    "door",
+    "quarter",
+    "rail",
+    "frame",
+    "roof",
+    "floor",
+    "liftgate",
+    "rocker",
+    "glass",
+    "windshield",
+    "body"
+  ],
+  "lineNoteOverrideKeywords": {
+    "downgradeToRemoveInstall": [
+      "drop",
+      "rope"
+    ]
+  },
+  "lineNoteOverrideTargets": [
+    "mldg",
+    "molding",
+    "glass",
+    "windshield",
+    "w'shield"
+  ],
+  "includedMarkers": [
+    "incl.",
+    " included "
+  ],
+  "confidenceThresholds": {
+    "keep": 6,
+    "review": 3
+  }
+}

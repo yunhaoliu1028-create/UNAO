@@ -1,0 +1,29 @@
+{
+  "keep": {
+    "partNumber": "Part Number",
+    "description": "Description",
+    "category": "Paint and Materials Category",
+    "containerCost": "Container Cost",
+    "piecesPerContainer": "Pieces Per Container",
+    "invoiceUnit": "Invoice Unit",
+    "packageType": "Size",
+    "taxable": "Taxable",
+    "recoverable": "Enable for Invoicing (Recoverable)",
+    "pricingMode": "derived from Remove By"
+  },
+  "drop": [
+    "Manufacturer",
+    "Distributor Branch",
+    "Order Group (required for integrated distributor)",
+    "Stock Location",
+    "Min",
+    "Max",
+    "Quantity On Hand",
+    "UPC",
+    "Select RepairStack Catalog Product",
+    "Sale Price Option (3M List Price or Cost + Markup)",
+    "Custom Markup %",
+    "Invoicing Categories",
+    "Remove By"
+  ]
+}

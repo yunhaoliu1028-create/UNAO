@@ -1,0 +1,512 @@
+Manufacturer,Part Number,Description,Distributor Branch,Order Group (required for integrated distributor),Paint and Materials Category,Container Cost,Remove By,Pieces Per Container,Stock Location,Min,Max,Quantity On Hand,Size,UPC,"Enable for Invoicing
+(Recoverable)",Taxable,Select RepairStack Catalog Product,"Sale Price Option 
+(3M List Price or 
+Cost + Markup)",Custom Markup %,Invoicing Categories ,Invoice Unit
+CRIMP,462,"Dynatron™ Dyna-Glass Short Strand, 462, 1 Quart (US)",,,ALLIED - BODY FILLER & RELATED (FAR),58.2,Each Piece,25,,0,0,9999,Can,,Yes,No,3M 462 CAN | USA,3M List Price,,,
+CRIMP,464,"Dynatron™ Dyna-Glass Short Strand, 464, 1 Gallon (US) Can",,,ALLIED - BODY FILLER & RELATED (FAR),171.88,Each Piece,102,,0,0,9999,Can,,Yes,No,3M 464 CAN | USA,3M List Price,,,
+CRIMP,472,"Dynatron™ Dyna-Hair Long Strand, 472, 1 Quart (US)",,,ALLIED - BODY FILLER & RELATED (FAR),59.03,Each Piece,25,,0,0,9999,Can,,Yes,No,3M 472 CAN | USA,3M List Price,,,
+CRIMP,494,"Dynatron™ Dynalite™ w/ CAP, 494D, 1 Gallon (US)",,,ALLIED - BODY FILLER & RELATED (FAR),65.41,Each Piece,102,,0,0,9999,Can,,Yes,No,3M 494 CAN | USA,3M List Price,,,
+CRIMP,496,"Dynatron™ Dynalite™ Body Filler, 496, 5 Gallon (US) Pail",,,ALLIED - BODY FILLER & RELATED (FAR),400.71,Each Piece,480,,0,0,9999,Pail,,Yes,No,3M 496 PAIL | USA,3M List Price,,,
+CRIMP,544,"Dynatron™  Dyna-Pro™  Paintable Rubberized Undercoating, 1 Gallon Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",248.77,Each Piece,128,,0,0,9999,Can,,Yes,No,3M 544 CAN | USA,3M List Price,,,
+CRIMP,592,"Dynatron™ Putty-Cote, 592, 1 Quart (US)",,,ALLIED - BODY FILLER & RELATED (FAR),80.83,Each Piece,25,,0,0,9999,Can,,Yes,No,3M 592 CAN | USA,3M List Price,,,
+CRIMP,593,"Dynatron™ Putty-Cote, 593, 1/2 Gallon (US)",,,ALLIED - BODY FILLER & RELATED (FAR),155.19,Each Piece,51,,0,0,9999,Can,,Yes,No,3M 593 CAN | USA,3M List Price,,,
+CRIMP,609,"Dynatron™  Liquid Hardener, 0.74 oz Tube",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",14.17,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 609 CARTRIDGE | USA,3M List Price,,,
+CRIMP,650,"Dynatron™ Glazing & Spot Putty, 650, 16 oz",,,ALLIED - BODY FILLER & RELATED (FAR),29.48,Each Piece,16,,0,0,9999,Can,,Yes,No,3M 650 CAN | USA,3M List Price,,,
+CRIMP,688,"Dynatron™  Fiberglass Mat, 8 sq ft",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",31.68,Each Piece,8,,0,0,9999,Mat,,Yes,No,3M 688 MAT | USA,3M List Price,,,
+CRIMP,692,"Dynatron™  Fiberglass Resin, 1 Quart Can",,,ALLIED - BODY FILLER & RELATED (FAR),65.81,Each Piece,32,,0,0,9999,Can,,Yes,No,3M 692 CAN | USA,3M List Price,,,
+CRIMP,694,"Dynatron™  Fiberglass Resin, 1 Gallon Can",,,ALLIED - BODY FILLER & RELATED (FAR),206.61,Each Piece,128,,0,0,9999,Can,,Yes,No,3M 694 CAN | USA,3M List Price,,,
+CRIMP,699,"Dynatron™  Fiberglass Cloth, 8 sq ft",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",31.33,Each Piece,8,,0,0,9999,Mat,,Yes,No,3M 699 MAT | USA,3M List Price,,,
+CRIMP,01130,"3M™ Platinum™ Plus Filler, 01130, 3 Gallon (US) Pail",,,ALLIED - BODY FILLER & RELATED (FAR),515.69,Each Piece,282,,0,0,9999,Pail,,Yes,No,3M 01130 PAIL | USA,3M List Price,,,
+CRIMP,01131,"3M™ Platinum™ Plus Filler, 01131, 1 Gallon (US)",,,ALLIED - BODY FILLER & RELATED (FAR),154.9,Each Piece,102,,0,0,9999,Can,,Yes,No,3M 01131 CAN | USA,3M List Price,,,
+CRIMP,01160,"3M™ Short Strand Reinforced Filler, 01160, 1 Gallon (US) Can",,,ALLIED - BODY FILLER & RELATED (FAR),169.68,Each Piece,102,,0,0,9999,Can,,Yes,No,3M 01160 CAN | USA,3M List Price,,,
+CRIMP,01171,"3M™ Platinum™ Filler, 01171, 1 Gallon (US)",,,ALLIED - BODY FILLER & RELATED (FAR),137.92,Each Piece,102,,0,0,9999,Can,,Yes,No,3M 01171 CAN | USA,3M List Price,,,
+CRIMP,01231,"3M™ Platinum™ Filler, 01231, 3 Gallon (US) Pail",,,ALLIED - BODY FILLER & RELATED (FAR),459.17,Each Piece,282,,0,0,9999,Pail,,Yes,No,3M 01231 PAIL | USA,3M List Price,,,
+CRIMP,01411,"3M™ Roloc™ Brake Rotor Surface Conditioning Disc Refill Pack, 01411, P120 grit",,,ALLIED - ABRASIVES (ABR),78.34,Each Piece,12,,0,0,9999,Carton,,Yes,No,3M 01411 CARTON | USA,3M List Price,,,
+CRIMP,01810,"3M™ Hookit™ Purple Clean Sanding Disc, 01810, 6 in, P500",,,ALLIED - ABRASIVES (ABR),126.04,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 01810 BOX | USA,3M List Price,,,
+CRIMP,01991,"3M™ Green Corps™ Reinforced Weld Grinding Wheel, 3 in x 3/16 in x 3/8 in",,,ALLIED - ABRASIVES (ABR),97.15,Each Piece,5,,0,0,9999,Pack,,Yes,No,3M 01991 PACK | USA,3M List Price,,,
+CRIMP,02035,"3M™ Wetordry™ Abrasive Sheet 213Q, P800, 9 in x 11 in",,,ALLIED - ABRASIVES (ABR),130.5,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 02035 CARTON | USA,3M List Price,,Abrasives - Misc.,Sheet(s)
+CRIMP,02038,"3M™ Wetordry™ Abrasive Sheet 213Q, P400, 9 in x 11 in",,,ALLIED - ABRASIVES (ABR),130.5,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 02038 CARTON | USA,3M List Price,,Abrasives - Misc.,Sheet(s)
+CRIMP,02044,"3M™ Wetordry™ Abrasive Sheet 401Q, 2000, 5-1/2 in x 9 in",,,ALLIED - ABRASIVES (ABR),101.35,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 02044 CARTON | USA,3M List Price,,Abrasives - Misc.,Sheet(s)
+CRIMP,02085,"3M™ Trizact™ Hookit™ Foam Abrasive Disc, 6 in, P3000",,,ALLIED - ABRASIVES (ABR),238.59,Each Piece,15,,0,0,9999,Box,,Yes,No,3M 02085 BOX | USA,3M List Price,,,
+CRIMP,02087,"3M™ Trizact™ Hookit™ P3000 Foam Disc, 3 in",,,ALLIED - ABRASIVES (ABR),121.09,Each Piece,15,,0,0,9999,Carton,,Yes,No,3M 02087 CARTON | USA,3M List Price,,Denib & Polish - Misc.,Disc(s)
+CRIMP,02088,"3M™ Trizact™ Hookit™ Clear Coat Sanding Abrasive Disc, 6 in, P1500",,,ALLIED - ABRASIVES (ABR),168.81,Each Piece,15,,0,0,9999,Box,,Yes,No,3M 02088 BOX | USA,3M List Price,,,
+CRIMP,02090,"3M™ Trizact™ Hookit™ Blending Abrasive Disc, 6 in, P1000",,,ALLIED - ABRASIVES (ABR),236.8,Each Piece,15,,0,0,9999,Box,,Yes,No,3M 02090 BOX | USA,3M List Price,,,
+CRIMP,02602,"3M™ Softback Sanding Sponge Superfine, 4-1/2 in x 5-1/2 in (115mm x 140mm)",,,ALLIED - ABRASIVES (ABR),135.49,Each Piece,20,,0,0,9999,Pack,,Yes,No,3M 02602 PACK | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,03180,"3M™ Platinum™ Plus Glaze, 03180, 24 fl oz",,,ALLIED - BODY FILLER & RELATED (FAR),80.13,Each Piece,24,,0,0,9999,Can,,Yes,No,3M 03180 CAN | USA,3M List Price,,,
+CRIMP,04240,"3M™ Semi-Rigid Plastic Repair, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",119.41,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 04240 CARTRIDGE | USA,3M List Price,,,
+CRIMP,04247,"3M™ Super Fast Plastic Repair, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",116.03,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 04247 CARTRIDGE | USA,3M List Price,,,
+CRIMP,04248,"3M™ Super-Fast Repair Adhesive - Black, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",120.46,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 04248 CARTRIDGE | USA,3M List Price,,,
+CRIMP,04274,"3M™ NVH Dampening Material, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",118.76,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 04274 CARTRIDGE | USA,3M List Price,,,
+CRIMP,04747,"3M™ Super-Fast Repair Adhesive, 50 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",56.58,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 04747 CARTRIDGE | USA,3M List Price,,,
+CRIMP,04903,"3M™ Plastic Contour Sheet, 5"" x 12 ft Roll",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",38.14,Each Piece,12,,0,0,9999,Roll,,Yes,No,3M 04903 ROLL | USA,3M List Price,,,
+CRIMP,04904,"3M™ Reinforcement Patch, 5"" x 12 ft Roll",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",50.85,Each Piece,12,,0,0,9999,Roll,,Yes,No,3M 04904 ROLL | USA,3M List Price,,,
+CRIMP,04956,"3M™ VHB™ Tape 4956, Gray, 3/4 in x 36 yd, 62 mil",,,MISC - OTHER (OTH),226.84,Each Piece,108,,0,0,9999,Roll,,Yes,No,3M 04956 ROLL | USA,3M List Price,,Other - Misc.,ft
+CRIMP,05207,"3M™ Hookit™ Sanding Block D/F, 70mm x 127mm",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),215.58,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 05207 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,05208,"3M™ Hookit™ Sanding Block D/F, 70mm x 198mm",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),223.39,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 05208 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,05209,"3M™ Hookit™ Sanding Block D/F, 70mm x 396mm",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),374.67,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 05209 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,05442,"3M™ Stikit™ Soft Hand Block, 2-3/4 in x 5 in",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),54.25,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 05442 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,05508,"3M™ Marine Adhesive Sealant 4000 UV, White, 600 mL Sausage Pack",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",48.3,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 05508 CARTRIDGE | USA,3M List Price,,,
+CRIMP,05539,"3M™ Roloc™ Disc Pad Pad Assembly, 2 in",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),58.19,Each Piece,1,,0,0,9999,Kit,,Yes,No,3M 05539 KIT | USA,3M List Price,,Abrasives - Misc.,Kit(s)
+CRIMP,05540,"3M™ Roloc™ Disc Pad Pad Assembly, 3 in",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),76.97,Each Piece,1,,0,0,9999,Kit,,Yes,No,3M 05540 KIT | USA,3M List Price,,Abrasives - Misc.,Kit(s)
+CRIMP,05576,"3M™ Stikit™ Disc Pad, Blue, 6 in x 3/4 in, 5/16-24 External",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),99.19,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 05576 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,05684,3M™ Hookit™ Sanding Block Kit,,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),364.09,Each Piece,1,,0,0,9999,Kit,,Yes,No,3M 05684 KIT | USA,3M List Price,,Abrasives - Misc.,Kit(s)
+CRIMP,05692,3M™ Stikit™ Sanding Block Kit,,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),294.17,Each Piece,1,,0,0,9999,Kit,,Yes,No,3M 05692 KIT | USA,3M List Price,,Abrasives - Misc.,Kit(s)
+CRIMP,05707,"3M™ Perfect-It™ Foam Polishing Pad, 8 in",,,"ALLIED - COMPOUNDS, PADS & RELATED (CAR)",75.74,Each Piece,1,,0,0,9999,Bag,,Yes,No,3M 05707 BAG | USA,3M List Price,,Denib & Polish - Misc.,Pad(s)
+CRIMP,05708,"3M™ Perfect-It™ Ultrafine Polishing Pad, 8 in",,,"ALLIED - COMPOUNDS, PADS & RELATED (CAR)",85.12,Each Piece,1,,0,0,9999,Bag,,Yes,No,3M 05708 BAG | USA,3M List Price,,Denib & Polish - Misc.,Pad(s)
+CRIMP,05723,"3M™ Foam Compounding Pad, Single Sided, Flat Back, 8 in",,,"ALLIED - COMPOUNDS, PADS & RELATED (CAR)",87.06,Each Piece,2,,0,0,9999,Bag,,Yes,No,3M 05723 BAG | USA,3M List Price,,Denib & Polish - Misc.,Pad(s)
+CRIMP,05741,"3M™ Hookit™ Hand Block, 2-3/4 in x 7-3/4 in",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),69.37,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 05741 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,05752,"3M™ Perfect™ It Quick Connect Adaptor, 5/8 in",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),79.2,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 05752 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,05766,"3M™ Crème Hardener, Blue, 2.75oz",,,ALLIED - BODY FILLER & RELATED (FAR),13.1,Each Piece,1,,0,0,9999,Tube,,Yes,No,3M 05766 TUBE | USA,3M List Price,,Body Filler - Misc.,Bottle(s)
+CRIMP,05771,"3M™ Hookit™ Soft Interface Pad, 3 in",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),18.24,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 05771 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,05776,"3M™ Hookit™ Disc Pad, 6 in",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),101.89,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 05776 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,05777,"3M™ Hookit™ Soft Interface Pad, 6 in X 1/2 in x 3/4 in",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),38.42,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 05777 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,05778,"3M™ Painter's Disc Pad w/ Hookit™, 6 in",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),100.32,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 05778 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,05800,"3M™ Lightweight Body Filler, 05800, 1 Quart (US)",,,ALLIED - BODY FILLER & RELATED (FAR),35.39,Each Piece,25,,0,0,9999,Can,,Yes,No,3M 05800 CAN | USA,3M List Price,,,
+CRIMP,05801,"3M™ Lightweight Body Filler, 05801, 1 Gallon (US)",,,ALLIED - BODY FILLER & RELATED (FAR),78.3,Each Piece,102,,0,0,9999,Can,,Yes,No,3M 05801 CAN | USA,3M List Price,,,
+CRIMP,05804,"3M™ Lightweight Body Filler, 05804, 5 Gallon (US) Pail",,,ALLIED - BODY FILLER & RELATED (FAR),420.13,Each Piece,480,,0,0,9999,Pail,,Yes,No,3M 05804 PAIL | USA,3M List Price,,,
+CRIMP,05816,"3M™ Milled Fiberglass Body Filler, 1 GAL",,,ALLIED - BODY FILLER & RELATED (FAR),172.8,Percent,102,,0,0,9999,Can,,Yes,No,3M 05816 CAN | USA,3M List Price,,Body Filler - Misc.,fl oz
+CRIMP,05816,"3M™ Short Strand Fiberglass Reinforced Filler, 05816, 1 Gallon (US)",,,ALLIED - BODY FILLER & RELATED (FAR),172.8,Each Piece,102,,0,0,9999,Can,,Yes,No,3M 05816 CAN | USA,3M List Price,,,
+CRIMP,05821,"3M™ Advanced Finishing Glaze, 05821, 24.0 fl oz Tube",,,ALLIED - BODY FILLER & RELATED (FAR),101.12,Each Piece,24,,0,0,9999,Tube,,Yes,No,3M 05821 TUBE | USA,3M List Price,,,
+CRIMP,05824,"3M™ Flowable Finishing Glaze, 05824, 24.0 oz Squeeze Tube",,,ALLIED - BODY FILLER & RELATED (FAR),111.48,Each Piece,24,,0,0,9999,Tube,,Yes,No,3M 05824 TUBE | USA,3M List Price,,,
+CRIMP,05847,3M™ Dynamic Mixing Nozzle - Filler/Glaze,,,ALLIED - BODY FILLER & RELATED (FAR),278.31,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 05847 CARTON | USA,3M List Price,,,
+CRIMP,05857,"3M™ Dent Finishing Glaze for DMS, 05857, 276 mL",,,ALLIED - BODY FILLER & RELATED (FAR),113.66,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 05857 CARTRIDGE | USA,3M List Price,,,
+CRIMP,05861,"3M™ Dry Guide Coat Kit, 1.75oz (50 g)",,,ALLIED - BODY FILLER & RELATED (FAR),128.89,Each Piece,1,,0,0,9999,Pack,,Yes,No,3M 05861 PACK | USA,3M List Price,,Body Filler - Misc.,Kit(s)
+CRIMP,05862,"3M™ Platinum™ Glaze, 05862, 276 mL",,,ALLIED - BODY FILLER & RELATED (FAR),111.45,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 05862 CARTRIDGE | USA,3M List Price,,,
+CRIMP,05863,"3M™ Platinum™ Plus for DMS, 05863, 276 mL,",,,ALLIED - BODY FILLER & RELATED (FAR),58.72,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 05863 CARTRIDGE | USA,3M List Price,,,
+CRIMP,05877,3M™ Reinforced Body Filler for DMS,,,ALLIED - BODY FILLER & RELATED (FAR),72.02,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 05877 CARTRIDGE | USA,3M List Price,,,
+CRIMP,05885,"3M™ Rigid Parts Repair, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",123.01,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 05885 CARTRIDGE | USA,3M List Price,,,
+CRIMP,05887,"3M™ EZ Sand Multi-Purpose Repair Material, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",116.03,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 05887 CARTRIDGE | USA,3M List Price,,,
+CRIMP,05888,"3M™ EZ Fix Flexible Bumper Patch, 4"" x 8"" Patch",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",228.24,Each Piece,6,,0,0,9999,Kit,,Yes,No,3M 05888 KIT | USA,3M List Price,,,
+CRIMP,05891,"3M™ EZ Sand Flexible Parts Repair Kit, 9.5 fl oz Tubes",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",156.74,Percent,,,0,0,9999,Kit,,Yes,No,3M 05891 KIT | USA,3M List Price,,,
+CRIMP,05895,"3M™ EZ Sand Flexible Parts Repair Kit, 5 fl oz Tubes",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",125.16,Percent,,,0,0,9999,Kit,,Yes,No,3M 05895 KIT | USA,3M List Price,,,
+CRIMP,05907,"3M™ Polyolefin Adhesion Promoter, 12 oz Net Wt Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",91.25,Percent,,,0,0,9999,Can,,Yes,No,3M 05907 CAN | USA,3M List Price,,,
+CRIMP,05916,"3M™ Welding & Spark Deflection Paper, 24"" x 150 ft Roll",,,ALLIED - REMAINING ALLIED (REM),319.9,Each Piece,150,,0,0,9999,Roll,,Yes,No,3M 05916 ROLL | USA,3M List Price,,,
+CRIMP,05917,"3M™ Weld-Thru Coating II, 12.75 oz Net Wt/361 g Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",78.17,Percent,,,0,0,9999,Can,,Yes,No,3M 05917 CAN | USA,3M List Price,,,
+CRIMP,06016,3M™ Perfect-It™ Detailing Cloth - Yellow,,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",42.73,Each Piece,6,,0,0,9999,Pack,,Yes,No,3M 06016 PACK | USA,3M List Price,,Denib & Polish - Misc.,Each
+CRIMP,06020,3M™ Perfect-It™ Auto Detailing Cloth - Blue,,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",42.73,Each Piece,6,,0,0,9999,Pack,,Yes,No,3M 06020 PACK | USA,3M List Price,,Denib & Polish - Misc.,Each
+CRIMP,06068,"3M™ Perfect-It™ EX Ultrafine Machine Polish, 1QT (32 fl oz/946mL)",,,"ALLIED - COMPOUNDS, PADS & RELATED (CAR)",124.71,Percent,32,,0,0,9999,Bottle,,Yes,No,3M 06068 BOTTLE | USA,3M List Price,,Denib & Polish - Misc.,fl oz
+CRIMP,06094,"3M™ Perfect-It™ EX Machine Polish, 1QT (32 fl oz/946mL)",,,"ALLIED - COMPOUNDS, PADS & RELATED (CAR)",105.37,Percent,32,,0,0,9999,Bottle,,Yes,No,3M 06094 BOTTLE | USA,3M List Price,,Denib & Polish - Misc.,fl oz
+CRIMP,06293,"3M™ Soft Edge Foam Masking Tape +, 21mm x 49m",,,ALLIED - MASKING & RELATED (MAS),157.14,Each Piece,160,,0,0,9999,Roll,,Yes,No,3M 06293 ROLL | USA,3M List Price,,Masking - Misc.,ft
+CRIMP,06349,"3M™ Perforated Trim Masking Tape, 10mm Hard Band, 50.8mm x 10m",,,ALLIED - MASKING & RELATED (MAS),85.85,Each Piece,32,,0,0,9999,Roll,,Yes,No,3M 06349 ROLL | USA,3M List Price,,Masking - Misc.,ft
+CRIMP,06376,3M™ Automotive Attachment Tape - Grey - 30 mil x 1/4" x 20 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",42.63,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 06376 ROLL | USA,3M List Price,,,
+CRIMP,06377,3M™ Automotive Attachment Tape - Grey - 30 mil x 1/2" x 20 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",71.95,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 06377 ROLL | USA,3M List Price,,,
+CRIMP,06378,3M™ Automotive Attachment Tape - Grey - 30 mil x 7/8" x 20 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",117.78,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 06378 ROLL | USA,3M List Price,,,
+CRIMP,06380,3M™ Automotive Attachment Tape - White - 45 mil x 1/2" x 20 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",85.27,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 06380 ROLL | USA,3M List Price,,,
+CRIMP,06381,3M™ Automotive Attachment Tape - White - 45 mil x 7/8" x 20 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",128.97,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 06381 ROLL | USA,3M List Price,,,
+CRIMP,06382,3M™ Automotive Acrylic Plus Attachment Tape - Black - 45 mil x 1/2" x 20 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",86.87,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 06382 ROLL | USA,3M List Price,,,
+CRIMP,06383,3M™ Automotive Acrylic Plus Attachment Tape - Black - 45 mil x 7/8" x 20 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",131.9,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 06383 ROLL | USA,3M List Price,,,
+CRIMP,06384,3M™ Automotive Acrylic Plus Attachment Tape - Black - 45 mil x 1/2" x 5 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",27.45,Each Piece,15,,0,0,9999,Roll,,Yes,No,3M 06384 ROLL | USA,3M List Price,,,
+CRIMP,06385,3M™ Nameplate Repair Tape - Grey - 30 mil x 3/16" x 5 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",21.74,Each Piece,15,,0,0,9999,Roll,,Yes,No,3M 06385 ROLL | USA,3M List Price,,,
+CRIMP,06386,3M™ Automotive Acrylic Plus Attachment Tape - Black - 45 mil x 1/4" x 20 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",49.83,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 06386 ROLL | USA,3M List Price,,,
+CRIMP,06387,3M™ Automotive Acrylic Plus Premium Attachment Tape - Black - 45 mil x 1/4" x 20 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",55.96,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 06387 ROLL | USA,3M List Price,,,
+CRIMP,06388,3M™ Automotive Acrylic Plus Premium Attachment Tape - Black - 45 mil x 1/2" x 20 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",97.26,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 06388 ROLL | USA,3M List Price,,,
+CRIMP,06389,3M™ Automotive Acrylic Plus Premium Attachment Tape - Black - 45 mil x 7/8" x 20 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",147.89,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 06389 ROLL | USA,3M List Price,,,
+CRIMP,06392,3M™ Automotive Acrylic Plus Premium Attachment Tape - Black - 60 mil x 1/2" x 10 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",64.75,Each Piece,30,,0,0,9999,Roll,,Yes,No,3M 06392 ROLL | USA,3M List Price,,,
+CRIMP,06394,3M™ Automotive Attachment Tape - Grey - 90 mil x 1/2" x 10 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",63.68,Each Piece,30,,0,0,9999,Roll,,Yes,No,3M 06394 ROLL | USA,3M List Price,,,
+CRIMP,06395,3M™ Automotive Acrylic Plus Attachment Tape - Black - 60 mil x 7/8" x 10 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",95.93,Each Piece,30,,0,0,9999,Roll,,Yes,No,3M 06395 ROLL | USA,3M List Price,,,
+CRIMP,06396,"3M™ Automotive Adhesion Promoter, Sponge Applicator Packet",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",107.92,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 06396 CARTON | USA,3M List Price,,,
+CRIMP,06397,3M™ Automotive Acrylic Plus Attachment Tape - Black - 60 mil x 1/2" x 10 yd Roll,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",58.09,Each Piece,30,,0,0,9999,Roll,,Yes,No,3M 06397 ROLL | USA,3M List Price,,,
+CRIMP,06404,"3M™ Fine Line Tape, 1/8 in",,,ALLIED - MASKING & RELATED (MAS),17.22,Each Piece,108,,0,0,9999,Roll,,Yes,No,3M 06404 ROLL | USA,3M List Price,,Masking - Misc.,ft
+CRIMP,06405,"3M™ Fine Line Tape, 1/4 in",,,ALLIED - MASKING & RELATED (MAS),17.22,Each Piece,108,,0,0,9999,Roll,,Yes,No,3M 06405 ROLL | USA,3M List Price,,Masking - Misc.,ft
+CRIMP,06408,"3M™ Fine Line Tape, 1/2 in",,,ALLIED - MASKING & RELATED (MAS),22.39,Each Piece,108,,0,0,9999,Roll,,Yes,No,3M 06408 ROLL | USA,3M List Price,,Masking - Misc.,ft
+CRIMP,06527,"3M™ Precision Masking Tape, 1-1/2 in x 60 yds",,,ALLIED - MASKING & RELATED (MAS),26.54,Each Piece,180,,0,0,9999,Roll,,Yes,No,3M 06527 ROLL | USA,3M List Price,,Masking - Misc.,ft
+CRIMP,06528,"3M™ Precision Masking Tape, 2 in x 60 yds",,,ALLIED - MASKING & RELATED (MAS),35.31,Each Piece,180,,0,0,9999,Roll,,Yes,No,3M 06528 ROLL | USA,3M List Price,,Masking - Misc.,ft
+CRIMP,06546,"Dynatron™  Dyna-Pro™  Paintable Rubberized Undercoating, 5 Gallon Pail",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",13.15,Each Piece,1,,0,0,9999,Pail,,Yes,No,3M 06546 PAIL | USA,3M List Price,,,
+CRIMP,06580,"3M™ Marine Adhesive Sealant 4000 UV, White, 295 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",48.08,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 06580 CARTRIDGE | USA,3M List Price,,,
+CRIMP,06586,"3M™ Marine Adhesive Sealant 4000 UV, White, 400 mL Sausage Pack",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",36.94,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 06586 CARTRIDGE | USA,3M List Price,,,
+CRIMP,06620,"3M™ Precision Masking Tape, 1 in x 60 yds",,,ALLIED - MASKING & RELATED (MAS),17.44,Each Piece,180,,0,0,9999,Roll,,Yes,No,3M 06620 ROLL | USA,3M List Price,,Masking - Misc.,ft
+CRIMP,06652,"3M™ Automotive Refinish Masking Tape, 18mm x 60.5m",,,ALLIED - MASKING & RELATED (MAS),6.86,Each Piece,198,,0,0,9999,Roll,,Yes,No,3M 06652 ROLL | USA,3M List Price,,Masking - Misc.,ft
+CRIMP,06654,"3M™ Automotive Refinish Masking Tape, 36mm x 60.5m",,,ALLIED - MASKING & RELATED (MAS),13.61,Each Piece,198,,0,0,9999,Roll,,Yes,No,3M 06654 ROLL | USA,3M List Price,,Masking - Misc.,ft
+CRIMP,06742,"3M™ Overspray Protective Sheeting, 20 ft x 250 ft",,,ALLIED - MASKING & RELATED (MAS),136.15,Each Piece,250,,0,0,9999,Roll,,Yes,No,3M 06742 ROLL | USA,3M List Price,,Masking - Misc.,ft
+CRIMP,06834,"3M™ Overspray Masking Liquid Dry, 55 Gallon",,,ALLIED - MASKING & RELATED (MAS),6188.8,Each Piece,7040,,0,0,9999,Drum,,Yes,No,3M 06834 DRUM | USA,3M List Price,,,
+CRIMP,06847,"3M™ Overspray Masking Liquid Dry, 1 Gallon",,,ALLIED - MASKING & RELATED (MAS),130.3,Each Piece,128,,0,0,9999,Can,,Yes,No,3M 06847 CAN | USA,3M List Price,,,
+CRIMP,06851,"3M™ Overspray Masking Liquid Dry, 5 Gallon",,,ALLIED - MASKING & RELATED (MAS),622.16,Each Piece,640,,0,0,9999,Pail,,Yes,No,3M 06851 PAIL | USA,3M List Price,,,
+CRIMP,06854,"3M™ Overspray Masking Liquid, 15 Gallon",,,ALLIED - MASKING & RELATED (MAS),1767.75,Each Piece,1920,,0,0,9999,Drum,,Yes,No,3M 06854 DRUM | USA,3M List Price,,,
+CRIMP,06855,"3M™ Overspray Masking Liquid, 55 Gallon",,,ALLIED - MASKING & RELATED (MAS),5800.44,Each Piece,7040,,0,0,9999,Drum,,Yes,No,3M 06855 DRUM | USA,3M List Price,,,
+CRIMP,06856,"3M™ Overspray Masking Liquid Dry, 15 Gallon",,,ALLIED - MASKING & RELATED (MAS),1836.21,Each Piece,1920,,0,0,9999,Drum,,Yes,No,3M 06856 DRUM | USA,3M List Price,,,
+CRIMP,06857,"3M™ Overspray Masking Liquid Dry, 55 Gallon",,,ALLIED - MASKING & RELATED (MAS),6024.95,Each Piece,7040,,0,0,9999,Drum,,Yes,No,3M 06857 DRUM | USA,3M List Price,,,
+CRIMP,06976,"3M™ Multi-Purpose Duct Tape 3900, Silver, 48 mm x 54.8 m, 7.6 mil",,,ALLIED - REMAINING ALLIED (REM),33.15,Each Piece,180,,0,0,9999,Roll,,Yes,No,3M 06976 ROLL | USA,3M List Price,,Other - Misc.,ft
+CRIMP,07025,3M™ Half Mask Respirator - MEDIUM,,,ALLIED - SAFETY/PPE (SAF),722.65,Each Piece,24,,0,0,9999,Bag,,Yes,No,3M 07025 BAG | USA,3M List Price,,Other - Misc.,Each
+CRIMP,07026,3M™ Bodyman Respirator Facepiece - LARGE,,,ALLIED - SAFETY/PPE (SAF),722.65,Each Piece,24,,0,0,9999,Bag,,Yes,No,3M 07026 BAG | USA,3M List Price,,Other - Misc.,Each
+CRIMP,07046,3M™ Organic Vapor Cartridge,,,ALLIED - SAFETY/PPE (SAF),29.28,Each Piece,1,,0,0,9999,Pack,,Yes,No,3M 07046 PACK | USA,3M List Price,,Other - Misc.,Each
+CRIMP,07184,3M™ P100 Filters,,,ALLIED - SAFETY/PPE (SAF),1073.4,Each Piece,100,,0,0,9999,Pack,,Yes,No,3M 07184 PACK | USA,3M List Price,,Other - Misc.,Each
+CRIMP,07333,"3M™ Impact Resistant Structural Adhesive, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",159.76,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 07333 CARTRIDGE | USA,3M List Price,,,
+CRIMP,07445,3M™ Scotch-Brite™ Cleaning Pad White,,,ALLIED - ABRASIVES (ABR),56.09,Each Piece,25,,0,0,9999,Box,,Yes,No,3M 07445 BOX | USA,3M List Price,,Abrasives - Misc.,Pad(s)
+CRIMP,07447,Scotch-Brite™ General Purpose Hand Pad,,,ALLIED - ABRASIVES (ABR),53.52,Each Piece,20,,0,0,9999,Carton,,Yes,No,3M 07447 CARTON | USA,3M List Price,,,
+CRIMP,07448,3M™ Scotch-Brite™ Ultra Fine Hand Pad Grey,,,ALLIED - ABRASIVES (ABR),54.6,Each Piece,20,,0,0,9999,Box,,Yes,No,3M 07448 BOX | USA,3M List Price,,Abrasives - Misc.,Pad(s)
+CRIMP,07466,Scotch-Brite™ Roloc™ Clean & Strip Disc - 4 in,,,ALLIED - ABRASIVES (ABR),28.3,Each Piece,10,,0,0,9999,Carton,,Yes,No,3M 07466 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,07480,3M™ Scotch-Brite™ Roloc™ Surface Conditioning Disc CRS - 2 Inch,,,ALLIED - ABRASIVES (ABR),73.67,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 07480 CARTON | USA,3M List Price,,,
+CRIMP,07481,3M™ Scotch-Brite™ Roloc™ Surface Conditioning Disc MED - 2 Inch,,,ALLIED - ABRASIVES (ABR),73.67,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 07481 CARTON | USA,3M List Price,,,
+CRIMP,07485,3M™ Scotch-Brite™ Roloc™ Surface Conditioning Disc CRS - 3 Inch,,,ALLIED - ABRASIVES (ABR),139.29,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 07485 CARTON | USA,3M List Price,,,
+CRIMP,07486,3M™ Scotch-Brite™ Roloc™ Surface Conditioning Disc MED - 3 Inch,,,ALLIED - ABRASIVES (ABR),139.29,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 07486 CARTON | USA,3M List Price,,,
+CRIMP,07503,3M™ Half Facepiece Reusable Respirator - LARGE,,,ALLIED - SAFETY/PPE (SAF),660.06,Each Piece,10,,0,0,9999,Bag,,Yes,No,3M 07503 BAG | USA,3M List Price,,Other - Misc.,Each
+CRIMP,07513,3M™ Scotch-Brite™ Roloc™ Surface Conditioning Disc VFN - 3 Inch,,,ALLIED - ABRASIVES (ABR),139.29,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 07513 CARTON | USA,3M List Price,,,
+CRIMP,07515,3M™ Scotch-Brite™ Roloc™ Surface Conditioning Disc VFN - 2 Inch,,,ALLIED - ABRASIVES (ABR),73.67,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 07515 CARTON | USA,3M List Price,,,
+CRIMP,08001,"3M™ Yellow Super Weatherstrip and Gasket Adhesive, 5 fl oz Tube",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",11.93,Each Piece,5,,0,0,9999,Tube,,Yes,No,3M 08001 TUBE | USA,3M List Price,,,
+CRIMP,08008,"3M™ Black Super Weatherstrip and Gasket Adhesive, 5 fl oz Tube",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",16.74,Each Piece,5,,0,0,9999,Tube,,Yes,No,3M 08008 TUBE | USA,3M List Price,,,
+CRIMP,08011,"3M™ Black Weatherstrip Adhesive, 5 fl oz Tube",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",16.33,Each Piece,5,,0,0,9999,Tube,,Yes,No,3M 08011 TUBE | USA,3M List Price,,,
+CRIMP,08061,"3M™ Plastic and Emblem Adhesive, 5 oz Tube",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",30.42,Each Piece,5,,0,0,9999,Tube,,Yes,No,3M 08061 TUBE | USA,3M List Price,,,
+CRIMP,08069,"3M™ Press-In-Place Emblem Adhesive, 2"" x 12"" Sheet",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",108.61,Each Piece,10,,0,0,9999,Pack,,Yes,No,3M 08069 PACK | USA,3M List Price,,,
+CRIMP,08074,"3M™ Spray Trim Adhesive, 16.8 oz Net Wt Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",45.28,Percent,,,0,0,9999,Can,,Yes,No,3M 08074 CAN | USA,3M List Price,,,
+CRIMP,08088,"3M™ General Trim Adhesive, 18.1 oz Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",51.83,Percent,,,0,0,9999,Can,,Yes,No,3M 08088 CAN | USA,3M List Price,,Bonding - General Adhesives,
+CRIMP,08090,"3M™ Super Trim Adhesive, 19 oz Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",63.02,Percent,,,0,0,9999,Can,,Yes,No,3M 08090 CAN | USA,3M List Price,,,
+CRIMP,08107,"3M™ Universal Adhesive Clear, 50 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",54.79,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08107 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08115,"3M™ Panel Bonding Adhesive, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",122.01,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08115 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08116,"3M™ Panel Bonding Adhesive, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",127.03,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08116 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08155,"3M™ Quick Fix Adhesive, 1 oz Bottle",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",66.67,Percent,,,0,0,9999,Bottle,,Yes,No,3M 08155 BOTTLE | USA,3M List Price,,,
+CRIMP,08187,3M™ Threaded Cartridge Nozzle,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",158.96,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 08187 CARTON | USA,3M List Price,,,
+CRIMP,08188,3M™ Sachet Nozzle,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",159.6,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 08188 CARTON | USA,3M List Price,,,
+CRIMP,08193,3M™ Static Mixing Nozzle,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",34.99,Each Piece,6,,0,0,9999,Bag,,Yes,No,3M 08193 BAG | USA,3M List Price,,,
+CRIMP,08194,3M™ Static Mixing Nozzle,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",237.02,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 08194 CARTON | USA,3M List Price,,,
+CRIMP,08201,3M™ 1/4" Rounded OEM Seam Sealer Tip,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",16.49,Each Piece,6,,0,0,9999,Bag,,Yes,No,3M 08201 BAG | USA,3M List Price,,,
+CRIMP,08202,3M™ 3/8" Rounded OEM Seam Sealer Tip,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",16.49,Each Piece,6,,0,0,9999,Bag,,Yes,No,3M 08202 BAG | USA,3M List Price,,,
+CRIMP,08203,3M™ 1/2" Rounded OEM Seam Sealer Tip,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",16.49,Each Piece,6,,0,0,9999,Bag,,Yes,No,3M 08203 BAG | USA,3M List Price,,,
+CRIMP,08204,3M™ 3/8" Flat OEM Seam Sealer Tip,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",16.49,Each Piece,6,,0,0,9999,Bag,,Yes,No,3M 08204 BAG | USA,3M List Price,,,
+CRIMP,08205,3M™ 3/8" Double-Rounded OEM Seam Sealer Tip,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",16.49,Each Piece,6,,0,0,9999,Bag,,Yes,No,3M 08205 BAG | USA,3M List Price,,,
+CRIMP,08206,3M™ OEM Seam Sealer Tip Adapter,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",16.49,Each Piece,6,,0,0,9999,Bag,,Yes,No,3M 08206 BAG | USA,3M List Price,,,
+CRIMP,08214,"3M™ Universal Adhesive - 10 - Black, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",110.83,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08214 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08217,"3M™ Universal Adhesive - 3 - Clear, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",127.01,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08217 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08219,"3M™ Composite & Metal Bonding Adhesive - 35, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",125.83,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08219 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08223,"3M™ Universal Adhesive - 3 - Black, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",126.57,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08223 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08224,3M™ Quick Fix Adhesive Kit,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",64.56,Percent,,,0,0,9999,Kit,,Yes,No,3M 08224 KIT | USA,3M List Price,,,
+CRIMP,08227,"3M™ SMC/Fiberglass Repair Adhesive - 4, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",125.79,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08227 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08235,"3M™ Semi-Rigid Parts Repair - 1 - Black, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",121.22,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08235 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08237,"3M™ Semi-Rigid Parts Repair - 3 - Black, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",122.28,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08237 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08239,"3M™ TPO Plastic Parts Repair, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",122.28,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08239 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08243,"3M™ SMC/Fiberglass Repair Adhesive - 1, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",119.91,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08243 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08270,"3M™ SMC/Fiberglass Repair Adhesive - 1, 400 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",211.57,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08270 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08271,"3M™ SMC/Fiberglass Repair Adhesive - 3, 400 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",211.57,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08271 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08272,"3M™ SMC/Fiberglass Repair Adhesive - 10, 400 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",211.57,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08272 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08273,"3M™ SMC/Fiberglass Repair Adhesive - 35, 400 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",211.57,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08273 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08274,"3M™ SMC/Fiberglass Repair Adhesive - 90, 400 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",217.9,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08274 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08275,"3M™ Rigid Parts Repair Adhesive, 400 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",221.16,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08275 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08277,"3M™ Fiberglass Matting Adhesive, 400 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",211.57,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08277 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08307,"3M™ Self-Leveling Seam Sealer, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",90.67,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08307 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08308,"3M™ Heavy-Bodied Seam Sealer, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",87.78,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08308 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08310,"3M™ Bare-Metal Seam Sealer - Beige, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",91.98,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08310 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08323,"3M™ Factory-Match Seam Sealer, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",93.46,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08323 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08329,"3M™ Controlled-Flow Seam Sealer, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",93.46,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08329 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08360,"3M™ Urethane Seam Sealer - White, 310 mL Sachet",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",53.46,Percent,,,0,0,9999,Sachet,,Yes,No,3M 08360 SACHET | USA,3M List Price,,,
+CRIMP,08361,"3M™ Urethane Seam Sealer - Grey, 310 mL Sachet",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",53.46,Percent,,,0,0,9999,Sachet,,Yes,No,3M 08361 SACHET | USA,3M List Price,,,
+CRIMP,08362,"3M™ Urethane Seam Sealer - Grey, 310mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",49.57,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08362 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08364,"3M™ Urethane Seam Sealer - Beige, 310 mL Sachet",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",53.46,Percent,,,0,0,9999,Sachet,,Yes,No,3M 08364 SACHET | USA,3M List Price,,,
+CRIMP,08365,"3M™ Urethane Seam Sealer - Beige, 310mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",49.57,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08365 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08367,"3M™ Urethane Seam Sealer - Black, 310 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",49.57,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08367 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08368,"3M™ Urethane Seam Sealer - White, 310 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",49.57,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08368 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08369,"3M™ MSP Seam Sealer - White, 310 mL Sachet",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",65.5,Percent,,,0,0,9999,Sachet,,Yes,No,3M 08369 SACHET | USA,3M List Price,,,
+CRIMP,08370,"3M™ MSP Seam Sealer - Grey, 310 mL Sachet",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",64.58,Percent,,,0,0,9999,Sachet,,Yes,No,3M 08370 SACHET | USA,3M List Price,,,
+CRIMP,08374,"3M™ MSP Sprayable Seam Sealer - Grey, 10.5 fl oz Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",53.53,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08374 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08458,"3M™ Rigid Pillar Foam, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",117.58,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08458 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08463,"3M™ Flexible Foam, 200 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",117.58,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08463 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08475,"3M™ Seam Sealer Tape, 3/8"" x 30 ft Roll",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",41.79,Each Piece,30,,0,0,9999,Roll,,Yes,No,3M 08475 ROLL | USA,3M List Price,,,
+CRIMP,08476,"3M™ Seam Sealer Tape, 7/8"" x 30 ft Roll",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",81.17,Each Piece,30,,0,0,9999,Roll,,Yes,No,3M 08476 ROLL | USA,3M List Price,,,
+CRIMP,08509,"3M™ Auto Bedding and Glazing Compound, 1/10th Gallon Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",34.07,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08509 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08522,"3M™ OEM Match Epoxy Seam Sealer 08522, Beige, 200 ml Cartridge, 6/Case",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",91.98,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08522 CARTRIDGE | USA,3M List Price,,Seam Sealing - Heavy Bodied Sealers,Cartridge(s)
+CRIMP,08524,"3M™ OEM Match Epoxy Seam Sealer 08524, White, 200 ml Cartridge, 6/Case",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",91.98,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08524 CARTRIDGE | USA,3M List Price,,Seam Sealing - Heavy Bodied Sealers,Cartridge(s)
+CRIMP,08526,"3M™ OEM Match Epoxy Seam Sealer 08526, Gray, 200 ml Cartridge, 6/Case",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",91.98,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08526 CARTRIDGE | USA,3M List Price,,Seam Sealing - Heavy Bodied Sealers,Cartridge(s)
+CRIMP,08528,"3M™ OEM Match Epoxy Seam Sealer 08528, Black, 200 ml Cartridge, 6/Case",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",91.98,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08528 CARTRIDGE | USA,3M List Price,,Seam Sealing - Heavy Bodied Sealers,Cartridge(s)
+CRIMP,08578,3M™ Strip Caulk - Black,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",51.73,Each Piece,60,,0,0,9999,Strip,,Yes,No,3M 08578 STRIP | USA,3M List Price,,,
+CRIMP,08582,"3M™ Door Edge Protection Film, 6 mil x 36"" Strips",,,PARTS - OTHER (OTH),14.82,Each Piece,2,,0,0,9999,Strip,,Yes,No,3M 08582 STRIP | USA,3M List Price,,,
+CRIMP,08609,"3M™ Windo-Weld™  Super Fast Urethane - Black, 10.5 fl oz Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",57.17,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08609 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08610,"3M™ Windo-Weld™  Round Ribbon Sealer Kit, 1/4"" x 15 ft Kit",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",47.19,Each Piece,15,,0,0,9999,Kit,,Yes,No,3M 08610 KIT | USA,3M List Price,,,
+CRIMP,08611,"3M™ Windo-Weld™  Round Ribbon Sealer Kit, 5/16"" x 15 ft Kit",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",49.57,Each Piece,15,,0,0,9999,Kit,,Yes,No,3M 08611 KIT | USA,3M List Price,,,
+CRIMP,08612,"3M™ Windo-Weld™  Round Ribbon Sealer Kit, 3/8"" x 15 ft Kit",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",55.44,Each Piece,15,,0,0,9999,Kit,,Yes,No,3M 08612 KIT | USA,3M List Price,,,
+CRIMP,08625,"3M™ Windo-Weld™  Round Ribbon Sealer, 1/8"" x 1/4"" x 30 ft Roll",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",39.85,Each Piece,30,,0,0,9999,Roll,,Yes,No,3M 08625 ROLL | USA,3M List Price,,,
+CRIMP,08641,"3M™ Channel Bonding and Sidelite Adhesive, 50mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",52.52,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08641 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08656,"3M™ Brushable Seam Sealer, 1 Quart",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",116.94,Percent,,,0,0,9999,Can,,Yes,No,3M 08656 CAN | USA,3M List Price,,,
+CRIMP,08681,"3M™ Single Step Primer, 125 mL Bottle",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",87.24,Percent,,,0,0,9999,Bottle,,Yes,No,3M 08681 BOTTLE | USA,3M List Price,,,
+CRIMP,08682,"3M™ Single Step Primer, 30 mL Bottle",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",42.24,Percent,,,0,0,9999,Bottle,,Yes,No,3M 08682 BOTTLE | USA,3M List Price,,,
+CRIMP,08688,3M™ Urethane Primer Dauber,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",363.41,Each Piece,500,,0,0,9999,Bag,,Yes,No,3M 08688 BAG | USA,3M List Price,,,
+CRIMP,08690,"3M™ Fast Cure Auto Glass Urethane, 10.5 fl oz Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",36.26,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08690 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08693,"3M™ Auto Glass Urethane Windshield Adhesive, 10.5 fl oz Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",31.1,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 08693 CARTRIDGE | USA,3M List Price,,,
+CRIMP,08734,"3M™ Rocker Protector Pouch, 5.5 fl oz",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",52.79,Percent,,,0,0,9999,Pouch,,Yes,No,3M 08734 POUCH | USA,3M List Price,,,
+CRIMP,08747,"3M™ Paintable Undercoating Pouch, 5.5 fl oz",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",47.65,Percent,,,0,0,9999,Pouch,,Yes,No,3M 08747 POUCH | USA,3M List Price,,,
+CRIMP,08804,"3M™ No Cleanup Waterbased Undercoating, 18.5 fl oz Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",88.93,Percent,,,0,0,9999,Can,,Yes,No,3M 08804 CAN | USA,3M List Price,,,
+CRIMP,08840,"3M™ Sound Deadening Pad, 500mm x 500mm",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",19.64,Each Piece,1,,0,0,9999,Case,,Yes,No,3M 08840 CASE | USA,3M List Price,,,
+CRIMP,08852,"3M™ Cavity Wax Plus, 18 oz Net Wt / 511g Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",58.21,Percent,,,0,0,9999,Can,,Yes,No,3M 08852 CAN | USA,3M List Price,,,
+CRIMP,08864,"3M™ Body Schutz™  Rubberized Coating - Black, 1 Quart",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",89.02,Percent,,,0,0,9999,Can,,Yes,No,3M 08864 CAN | USA,3M List Price,,,
+CRIMP,08874,"3M™ Rocker Schutz™  Coating, 1 Quart Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",109,Percent,,,0,0,9999,Can,,Yes,No,3M 08874 CAN | USA,3M List Price,,,
+CRIMP,08881,"3M™ Undercoating, 16 oz Net Wt / 453g Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",19.79,Percent,,,0,0,9999,Can,,Yes,No,3M 08881 CAN | USA,3M List Price,,,
+CRIMP,08882,"3M™ Undercoating, 17 oz Net Wt / 481g Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",45.02,Percent,,,0,0,9999,Can,,Yes,No,3M 08882 CAN | USA,3M List Price,,,
+CRIMP,08883,"3M™ Rubberized Undercoating, 19.7 oz Net Wt Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",40.17,Percent,,,0,0,9999,Can,,Yes,No,3M 08883 CAN | USA,3M List Price,,,
+CRIMP,08889,"3M™ Rocker Panel Coating - Grey, 23 oz Net Wt / 650g Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",102.67,Percent,,,0,0,9999,Can,,Yes,No,3M 08889 CAN | USA,3M List Price,,,
+CRIMP,08949,"3M™ No Cleanup Rocker Gard™  Coating, 22 fl oz/650 mL Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",76.71,Percent,,,0,0,9999,Can,,Yes,No,3M 08949 CAN | USA,3M List Price,,,
+CRIMP,08964,"3M™ No Cleanup High Coverage Body Schutz™  Coating, 22 fl oz Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",74.56,Percent,,,0,0,9999,Can,,Yes,No,3M 08964 CAN | USA,3M List Price,,,
+CRIMP,08966,3M™ No Cleanup Nozzle,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",86.23,Each Piece,8,,0,0,9999,Bag,,Yes,No,3M 08966 BAG | USA,3M List Price,,,
+CRIMP,08984,"3M™ General Purpose Adhesive Cleaner, 1 Quart",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",51.19,Each Piece,32,,0,0,9999,Can,,Yes,No,3M 08984 CAN | USA,3M List Price,,,
+CRIMP,08987,"3M™ General Purpose Adhesive Cleaner, 15 oz Net Wt",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",36,Each Piece,15,,0,0,9999,Can,,Yes,No,3M 08987 CAN | USA,3M List Price,,,
+CRIMP,11326,3M™ Virtua™ Protective Eyewear,,,ALLIED - SAFETY/PPE (SAF),63.18,Each Piece,2,,0,0,9999,Each,,Yes,No,3M 11326 EACH | USA,3M List Price,,Other - Misc.,Each
+CRIMP,12011,"3M™ Platinum™ Glaze, 12011, 24 fl oz",,,ALLIED - BODY FILLER & RELATED (FAR),84.82,Each Piece,24,,0,0,9999,Can,,Yes,No,3M 12011 CAN | USA,3M List Price,,,
+CRIMP,14316,"3M™ Marine Adhesive Sealant 4000 UV, Black, 295 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",48.08,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 14316 CARTRIDGE | USA,3M List Price,,,
+CRIMP,16609,"3M™ Accuspray™ Atomizing Head, 2.0mm, Red Opaque",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",57.66,Each Piece,4,,0,0,9999,Box,,Yes,No,3M 16609 BOX | USA,3M List Price,,,
+CRIMP,18092,"3M™ VHB™ Tape 4950, White, 1 in x 36 yd, 45 mil",,,MISC - OTHER (OTH),298.43,Each Piece,108,,0,0,9999,Roll,,Yes,No,3M 18092 ROLL | USA,3M List Price,,Other - Misc.,ft
+CRIMP,20427,"3M™ Clean Sanding Disc Kit, 3 in",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),82.65,Each Piece,1,,0,0,9999,Kit,,Yes,No,3M 20427 KIT | USA,3M List Price,,Abrasives - Misc.,Kit(s)
+CRIMP,21538,3M™ Scotch-Brite™ Roloc™ Clean and Strip XT Pro Extra Coarse Disc Purple - 2 Inch,,,ALLIED - ABRASIVES (ABR),8.2,Each Piece,1,,0,0,9999,Carton,,Yes,No,3M 21538 CARTON | USA,3M List Price,,,
+CRIMP,21543,3M™ Scotch-Brite™ Roloc™ Clean and Strip XT Pro Extra Cut Disc Green - 2 Inch,,,ALLIED - ABRASIVES (ABR),8.59,Each Piece,1,,0,0,9999,Carton,,Yes,No,3M 21543 CARTON | USA,3M List Price,,,
+CRIMP,21552,3M™ Scotch-Brite™ Roloc™+ Clean and Strip XT Pro Extra Coarse Disc Purple - 4 Inch,,,ALLIED - ABRASIVES (ABR),26.88,Each Piece,1,,0,0,9999,Carton,,Yes,No,3M 21552 CARTON | USA,3M List Price,,,
+CRIMP,21555,3M™ Scotch-Brite™ Roloc™+ Clean and Strip XT Pro Extra Cut Disc Green - 4 Inch,,,ALLIED - ABRASIVES (ABR),28.21,Each Piece,1,,0,0,9999,Carton,,Yes,No,3M 21555 CARTON | USA,3M List Price,,,
+CRIMP,23926,"3M™ 94 Tape Primer, Light Yellow, 0.5PT",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",43.42,Each Piece,1,,0,0,9999,Can,,Yes,No,3M 23926 CAN | USA,3M List Price,,NVH Applications - Sound Abatement Coatings,Can(s)
+CRIMP,26000,"3M™ PPS™ Series 2.0 Spray Cup System Kit, Standard (650mL), 200um Filter",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",253.81,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 26000 BOX | USA,3M List Price,,,
+CRIMP,26001,"3M™ PPS™ Series Cup Standard (22 fl oz, 650mL)",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",38.27,Each Piece,2,,0,0,9999,Carton,,Yes,No,3M 26001 CARTON | USA,3M List Price,,Refinish - Misc.,Each
+CRIMP,26023,"3M™ PPS™ Series Cup Large (28 fl oz, 850mL)",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",48.66,Each Piece,2,,0,0,9999,Carton,,Yes,No,3M 26023 CARTON | USA,3M List Price,,Refinish - Misc.,Each
+CRIMP,26024,"3M™ PPS™ Series 2.0 Spray Cup System Kit, Large (850mL), 200um Filter",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",303.53,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 26024 BOX | USA,3M List Price,,,
+CRIMP,26028,"3M™ PPS™ Series 2.0 Spray Cup System Kit, Micro (90mL), 200um Filter",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",165.99,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 26028 BOX | USA,3M List Price,,,
+CRIMP,26112,"3M™ PPS™ Series 2.0 Spray Cup System Kit, Midi (400mL), 200um Filter",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",224.47,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 26112 BOX | USA,3M List Price,,,
+CRIMP,26114,"3M™ PPS™ Series 2.0 Spray Cup System Kit, Mini (200mL), 200um Filter",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",197.8,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 26114 BOX | USA,3M List Price,,,
+CRIMP,26115,"3M™ PPS™ Series Cups Mini, 200mL",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",30.01,Each Piece,2,,0,0,9999,Pack,,Yes,No,3M 26115 PACK | USA,3M List Price,,Refinish - Misc.,Each
+CRIMP,26122,"3M™ PPS™ Series Cups Midi, 400mL",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",36.45,Each Piece,2,,0,0,9999,Pack,,Yes,No,3M 26122 PACK | USA,3M List Price,,Refinish - Misc.,Each
+CRIMP,26160,3M™ PPS™ Vented Cups UV Std 125 Micron,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",294.18,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26160 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26161,3M™ PPS™ Vented Cups Mini 125 Micron,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",203.72,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26161 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26162,3M™ PPS™ Vented Cups Midi 125 Micron,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",231.2,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26162 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26163,3M™ PPS™ Vented Cups Std 125 Micron,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",261.43,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26163 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26164,3M™ PPS™ Vented Cups Large 125 Micron,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",312.63,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26164 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26165,3M™ PPS™ Vented Spray Lids Std/L 125 Mic,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",155.51,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26165 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26166,3M™ PPS Vented Lids Mini/Midi 125 Micron,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",144.34,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26166 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26260,3M™ PPS™ Vented Cups UV Std 200 Micron,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",294.18,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26260 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26261,3M™ PPS™ Vented Cups Mini 200 Micron,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",203.72,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26261 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26262,3M™ PPS™ Vented Cups Midi 200 Micron,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",231.2,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26262 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26263,3M™ PPS™ Vented Spray Cups 200 Micron,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",261.43,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26263 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26264,3M™ PPS™ Vented Cups Large 200 Micron,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",312.63,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26264 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26265,3M™ PPS™ Vented Cups Lids Std/L 200,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",63.755,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26265 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26266,3M™ PPS™ Vented Lids Mini/Midi 200 Mic,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",144.34,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26266 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26301,"3M™ PPS™ Series 2.0 Spray Cup System Kit, Standard (650mL), 125um Filter",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",253.81,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 26301 BOX | USA,3M List Price,,,
+CRIMP,26312,"3M™ PPS™ Series 2.0 Spray Cup System Kit, Midi (400mL), 125um Filter",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",224.47,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 26312 BOX | USA,3M List Price,,,
+CRIMP,26314,"3M™ PPS™ Series 2.0 Spray Cup System Kit, Mini (200mL), 125um Filter",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",197.8,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 26314 BOX | USA,3M List Price,,,
+CRIMP,26325,"3M™ PPS™ Series 2.0 Spray Cup System Kit, Large (850mL), 125um Filter",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",303.53,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 26325 BOX | USA,3M List Price,,,
+CRIMP,26328,"3M™ PPS™ Series 2.0 Spray Cup System Kit, Micro (90mL), 125um Filter",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",165.99,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 26328 BOX | USA,3M List Price,,,
+CRIMP,26361,3M™ PPS™ Vented Spray Cups Mini,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",149.05,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26361 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26362,3M™ PPS™ Vented Spray Cups Midi ,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",159.8,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26362 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26363,3M™ PPS™ Vented Cups Standard,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",175.91,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26363 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26364,3M™ PPS™ Vented Spray Cups Large ,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",229.61,Each Piece,50,,1,1,9999,Each,,Yes,No,3M 26364 EACH | USA,3M List Price,,Refinish - Misc.,Lid/ Liner(s)
+CRIMP,26618,"3M™ Accuspray™ Atomizing Head Refill Pack For 3M™ PPS™ Series 2.0 Clear, 1.8mm",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",58.6,Each Piece,4,,0,0,9999,Pack,,Yes,No,3M 26618 PACK | USA,3M List Price,,Refinish - Misc.,Nozzle(s)
+CRIMP,26689,3M™ High Power Spray Gun Cleaner,,,PAINT - MISC SOLVENTS AND CLEANERS (SOL),15.4,Each Piece,15,,0,0,9999,Can,,Yes,No,3M 26689 CAN | USA,3M List Price,,,
+CRIMP,26709,"3M™ Performance Gravity HVLP Atomizing Head Refill Kit, White, 0.9mm",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,0,0,9999,Box,,Yes,No,3M 26709 BOX | USA,3M List Price,,,
+CRIMP,26712,"3M™ Performance Gravity HVLP Atomizing Head Refill Kit, Blue, 1.2mm",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,0,0,9999,Box,,Yes,No,3M 26712 BOX | USA,3M List Price,,,
+CRIMP,26713,"3M™ Performance Gravity HVLP Atomizing Head Refill Kit, Green, 1.3mm",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,0,0,9999,Box,,Yes,No,3M 26713 BOX | USA,3M List Price,,,
+CRIMP,26714,"3M™ Performance Gravity HVLP Atomizing Head Refill Kit, Orange, 1.4mm",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,0,0,9999,Box,,Yes,No,3M 26714 BOX | USA,3M List Price,,,
+CRIMP,26716,"3M™ Performance Gravity HVLP Atomizing Head Refill Kit, Purple, 1.6mm",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,0,0,9999,Box,,Yes,No,3M 26716 BOX | USA,3M List Price,,,
+CRIMP,26718,"3M™ Performance Gravity HVLP Atomizing Head Refill Kit, Clear, 1.8mm",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,0,0,9999,Box,,Yes,No,3M 26718 BOX | USA,3M List Price,,,
+CRIMP,26720,"3M™ Performance Gravity HVLP Atomizing Head Refill Kit, Red, 2.0mm",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,0,0,9999,Box,,Yes,No,3M 26720 BOX | USA,3M List Price,,,
+CRIMP,26730,3M™ Performance Gravity HVLP Atomizing Head Refill Kit,,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",91.42,Each Piece,5,,0,0,9999,Box,,Yes,No,3M 26730 BOX | USA,3M List Price,,,
+CRIMP,26909,"3M™ Performance Fine Finish White, 0.9",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,1,1,9999,Each,,Yes,No,3M 26909 EACH | USA,3M List Price,,Refinish - Misc.,Nozzle(s)
+CRIMP,26911,"3M™ Performance Fine Finish Yellow, 1.1",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,1,1,9999,Each,,Yes,No,3M 26911 EACH | USA,3M List Price,,Refinish - Misc.,Nozzle(s)
+CRIMP,26912,"3M™ Performance Fine Finish Blue, 1.2",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,1,1,9999,Each,,Yes,No,3M 26912 EACH | USA,3M List Price,,Refinish - Misc.,Nozzle(s)
+CRIMP,26913,"3M™ Performance Fine Finish, 1.3",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,1,1,9999,Each,,Yes,No,3M 26913 EACH | USA,3M List Price,,Refinish - Misc.,Nozzle(s)
+CRIMP,26914,"3M™ Performance Fine Finish Orange, 1.4",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,1,1,9999,Each,,Yes,No,3M 26914 EACH | USA,3M List Price,,Refinish - Misc.,Nozzle(s)
+CRIMP,26916,"3M™ Performance Fine Finish Purple, 1.6",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,1,1,9999,Each,,Yes,No,3M 26916 EACH | USA,3M List Price,,Refinish - Misc.,Nozzle(s)
+CRIMP,26918,"3M™ Performance Fine Finish Clear, 1.8",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,1,1,9999,Each,,Yes,No,3M 26918 EACH | USA,3M List Price,,Refinish - Misc.,Nozzle(s)
+CRIMP,26920,"3M Fine Finish Head Red, 2.0",,,"ALLIED - PPS, SPRAY NOZZLES, AND RELATED (PAS)",76.21,Each Piece,5,,1,1,9999,Each,,Yes,No,3M 26920 EACH | USA,3M List Price,,Refinish - Misc.,Nozzle(s)
+CRIMP,27403,"3M™ Cubitron™ II Fibre Disc 982C, 36+, 9-1/8 in x 7/8 in",,,ALLIED - ABRASIVES (ABR),15.07,Each Piece,1,,0,0,9999,Bag,,Yes,No,3M 27403 BAG | USA,3M List Price,,,
+CRIMP,27634,"3M™ Cubitron™ II Fibre Disc 982C, 60+, 9-1/8 in x 7/8 in",,,ALLIED - ABRASIVES (ABR),13.48,Each Piece,1,,0,0,9999,Bag,,Yes,No,3M 27634 BAG | USA,3M List Price,,,
+CRIMP,27638,"3M™ Cubitron™ II Fibre Disc 982C, 80+, 9-1/8 in x 7/8 in",,,ALLIED - ABRASIVES (ABR),12.63,Each Piece,1,,0,0,9999,Bag,,Yes,No,3M 27638 BAG | USA,3M List Price,,,
+CRIMP,27898,"3M™ GoggleGear™ 6000 Series, Black Shroud, Scotchgard™ Anti-Fog Coating, Clear AF-AS lens",,,ALLIED - SAFETY/PPE (SAF),393.25,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 27898 EACH | USA,3M List Price,,Other - Misc.,Each
+CRIMP,30362,"3M™ Trizact™ Hookit™ P5000 Foam Disc, 3 in",,,ALLIED - ABRASIVES (ABR),119.91,Each Piece,15,,0,0,9999,Carton,,Yes,No,3M 30362 CARTON | USA,3M List Price,,Denib & Polish - Misc.,Disc(s)
+CRIMP,30662,"3M™ Trizact™ Hookit™ Foam Disc, 6 in, P5000",,,ALLIED - ABRASIVES (ABR),254.99,Each Piece,15,,0,0,9999,Box,,Yes,No,3M 30662 BOX | USA,3M List Price,,,
+CRIMP,30666,"3M™ Hookit™ Purple Finishing Film Abrasive, 6 in, P2000",,,ALLIED - ABRASIVES (ABR),154.56,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 30666 BOX | USA,3M List Price,,,
+CRIMP,30667,"3M™ Hookit™ Purple Finishing Film Abrasive, 6 in, P1500",,,ALLIED - ABRASIVES (ABR),154.56,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 30667 BOX | USA,3M List Price,,,
+CRIMP,30668,"3M™ Hookit™ Purple Finishing Film Abrasive, 6 in, P1200",,,ALLIED - ABRASIVES (ABR),154.56,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 30668 BOX | USA,3M List Price,,,
+CRIMP,30669,"3M™ Hookit™ Purple Finishing Film Abrasive, 6 in, P1000",,,ALLIED - ABRASIVES (ABR),154.56,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 30669 BOX | USA,3M List Price,,,
+CRIMP,30670,"3M™ Hookit™ Purple Finishing Film Abrasive, 6 in, P800",,,ALLIED - ABRASIVES (ABR),154.56,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 30670 BOX | USA,3M List Price,,,
+CRIMP,30671,"3M™ Hookit™ Purple Finishing Film Abrasive, 6 in, P600",,,ALLIED - ABRASIVES (ABR),154.56,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 30671 BOX | USA,3M List Price,,,
+CRIMP,30700,"3M™ Hookit™ Purple Clean Sanding Sheet Roll, P800",,,ALLIED - ABRASIVES (ABR),83.48,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 30700 ROLL | USA,3M List Price,,,
+CRIMP,30701,"3M™ Hookit™ Purple Clean Sanding Sheet Roll, P600",,,ALLIED - ABRASIVES (ABR),83.48,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 30701 ROLL | USA,3M List Price,,,
+CRIMP,30702,"3M™ Hookit™ Purple Clean Sanding Sheet Roll, P500",,,ALLIED - ABRASIVES (ABR),83.48,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 30702 ROLL | USA,3M List Price,,,
+CRIMP,30760,"3M™ Hookit™ Purple Clean Sanding Disc, 6 in, P800",,,ALLIED - ABRASIVES (ABR),127.92,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 30760 BOX | USA,3M List Price,,,
+CRIMP,30761,"3M™ Hookit™ Purple Clean Sanding Disc, 6 in, P600",,,ALLIED - ABRASIVES (ABR),131.57,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 30761 BOX | USA,3M List Price,,,
+CRIMP,30806,"3M™ Trizact™ Hookit™ Foam Disc, 6 in, P8000",,,ALLIED - ABRASIVES (ABR),255.04,Each Piece,15,,0,0,9999,Box,,Yes,No,3M 30806 BOX | USA,3M List Price,,,
+CRIMP,31110,"3M™ Polyester Thinner, 31110, 1 Pint (US)",,,ALLIED - BODY FILLER & RELATED (FAR),70.11,Each Piece,16,,0,0,9999,Can,,Yes,No,3M 31110 CAN | USA,3M List Price,,,
+CRIMP,31128,"3M™ Platinum Select Filler, 31128, 5 Gallon Air Pail (18.9 L)",,,ALLIED - BODY FILLER & RELATED (FAR),669.14,Each Piece,480,,0,0,9999,Pail,,Yes,No,3M 31128 PAIL | USA,3M List Price,,,
+CRIMP,31130,"3M™ Platinum Select Filler, 31130, 3 Gallon Mechanical Pail",,,ALLIED - BODY FILLER & RELATED (FAR),455.46,Each Piece,282,,0,0,9999,Pail,,Yes,No,3M 31130 PAIL | USA,3M List Price,,,
+CRIMP,31131,"3M™ Platinum Select Filler, 31131, Gallon",,,ALLIED - BODY FILLER & RELATED (FAR),161.68,Each Piece,102,,0,0,9999,Can,,Yes,No,3M 31131 CAN | USA,3M List Price,,,
+CRIMP,31138,"3M™ Platinum™ with Hardener, 31138, 5 Gallon (US) Pail",,,ALLIED - BODY FILLER & RELATED (FAR),757.09,Each Piece,480,,0,0,9999,Pail,,Yes,No,3M 31138 PAIL | USA,3M List Price,,,
+CRIMP,31139,"3M™ Platinum™ Plus w/Hardener, 31139, 5-Gal Pail boxed",,,ALLIED - BODY FILLER & RELATED (FAR),757.09,Each Piece,480,,0,0,9999,Pail,,Yes,No,3M 31139 PAIL | USA,3M List Price,,,
+CRIMP,31180,"3M™ Platinum™ Plus Finishing Glaze, 31180, 30 oz",,,ALLIED - BODY FILLER & RELATED (FAR),104.87,Each Piece,30,,0,0,9999,Can,,Yes,No,3M 31180 CAN | USA,3M List Price,,,
+CRIMP,31361,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 3 in, 80+",,,ALLIED - ABRASIVES (ABR),86.62,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31361 BOX | USA,3M List Price,,,
+CRIMP,31362,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 3 in, 120+",,,ALLIED - ABRASIVES (ABR),86.83,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31362 BOX | USA,3M List Price,,,
+CRIMP,31363,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 3 in, 150+",,,ALLIED - ABRASIVES (ABR),78.23,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31363 BOX | USA,3M List Price,,,
+CRIMP,31364,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 3 in, 180+",,,ALLIED - ABRASIVES (ABR),78.23,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31364 BOX | USA,3M List Price,,,
+CRIMP,31370,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 6 in, 40+",,,ALLIED - ABRASIVES (ABR),150.42,Each Piece,25,,0,0,9999,Box,,Yes,No,3M 31370 BOX | USA,3M List Price,,,
+CRIMP,31371,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 6 in, 80+",,,ALLIED - ABRASIVES (ABR),149.2,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31371 BOX | USA,3M List Price,,,
+CRIMP,31372,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 6 in, 120+",,,ALLIED - ABRASIVES (ABR),124.7,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31372 BOX | USA,3M List Price,,,
+CRIMP,31373,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 6 in, 150+",,,ALLIED - ABRASIVES (ABR),124.7,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31373 BOX | USA,3M List Price,,,
+CRIMP,31374,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 6 in, 180+",,,ALLIED - ABRASIVES (ABR),124.7,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31374 BOX | USA,3M List Price,,,
+CRIMP,31376,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 80+, 8 in",,,ALLIED - ABRASIVES (ABR),230.36,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 31376 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,31377,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 737U, 180+, 8 in",,,ALLIED - ABRASIVES (ABR),192.53,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 31377 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,31461,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 3 in, 220+",,,ALLIED - ABRASIVES (ABR),78.23,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31461 BOX | USA,3M List Price,,,
+CRIMP,31462,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 3 in, 240+",,,ALLIED - ABRASIVES (ABR),84.9,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31462 BOX | USA,3M List Price,,,
+CRIMP,31463,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 3 in, 320+",,,ALLIED - ABRASIVES (ABR),84.9,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31463 BOX | USA,3M List Price,,,
+CRIMP,31464,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 3 in, 400+",,,ALLIED - ABRASIVES (ABR),84.9,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31464 BOX | USA,3M List Price,,,
+CRIMP,31465,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31465, 3 in (75 mm), 500+",,,ALLIED - ABRASIVES (ABR),81.46,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31465 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,31466,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31466, 3 in (75 mm), 600+",,,ALLIED - ABRASIVES (ABR),81.46,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31466 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,31467,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31467, 3 in (75 mm), 800+",,,ALLIED - ABRASIVES (ABR),81.46,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31467 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,31468,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31468, 3 in (75 mm), 1000+",,,ALLIED - ABRASIVES (ABR),81.46,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31468 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,31475,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31475, 5 in (125 mm), 500+",,,ALLIED - ABRASIVES (ABR),91.79,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31475 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,31476,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31476, 5 in (125 mm), 600+",,,ALLIED - ABRASIVES (ABR),91.79,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31476 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,31477,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31477, 5 in (125 mm), 800+",,,ALLIED - ABRASIVES (ABR),91.79,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31477 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,31478,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31478, 5 in (125 mm), 1000+",,,ALLIED - ABRASIVES (ABR),91.79,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31478 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,31481,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 6 in, 220+",,,ALLIED - ABRASIVES (ABR),124.7,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31481 BOX | USA,3M List Price,,,
+CRIMP,31482,"3M™ Cubitron™ II Hookit™Clean Sanding Abrasive Disc, 6 in, 240+",,,ALLIED - ABRASIVES (ABR),125.44,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31482 BOX | USA,3M List Price,,,
+CRIMP,31483,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 6 in, 320+",,,ALLIED - ABRASIVES (ABR),125.44,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31483 BOX | USA,3M List Price,,,
+CRIMP,31484,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc, 6 in, 400+",,,ALLIED - ABRASIVES (ABR),125.44,Each Piece,50,,0,0,9999,Box,,Yes,No,3M 31484 BOX | USA,3M List Price,,,
+CRIMP,31485,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31485, 6 in (150 mm), 500+",,,ALLIED - ABRASIVES (ABR),120.26,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31485 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,31486,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31486, 6 in (150 mm), 600+ ",,,ALLIED - ABRASIVES (ABR),125.54,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31486 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,31487,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31487, 6 in (150 mm), 800+",,,ALLIED - ABRASIVES (ABR),122.05,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31487 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,31491,"3M™ Cubitron™ II Hookit™ Clean Sanding Abrasive Disc 31491, 6 in (150 mm), 1000+",,,ALLIED - ABRASIVES (ABR),122.05,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 31491 EACH | USA,3M List Price,,,Disc(s)
+CRIMP,33035,"3M™ Perfect-It™ 1-Step Foam Finishing Pad, 8 in, Quick Connect",,,"ALLIED - COMPOUNDS, PADS & RELATED (CAR)",74.66,Each Piece,1,,0,0,9999,Bag,,Yes,No,3M 33035 BAG | USA,3M List Price,,Denib & Polish - Misc.,Pad(s)
+CRIMP,33039,"3M™ Perfect-It™ 1-Step Finishing Material, 1QT (32 fl oz)",,,"ALLIED - COMPOUNDS, PADS & RELATED (CAR)",126.56,Percent,32,,0,0,9999,Bottle,,Yes,No,3M 33039 BOTTLE | USA,3M List Price,,Denib & Polish - Misc.,fl oz
+CRIMP,33181,"3M™ Quick Grip Filler, 33181, 1 Gallon (US)",,,ALLIED - BODY FILLER & RELATED (FAR),82.67,Each Piece,102,,0,0,9999,Can,,Yes,No,3M 33181 CAN | USA,3M List Price,,,
+CRIMP,33185,"3M™ Quick Grip Filler, 33185, 5 Gallon (US) Air Pail",,,ALLIED - BODY FILLER & RELATED (FAR),49.98,Each Piece,480,,0,0,9999,Pail,,Yes,No,3M 33185 PAIL | USA,3M List Price,,,
+CRIMP,33279,"3M™ Perfect-It™ Low Linting Wool Compounding Pad, 9 in",,,"ALLIED - COMPOUNDS, PADS & RELATED (CAR)",83.36,Each Piece,1,,0,0,9999,Bag,,Yes,No,3M 33279 BAG | USA,3M List Price,,Denib & Polish - Misc.,Pad(s)
+CRIMP,33285,"3M™ Perfect-It™ Foam Polishing Pad, 6 in",,,"ALLIED - COMPOUNDS, PADS & RELATED (CAR)",49.98,Each Piece,1,,0,0,9999,Bag,,Yes,No,3M 33285 BAG | USA,3M List Price,,Denib & Polish - Misc.,Pad(s)
+CRIMP,33286,"3M™ Perfect-It™ Ultrafine Polishing Pad, 6 in, Quick Connect",,,"ALLIED - COMPOUNDS, PADS & RELATED (CAR)",56,Each Piece,1,,0,0,9999,Bag,,Yes,No,3M 33286 BAG | USA,3M List Price,,Denib & Polish - Misc.,Pad(s)
+CRIMP,33377,"3M™ Cubitron™ II Roloc™ Fibre Disc 786C, 50 mm, 36+",,,ALLIED - ABRASIVES (ABR),67.83,Each Piece,15,,0,0,9999,Carton,,Yes,No,3M 33377 CARTON | USA,3M List Price,,,
+CRIMP,33379,"3M™ Cubitron™ II Roloc™ Fibre Disc 786C, 50 mm, 60+",,,ALLIED - ABRASIVES (ABR),65.8,Each Piece,15,,0,0,9999,Carton,,Yes,No,3M 33379 CARTON | USA,3M List Price,,,
+CRIMP,33380,"3M™ Cubitron™ II Roloc™ Fibre Disc 786C, 50 mm, 80+",,,ALLIED - ABRASIVES (ABR),65.8,Each Piece,15,,0,0,9999,Carton,,Yes,No,3M 33380 CARTON | USA,3M List Price,,,
+CRIMP,33389,"3M™ Cubitron™ II Roloc™ Fibre Disc 786C, 75 mm, 36+",,,ALLIED - ABRASIVES (ABR),81.37,Each Piece,15,,0,0,9999,Carton,,Yes,No,3M 33389 CARTON | USA,3M List Price,,,
+CRIMP,33391,"3M™ Cubitron™ II Roloc™ Fibre Disc 786C, 75 mm, 60+",,,ALLIED - ABRASIVES (ABR),78.96,Each Piece,15,,0,0,9999,Carton,,Yes,No,3M 33391 CARTON | USA,3M List Price,,,
+CRIMP,33392,"3M™ Cubitron™ II Roloc™ Fibre Disc 786C, 75 mm, 80+",,,ALLIED - ABRASIVES (ABR),78.96,Each Piece,15,,0,0,9999,Carton,,Yes,No,3M 33392 CARTON | USA,3M List Price,,,
+CRIMP,33413,"3M™ Cubitron™ II Abrasive Fibre Disc, 33413, 5 in x 7/8 in (125mm x 22mm), 36+",,,ALLIED - ABRASIVES (ABR),63.81,Each Piece,5,,0,0,9999,Carton,,Yes,No,3M 33413 CARTON | USA,3M List Price,,,
+CRIMP,33415,"3M™ Cubitron™ II Abrasive Fibre Disc, 33415, 5 in x  7/8 in (125mm x 22mm), 60+",,,ALLIED - ABRASIVES (ABR),62.15,Each Piece,5,,0,0,9999,Carton,,Yes,No,3M 33415 CARTON | USA,3M List Price,,,
+CRIMP,33416,"3M™ Cubitron™ II Abrasive Fibre Disc, 33416, 5 in x 7/8 in (125mm x 22mm), 80+",,,ALLIED - ABRASIVES (ABR),62.15,Each Piece,5,,0,0,9999,Carton,,Yes,No,3M 33416 CARTON | USA,3M List Price,,,
+CRIMP,33425,"3M™ Cubitron™ II Abrasive Fibre Disc, 33425, 7 in x 7/8 in (180mm x 22mm), 36+",,,ALLIED - ABRASIVES (ABR),75.97,Each Piece,5,,0,0,9999,Carton,,Yes,No,3M 33425 CARTON | USA,3M List Price,,,
+CRIMP,33427,"3M™ Cubitron™ II Abrasive Fibre Disc, 33427, 7 in x 7/8 in (180mm x 22mm), 60+",,,ALLIED - ABRASIVES (ABR),74.7,Each Piece,5,,0,0,9999,Carton,,Yes,No,3M 33427 CARTON | USA,3M List Price,,,
+CRIMP,33428,"3M™ Cubitron™ II Abrasive Fibre Disc, 33428, 7 in x 7/8 in (180mm x 22mm), 80+",,,ALLIED - ABRASIVES (ABR),74.7,Each Piece,5,,0,0,9999,Carton,,Yes,No,3M 33428 CARTON | USA,3M List Price,,,
+CRIMP,33437,"3M™ Cubitron™ II File Belt 786F, 10 mm x 330 mm, 36+",,,ALLIED - ABRASIVES (ABR),45.89,Each Piece,10,,0,0,9999,Carton,,Yes,No,3M 33437 CARTON | USA,3M List Price,,,
+CRIMP,33439,"3M™ Cubitron™ II File Belt 786F, 10 mm x 330 mm, 60+",,,ALLIED - ABRASIVES (ABR),44.53,Each Piece,10,,0,0,9999,Carton,,Yes,No,3M 33439 CARTON | USA,3M List Price,,,
+CRIMP,33440,"3M™ Cubitron™ II File Belt 786F, 10 mm x 330 mm, 80+",,,ALLIED - ABRASIVES (ABR),44.53,Each Piece,10,,0,0,9999,Carton,,Yes,No,3M 33440 CARTON | USA,3M List Price,,,
+CRIMP,33443,"3M™ Cubitron™ II File Belt 786F, 12.7 mm x 457.2 mm, 36+",,,ALLIED - ABRASIVES (ABR),66.31,Each Piece,10,,0,0,9999,Carton,,Yes,No,3M 33443 CARTON | USA,3M List Price,,,
+CRIMP,33445,"3M™ Cubitron™ II File Belt 786F, 12.7 mm x 457.2 mm, 60+",,,ALLIED - ABRASIVES (ABR),64.27,Each Piece,10,,0,0,9999,Carton,,Yes,No,3M 33445 CARTON | USA,3M List Price,,,
+CRIMP,33446,"3M™ Cubitron™ II File Belt 786F, 12.7 mm x 457.2 mm, 80+",,,ALLIED - ABRASIVES (ABR),64.27,Each Piece,10,,0,0,9999,Carton,,Yes,No,3M 33446 CARTON | USA,3M List Price,,,
+CRIMP,33449,"3M™ Cubitron™ II File Belt, 3/4 in x 20.5 in, 36+",,,ALLIED - ABRASIVES (ABR),71.03,Each Piece,10,,0,0,9999,Carton,,Yes,No,3M 33449 CARTON | USA,3M List Price,,,
+CRIMP,33451,"3M™ Cubitron™ II File Belt, 3/4 in x 20.5 in, 60+",,,ALLIED - ABRASIVES (ABR),65.97,Each Piece,10,,0,0,9999,Carton,,Yes,No,3M 33451 CARTON | USA,3M List Price,,,
+CRIMP,33452,"3M™ Cubitron™ II File Belt, 3/4 in x 20.5 in, 80+",,,ALLIED - ABRASIVES (ABR),68.46,Each Piece,10,,0,0,9999,Carton,,Yes,No,3M 33452 CARTON | USA,3M List Price,,,
+CRIMP,33455,"3M™Cubitron™II Cut-Off Wheel, 75 mm x 1.6 mm x 9.53 mm",,,ALLIED - ABRASIVES (ABR),84.12,Each Piece,5,,0,0,9999,Carton,,Yes,No,3M 33455 CARTON | USA,3M List Price,,,
+CRIMP,33456,"3M™ Cubitron™ II Cut-Off Wheel, 75 mm x 1 mm x 9.53 mm",,,ALLIED - ABRASIVES (ABR),84.12,Each Piece,5,,0,0,9999,Carton,,Yes,No,3M 33456 CARTON | USA,3M List Price,,,
+CRIMP,33457,"3M™ Cubitron™ 3 Cut-Off Wheel 33457, 3 in",,,ALLIED - ABRASIVES (ABR),80.28,Each Piece,5,,0,0,9999,Each,,Yes,No,3M 33457 EACH | USA,3M List Price,,Cutting & Grinding - Misc.,Wheel(s)
+CRIMP,33458,"3M™ Cubitron™ 3 Cut-Off Wheel 33458, 3 in",,,ALLIED - ABRASIVES (ABR),80.28,Each Piece,5,,0,0,9999,Each,,Yes,No,3M 33458 EACH | USA,3M List Price,,Cutting & Grinding - Misc.,Wheel(s)
+CRIMP,33459,"3M™ Cubitron™ 3 Cut-Off Wheel 33459, 4 in",,,ALLIED - ABRASIVES (ABR),82.69,Each Piece,5,,0,0,9999,Each,,Yes,No,3M 33459 EACH | USA,3M List Price,,Cutting & Grinding - Misc.,Wheel(s)
+CRIMP,33460,"3M™ Cubitron™ II Cut-Off Wheel, 100 mm x 1 mm x 9.53 mm",,,ALLIED - ABRASIVES (ABR),88.4,Each Piece,5,,0,0,9999,Carton,,Yes,No,3M 33460 CARTON | USA,3M List Price,,,
+CRIMP,33463,"3M™ Cubitron™ 3 Cut-Off Wheel, 33463, 4.5 in",,,ALLIED - ABRASIVES (ABR),106.29,Each Piece,5,,0,0,9999,Each,,Yes,No,3M 33463 EACH | USA,3M List Price,,Cutting & Grinding - Misc.,Wheel(s)
+CRIMP,33467,"3M™Cubitron™ II Cut-Off Wheel, 115 mm x 1 mm x 22.23 mm",,,ALLIED - ABRASIVES (ABR),111.4,Each Piece,5,,0,0,9999,Carton,,Yes,No,3M 33467 CARTON | USA,3M List Price,,,
+CRIMP,33991,3M™ OEM Match Sprayable 1K Tip 33991,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",6.65,Each Piece,1,,0,0,9999,Pack,,Yes,No,3M 33991 PACK | USA,3M List Price,,Seam Sealing - Nozzles,Nozzle(s)
+CRIMP,33992,3M™ OEM Match Wing Nozzle 1K Tip 33992,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",6.65,Each Piece,1,,0,0,9999,Pack,,Yes,No,3M 33992 PACK | USA,3M List Price,,Seam Sealing - Nozzles,Nozzle(s)
+CRIMP,33993,3M™ OEM Match Wide Stream 1K Tip 33993,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",6.65,Each Piece,1,,0,0,9999,Pack,,Yes,No,3M 33993 PACK | USA,3M List Price,,Seam Sealing - Nozzles,Nozzle(s)
+CRIMP,33994,3M™ OEM Match Ripple Tip 1K Tip 33994,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",6.65,Each Piece,1,,0,0,9999,Pack,,Yes,No,3M 33994 PACK | USA,3M List Price,,Seam Sealing - Nozzles,Nozzle(s)
+CRIMP,33995,3M™ OEM Match Adjustable Ripple Tip 33995,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",83.7,Each Piece,10,,0,0,9999,Pack,,Yes,No,3M 33995 PACK | USA,3M List Price,,Seam Sealing - Nozzles,Nozzle(s)
+CRIMP,33996,3M™ OEM Match Sprayable 2K Tip 33996,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",79.85,Each Piece,10,,0,0,9999,Pack,,Yes,No,3M 33996 PACK | USA,3M List Price,,Seam Sealing - Nozzles,Nozzle(s)
+CRIMP,33997,3M™ OEM Match Wing Nozzle 2K Tip 33997,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",7.99,Each Piece,1,,0,0,9999,Pack,,Yes,No,3M 33997 PACK | USA,3M List Price,,Seam Sealing - Nozzles,Nozzle(s)
+CRIMP,33998,3M™ OEM Match Wide Stream 2K Tip 33998,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",7.99,Each Piece,1,,0,0,9999,Pack,,Yes,No,3M 33998 PACK | USA,3M List Price,,Seam Sealing - Nozzles,Nozzle(s)
+CRIMP,34240,"3M™ Semi-Rigid Plastic Repair, 50 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",57.4,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 34240 CARTRIDGE | USA,3M List Price,,,
+CRIMP,34440,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll, 40+",,,ALLIED - ABRASIVES (ABR),85.02,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 34440 ROLL | USA,3M List Price,,,
+CRIMP,34442,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll, 80+",,,ALLIED - ABRASIVES (ABR),95.49,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 34442 ROLL | USA,3M List Price,,,
+CRIMP,34444,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll, 120+",,,ALLIED - ABRASIVES (ABR),76.56,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 34444 ROLL | USA,3M List Price,,,
+CRIMP,34445,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll, 150+",,,ALLIED - ABRASIVES (ABR),76.56,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 34445 ROLL | USA,3M List Price,,,
+CRIMP,34446,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll, 180+",,,ALLIED - ABRASIVES (ABR),76.56,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 34446 ROLL | USA,3M List Price,,,
+CRIMP,34447,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll, 220+",,,ALLIED - ABRASIVES (ABR),76.56,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 34447 ROLL | USA,3M List Price,,,
+CRIMP,34448,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll, 240+",,,ALLIED - ABRASIVES (ABR),83.07,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 34448 ROLL | USA,3M List Price,,,
+CRIMP,34449,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll, 320+",,,ALLIED - ABRASIVES (ABR),83.07,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 34449 ROLL | USA,3M List Price,,,
+CRIMP,34450,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll, 400+",,,ALLIED - ABRASIVES (ABR),83.07,Each Piece,39,,0,0,9999,Roll,,Yes,No,3M 34450 ROLL | USA,3M List Price,,,
+CRIMP,34451,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll 34451, 500+",,,ALLIED - ABRASIVES (ABR),79.66,Each Piece,39,,0,0,9999,Each,,Yes,No,3M 34451 EACH | USA,3M List Price,,,ft
+CRIMP,34452,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll 34452, 600+",,,ALLIED - ABRASIVES (ABR),79.66,Each Piece,39,,0,0,9999,Each,,Yes,No,3M 34452 EACH | USA,3M List Price,,,ft
+CRIMP,34453,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll 34453, 800+",,,ALLIED - ABRASIVES (ABR),79.66,Each Piece,39,,0,0,9999,Each,,Yes,No,3M 34453 EACH | USA,3M List Price,,,ft
+CRIMP,34454,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll 34454, 1000+",,,ALLIED - ABRASIVES (ABR),79.66,Each Piece,39,,0,0,9999,Each,,Yes,No,3M 34454 EACH | USA,3M List Price,,,ft
+CRIMP,34471,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll 34471, 500+ ",,,ALLIED - ABRASIVES (ABR),116.63,Each Piece,39,,0,0,9999,Each,,Yes,No,3M 34471 EACH | USA,3M List Price,,,ft
+CRIMP,34472,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll 34472, 600+",,,ALLIED - ABRASIVES (ABR),116.63,Each Piece,39,,0,0,9999,Each,,Yes,No,3M 34472 EACH | USA,3M List Price,,,ft
+CRIMP,34473,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll 34473, 800+",,,ALLIED - ABRASIVES (ABR),116.63,Each Piece,39,,0,0,9999,Each,,Yes,No,3M 34473 EACH | USA,3M List Price,,,ft
+CRIMP,34474,"3M™ Cubitron™ II Hookit™ Clean Sanding Sheet Roll 34474, 1000+",,,ALLIED - ABRASIVES (ABR),116.63,Each Piece,39,,0,0,9999,Each,,Yes,No,3M 34474 EACH | USA,3M List Price,,,ft
+CRIMP,35863,"3M™ Platinum Select Filler, 35863, 276 mL",,,ALLIED - BODY FILLER & RELATED (FAR),63.64,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 35863 CARTRIDGE | USA,3M List Price,,,
+CRIMP,35887,"3M™ EZ Sand Multi-Purpose Repair Material, 50 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",57.4,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 35887 CARTRIDGE | USA,3M List Price,,,
+CRIMP,36060,"3M™ Perfect-It™ EX AC Rubbing Compound, 1QT (32 fl oz)",,,"ALLIED - COMPOUNDS, PADS & RELATED (CAR)",107.34,Percent,32,,0,0,9999,Bottle,,Yes,No,3M 36060 BOTTLE | USA,3M List Price,,Denib & Polish - Misc.,fl oz
+CRIMP,36142,"3M™ Hookit™ Blue Abrasive Disc Multi-Hole, 3 in, 80 Grade",,,ALLIED - ABRASIVES (ABR),62.32,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 36142 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36146,"3M™ Hookit™ Blue Abrasive Disc Multi-Hole, 3 in, 180 Grade",,,ALLIED - ABRASIVES (ABR),62.32,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 36146 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36150,"3M™ Hookit™ Blue Abrasive Disc 321U Multi-Hole, 3 in, 320 Grade",,,ALLIED - ABRASIVES (ABR),62.32,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 36150 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36151,"3M™ Hookit™ Blue Abrasive Disc 321U Multi-Hole, 400, 3 in",,,ALLIED - ABRASIVES (ABR),62.32,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 36151 CARTON | USA,3M List Price,,Denib & Polish - Misc.,Disc(s)
+CRIMP,36170,"3M™ Hookit™ Blue Abrasive Disc Multi-Hole, 6 in, 40 Grade",,,ALLIED - ABRASIVES (ABR),215.04,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 36170 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36172,"3M™ Hookit™ Blue Abrasive Disc Multi-Hole, 6 in, 80 Grade",,,ALLIED - ABRASIVES (ABR),105.76,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 36172 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36176,"3M™ Hookit™ Blue Abrasive Disc 321U Multi-Hole, 6 in, 180 Grade",,,ALLIED - ABRASIVES (ABR),89.53,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 36176 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36180,"3M™ Hookit™ Blue Abrasive Disc 321U Multi-Hole, 6 in, 320 Grade",,,ALLIED - ABRASIVES (ABR),89.53,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 36180 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36181,"3M™ Hookit™ Blue Abrasive Disc 321U Multi-Hole, 400, 6 in",,,ALLIED - ABRASIVES (ABR),89.53,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 36181 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36183,3M™ Hookit™ Blue Abrasive Disc 321U Multi-Hole. 600. 6 in,,,ALLIED - ABRASIVES (ABR),89.53,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 36183 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36184,"3M™ Hookit™ Blue Abrasive Disc 321U Multi-Hole, 800, 6 in",,,ALLIED - ABRASIVES (ABR),89.53,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 36184 CARTON | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36187,"3M™ Hookit™ Blue Abrasive Sheet Roll Multi-Hole, 80G, 2.75 in x 13 yd",,,ALLIED - ABRASIVES (ABR),75.8,Each Piece,1,,0,0,9999,Carton,,Yes,No,3M 36187 CARTON | USA,3M List Price,,Abrasives - Misc.,Sheet(s)
+CRIMP,36191,"3M™ Hookit™ Blue Abrasive Sheet Roll Multi-Hole, 180G, 2.75 in x 13 yd",,,ALLIED - ABRASIVES (ABR),63.69,Each Piece,1,,0,0,9999,Carton,,Yes,No,3M 36191 CARTON | USA,3M List Price,,Abrasives - Misc.,Sheet(s)
+CRIMP,36195,"3M™ Hookit™Blue Abrasive Sheet Roll 321U Multi-Hole, 320G, 2.75 in x 13 yd",,,ALLIED - ABRASIVES (ABR),63.69,Each Piece,1,,0,0,9999,Carton,,Yes,No,3M 36195 CARTON | USA,3M List Price,,Abrasives - Misc.,Sheet(s)
+CRIMP,36420,"3M™ Blue Net Disc Roll, 80, 6 in",,,ALLIED - ABRASIVES (ABR),134.01,Each Piece,100,,0,0,9999,Roll,,Yes,No,3M 36420 ROLL | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36423,"3M™ Blue Net Disc Roll, 180, 6 in",,,ALLIED - ABRASIVES (ABR),134.01,Each Piece,100,,0,0,9999,Roll,,Yes,No,3M 36423 ROLL | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36425,"3M™ Blue Net Disc Roll, 240, 6 in",,,ALLIED - ABRASIVES (ABR),134.01,Each Piece,100,,0,0,9999,Roll,,Yes,No,3M 36425 ROLL | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36426,"3M™ Blue Net Disc Roll, 320, 6 in",,,ALLIED - ABRASIVES (ABR),134.01,Each Piece,100,,0,0,9999,Roll,,Yes,No,3M 36426 ROLL | USA,3M List Price,,Abrasives - Misc.,Disc(s)
+CRIMP,36507,"3M™ Green Corps™ Fibre Disc, 40 grit, 5 in x 7/8 in",,,ALLIED - ABRASIVES (ABR),219.81,Each Piece,20,,0,0,9999,Bag,,Yes,No,3M 36507 BAG | USA,3M List Price,,,
+CRIMP,36508,"3M™ Green Corps™ Fibre Disc, 60 grit, 5 in x 7/8 in",,,ALLIED - ABRASIVES (ABR),213.17,Each Piece,20,,0,0,9999,Bag,,Yes,No,3M 36508 BAG | USA,3M List Price,,,
+CRIMP,36509,"3M™ Green Corps™ Fibre Disc, 40 grit, 7 in x 7/8 in",,,ALLIED - ABRASIVES (ABR),258.67,Each Piece,20,,0,0,9999,Bag,,Yes,No,3M 36509 BAG | USA,3M List Price,,,
+CRIMP,36510,"3M™ Green Corps™ Fibre Disc, 60 grit, 7 in x 7/8 in",,,ALLIED - ABRASIVES (ABR),262.62,Each Piece,20,,0,0,9999,Bag,,Yes,No,3M 36510 BAG | USA,3M List Price,,,
+CRIMP,36516,"3M™ Green Corps™ Abrasive File Belt, 40 grit, 1/2 in x 18 in",,,ALLIED - ABRASIVES (ABR),95.78,Each Piece,20,,0,0,9999,Carton,,Yes,No,3M 36516 CARTON | USA,3M List Price,,,
+CRIMP,36517,"3M™ Green Corps™ Abrasive File Belt, 60 grit, 1/2 in x 18 in",,,ALLIED - ABRASIVES (ABR),95.78,Each Piece,20,,0,0,9999,Carton,,Yes,No,3M 36517 CARTON | USA,3M List Price,,,
+CRIMP,36518,"3M™ Green Corps™ Abrasive File Belt, 80 Grit, 1/2 in x 18 in",,,ALLIED - ABRASIVES (ABR),80.14,Each Piece,20,,0,0,9999,Carton,,Yes,No,3M 36518 CARTON | USA,3M List Price,,,
+CRIMP,36525,"3M™ Green Corps™ Roloc™ Disc, 40 Grit, 2 in",,,ALLIED - ABRASIVES (ABR),98.77,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 36525 CARTON | USA,3M List Price,,,
+CRIMP,36526,"3M™ Green Corps™ Roloc™ Disc, 60 grit, 2 in",,,ALLIED - ABRASIVES (ABR),93.62,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 36526 CARTON | USA,3M List Price,,,
+CRIMP,36527,"3M™ Green Corps™ Roloc™ Disc, 80 grit, 2 in",,,ALLIED - ABRASIVES (ABR),88.78,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 36527 CARTON | USA,3M List Price,,,
+CRIMP,36534,"3M™ Green Corps™ Roloc™ Disc, 40 grit, 3 in",,,ALLIED - ABRASIVES (ABR),116.97,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 36534 CARTON | USA,3M List Price,,,
+CRIMP,36535,"3M™ Green Corps™ Roloc™ Disc, 60 grit, 3 in",,,ALLIED - ABRASIVES (ABR),108.04,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 36535 CARTON | USA,3M List Price,,,
+CRIMP,36536,"3M™ Green Corps™ Roloc™ Disc, 80 grit, 3 in",,,ALLIED - ABRASIVES (ABR),96.92,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 36536 CARTON | USA,3M List Price,,,
+CRIMP,36900,3M™ Interior Protection Automotive Seat Cover,,,"SUPPLIES - MISC SHOP SUPPLIES, BOOTH FILTERS ETC (SUP)",187.97,Each Piece,250,,0,0,9999,Box,,Yes,No,3M 36900 BOX | USA,3M List Price,,,
+CRIMP,36901,3M™ Interior Protection Automotive Floor Mat,,,"SUPPLIES - MISC SHOP SUPPLIES, BOOTH FILTERS ETC (SUP)",102.6,Each Piece,250,,0,0,9999,Box,,Yes,No,3M 36901 BOX | USA,3M List Price,,,
+CRIMP,37082,3M™ Half Facepiece Reusable Respirator - MEDIUM,,,ALLIED - SAFETY/PPE (SAF),660.06,Each Piece,10,,0,0,9999,Bag,,Yes,No,3M 37082 BAG | USA,3M List Price,,Other - Misc.,Each
+CRIMP,37322,3M™ Versaflo™ Peel Off Visor Covers,,,ALLIED - SAFETY/PPE (SAF),109.1,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 37322 EACH | USA,3M List Price,,Other - Misc.,Each
+CRIMP,37354,3M™ Versaflo™ Prefilter TR-6600/37354(AAD) for TR-600 PAPR,,,ALLIED - SAFETY/PPE (SAF),553.08,Each Piece,50,,0,0,9999,Each,,Yes,No,3M 37354 EACH | USA,3M List Price,,Other - Misc.,Each
+CRIMP,37361,3M™ Versaflo™ Organic Vapor HEPA Cartridge,,,ALLIED - SAFETY/PPE (SAF),1179.91,Each Piece,5,,0,0,9999,Pack,,Yes,No,3M 37361 PACK | USA,3M List Price,,Other - Misc.,Each
+CRIMP,37447,Scotch-Brite™ General Purpose Hand Pad,,,ALLIED - ABRASIVES (ABR),8.74,Each Piece,3,,0,0,9999,Carton,,Yes,No,3M 37447 CARTON | USA,3M List Price,,,
+CRIMP,37448,Scotch-Brite™ Ultra Fine Hand Pad,,,ALLIED - ABRASIVES (ABR),8.65,Each Piece,3,,0,0,9999,Carton,,Yes,No,3M 37448 CARTON | USA,3M List Price,,,
+CRIMP,38052,"3M™ All Purpose Cleaner and Degreaser, 55 Gallon (US)",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",4307.08,Each Piece,7040,,0,0,9999,Drum,,Yes,No,3M 38052 DRUM | USA,3M List Price,,,
+CRIMP,38079,"3M™ Car Wash Soap, 55 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",2261.27,Each Piece,7040,,0,0,9999,Drum,,Yes,No,3M 38079 DRUM | USA,3M List Price,,,
+CRIMP,38080,"3M™ Adhesive Remover, 1 Gallon (US)/8.9 L",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",79.05,Each Piece,128,,0,0,9999,Can,,Yes,No,3M 38080 CAN | USA,3M List Price,,,
+CRIMP,38081,"3M™ Adhesive Remover, 5 Gallon (US)/18.9 L",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",358.77,Each Piece,640,,0,0,9999,Can,,Yes,No,3M 38081 CAN | USA,3M List Price,,,
+CRIMP,38087,"3M™ Interior Dressing, 5 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",437.68,Each Piece,640,,0,0,9999,Pail,,Yes,No,3M 38087 PAIL | USA,3M List Price,,,
+CRIMP,38088,"3M™ Interior Dressing, 55 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",4096.84,Each Piece,7040,,0,0,9999,Drum,,Yes,No,3M 38088 DRUM | USA,3M List Price,,,
+CRIMP,38105,"3M™ Detail Compound 308, 1 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",177.09,Each Piece,128,,0,0,9999,Pail,,Yes,No,3M 38105 PAIL | USA,3M List Price,,,
+CRIMP,38114,"3M™ Gloss Enhancer, 5 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",286.15,Each Piece,640,,0,0,9999,Pail,,Yes,No,3M 38114 PAIL | USA,3M List Price,,,
+CRIMP,38125,"3M™ Engine and Tire Dressing, 5 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",458.67,Each Piece,640,,0,0,9999,Pail,,Yes,No,3M 38125 PAIL | USA,3M List Price,,,
+CRIMP,38126,"3M™ Engine and Tire Diressing, 50 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",3846.08,Each Piece,7040,,0,0,9999,Drum,,Yes,No,3M 38126 DRUM | USA,3M List Price,,,
+CRIMP,38191,3M™ Static Mixing Nozzle - 50 mL,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",33.16,Each Piece,12,,0,0,9999,Bag,,Yes,No,3M 38191 BAG | USA,3M List Price,,,
+CRIMP,38193,3M™ Static Mixing Nozzle - 50 mL,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",111.06,Each Piece,50,,0,0,9999,Carton,,Yes,No,3M 38193 CARTON | USA,3M List Price,,,
+CRIMP,38315,"3M™ Panel Bonding Adhesive, 50 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",57.66,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 38315 CARTRIDGE | USA,3M List Price,,,
+CRIMP,38350,"3M™ All Purpose Cleaner and Degreaser, 1 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",119.88,Each Piece,128,,0,0,9999,Can,,Yes,No,3M 38350 CAN | USA,3M List Price,,,
+CRIMP,38351,"3M™ All Purpose Cleaner and Degreaser, 5 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",561.51,Each Piece,640,,0,0,9999,Pail,,Yes,No,3M 38351 PAIL | USA,3M List Price,,,
+CRIMP,38374,"3M™ Heavy Duty Wheel Cleaner, 1 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",93.62,Each Piece,128,,0,0,9999,Can,,Yes,No,3M 38374 CAN | USA,3M List Price,,,
+CRIMP,38375,"3M™ Heavy Duty Wheel Cleaner, 5 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",397.81,Each Piece,640,,0,0,9999,Pail,,Yes,No,3M 38375 PAIL | USA,3M List Price,,,
+CRIMP,38377,"3M™ Car Wash Soap, 38377, 1 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",56.62,Each Piece,128,,0,0,9999,Can,,Yes,No,3M 38377 CAN | USA,3M List Price,,,
+CRIMP,38378,"3M™ Car Wash Soap, 5 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",276.62,Each Piece,640,,0,0,9999,Pail,,Yes,No,3M 38378 PAIL | USA,3M List Price,,,
+CRIMP,38399,"3M™ Body Shop Clean-Up Glass Cleaner, 1 Gallon",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",97.93,Each Piece,128,,0,0,9999,Can,,Yes,No,3M 38399 CAN | USA,3M List Price,,,
+CRIMP,38854,"3M™ Cavity Wax Plus - Amber, 18 oz Net Wt / 511g Can",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",58.21,Percent,,,0,0,9999,Can,,Yes,No,3M 38854 CAN | USA,3M List Price,,,
+CRIMP,38983,"3M™ General Purpose Adhesive Remover, 12 oz Net Wt",,,ALLIED - REMAINING ALLIED (REM),27.09,Percent,,,0,0,9999,Can,,Yes,No,3M 38983 CAN | USA,3M List Price,,,
+CRIMP,38984,"3M™ Specialty Adhesive Remover, 1 Quart",,,"ALLIED - DETAILING, CHEMICALS & RELATED (DET)",80.05,Each Piece,32,,0,0,9999,Can,,Yes,No,3M 38984 CAN | USA,3M List Price,,,
+CRIMP,38987,"3M™ Specialty Adhesive Remover, 15 oz Net Wt",,,ALLIED - REMAINING ALLIED (REM),52.83,Percent,,,0,0,9999,Can,,Yes,No,3M 38987 CAN | USA,3M List Price,,,
+CRIMP,54343,3M™ N95 Particulate Respirator w/ Valve,,,ALLIED - SAFETY/PPE (SAF),371.88,Each Piece,80,,0,0,9999,Pack,,Yes,No,3M 54343 PACK | USA,3M List Price,,Other - Misc.,Each
+CRIMP,55764,"3M™ Hookit™ Disc Pad, 3 in x 1/2 in x 5/16-24",,,TOOLS EQUIP - TOOLS & EQUIPMENT (TEQ),35.09,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 55764 EACH | USA,3M List Price,,Abrasives - Misc.,Each
+CRIMP,55847,3M™ Dynamic Mixing Nozzle - Adhesives/Sealers,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",244.62,Each Piece,50,,0,0,9999,Bag,,Yes,No,3M 55847 BAG | USA,3M List Price,,,
+CRIMP,55887,"3M™ EZ Sand Multi-Purpose Repair Material, 600 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",319.64,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 55887 CARTRIDGE | USA,3M List Price,,,
+CRIMP,57333,"3M™ Impact Resistant Structural Adhesive, 450 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",302.24,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 57333 CARTRIDGE | USA,3M List Price,,,
+CRIMP,58115,"3M™ Panel Bonding Adhesive, 450 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",248.76,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 58115 CARTRIDGE | USA,3M List Price,,,
+CRIMP,58207,3M™ Dynamic Mixing Nozzle Extension,,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",23.71,Each Piece,12,,0,0,9999,Bag,,Yes,No,3M 58207 BAG | USA,3M List Price,,,
+CRIMP,58308,"3M™ Heavy-Bodied Seam Sealer, 600 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",239.23,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 58308 CARTRIDGE | USA,3M List Price,,,
+CRIMP,58310,"3M™ Bare-Metal Seam Sealer, 600 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",244.66,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 58310 CARTRIDGE | USA,3M List Price,,,
+CRIMP,64458,"Scotch-Brite™ Durable Flex Belt, DF-BL, A/O Medium, 1/2 in x 18 in",,,ALLIED - ABRASIVES (ABR),15.24,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 64458 EACH | USA,3M List Price,,,
+CRIMP,64467,"Scotch-Brite™ Durable Flex Belt, DF-BL, A/O Fine, 1/2 in x 18 in",,,ALLIED - ABRASIVES (ABR),15.24,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 64467 EACH | USA,3M List Price,,,
+CRIMP,64475,"Scotch-Brite™ Durable Flex Belt, DF-BL, A/O Coarse, 1/2 in x 18 in",,,ALLIED - ABRASIVES (ABR),15.24,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 64475 EACH | USA,3M List Price,,,
+CRIMP,64659,"Scotch-Brite™ Durable Flex Hand Pad, 4-1/2 in x 9 in, A VFN",,,ALLIED - ABRASIVES (ABR),50.85,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 64659 CARTON | USA,3M List Price,,,
+CRIMP,64660,"Scotch-Brite™ Durable Flex Hand Pad, 4-1/2 in x 9 in, S ULF",,,ALLIED - ABRASIVES (ABR),50.85,Each Piece,25,,0,0,9999,Carton,,Yes,No,3M 64660 CARTON | USA,3M List Price,,,
+CRIMP,64888,"3M™ VHB™ Tape 4941, Gray, 1 in x 36 yd, 45 mil",,,MISC - OTHER (OTH),281.69,Each Piece,108,,0,0,9999,Roll,,Yes,No,3M 64888 ROLL | USA,3M List Price,,Other - Misc.,ft
+CRIMP,64926,"Scotch-Brite™ 7447 PRO Hand Pad, 6 in x 9 in",,,ALLIED - ABRASIVES (ABR),53.58,Each Piece,20,,0,0,9999,Carton,,Yes,No,3M 64926 CARTON | USA,3M List Price,,,
+CRIMP,64935,"Scotch-Brite™ 7448 PRO Hand Pad, 6 in x 9 in",,,ALLIED - ABRASIVES (ABR),53.58,Each Piece,20,,0,0,9999,Carton,,Yes,No,3M 64935 CARTON | USA,3M List Price,,,
+CRIMP,69017,"3M™ Sealing Tape 8777, Tan, 3 in x 75 ft, Solid Liner",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",57.23,Each Piece,75,,0,0,9999,Roll,,Yes,No,3M 69017 ROLL | USA,3M List Price,,NVH Applications - Sound Abatement Coatings,ft
+CRIMP,82701,3M™ Clear Polycarbonate Faceshield WP96,,,ALLIED - SAFETY/PPE (SAF),150.87,Each Piece,1,,0,0,9999,Each,,Yes,No,3M 82701 EACH | USA,3M List Price,,Other - Misc.,Each
+CRIMP,82783,3M™ Ratchet Headgear w/ Face Shield WP96,,,ALLIED - SAFETY/PPE (SAF),297.97,Each Piece,1,,0,0,9999,Pack,,Yes,No,3M 82783 PACK | USA,3M List Price,,Other - Misc.,Each
+CRIMP,84701,"Scotchgard™ Paint Protection Film, 12 mil x 1"" x 12.5 yd Roll",,,ALLIED - SAFETY/PPE (SAF),174.12,Each Piece,37,,0,0,9999,Roll,,Yes,No,3M 84701 ROLL | USA,3M List Price,,,
+CRIMP,84706,"Scotchgard™ Paint Protection Film, 12 mil x 6"" x 20 yd Roll",,,PARTS - OTHER (OTH),515.96,Each Piece,60,,0,0,9999,Roll,,Yes,No,3M 84706 ROLL | USA,3M List Price,,,
+CRIMP,89421,3M™ Ultimate FX Full Facepiece Reusable Respirator - MEDIUM,,,ALLIED - SAFETY/PPE (SAF),1878.87,Each Piece,4,,0,0,9999,Pack,,Yes,No,3M 89421 PACK | USA,3M List Price,,Other - Misc.,Each
+CRIMP,89424,3M™ Ultimate FX Full Facepiece Reusable Respirator - LARGE,,,ALLIED - SAFETY/PPE (SAF),1878.87,Each Piece,4,,0,0,9999,Pack,,Yes,No,3M 89424 PACK | USA,3M List Price,,Other - Misc.,Each
+CRIMP,89487,3M™ Semi-Permanent Lens Protector,,,ALLIED - SAFETY/PPE (SAF),350.17,Each Piece,20,,0,0,9999,Each,,Yes,No,3M 89487 EACH | USA,3M List Price,,Other - Misc.,Each
+CRIMP,93402,"3M™ E-A-R™ Pistonz™ Earplugs P1401, Corded",,,ALLIED - SAFETY/PPE (SAF),901.85,Each Piece,400,,0,0,9999,Each,,Yes,No,3M 93402 EACH | USA,3M List Price,,Other - Misc.,Each
+CRIMP,94901,"Scotchgard™ Pro Series Paint Protection Film Door Edge Guard, 6 mil x 0.4"" x 10 yd Roll",,,PARTS - OTHER (OTH),33.25,Each Piece,30,,0,0,9999,Roll,,Yes,No,3M 94901 ROLL | USA,3M List Price,,,
+CRIMP,94905,"Scotchgard™ Pro Series Paint Protection Film Door Edge Guard, 6 mil x 0.4"""""""" x 40 yd Roll",,,PARTS - OTHER (OTH),72.37,Each Piece,120,,0,0,9999,Roll,,Yes,No,3M 94905 ROLL | USA,3M List Price,,,
+CRIMP,98241,"3M™ Marine Adhesive Sealant 3000 UV, White, 290 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",28.68,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 98241 CARTRIDGE | USA,3M List Price,,,
+CRIMP,98242,"3M™ Marine Adhesive Sealant 3000 UV, Black, 290 mL Cartridge",,,"ALLIED - ADHESIVES, COATINGS, SEALERS (ACS)",25.37,Percent,,,0,0,9999,Cartridge,,Yes,No,3M 98242 CARTRIDGE | USA,3M List Price,,,
