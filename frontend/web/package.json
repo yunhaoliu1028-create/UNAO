@@ -13,6 +13,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.98.0",
     "@libsql/client": "^0.17.3",
+    "@napi-rs/canvas": "0.1.80",
     "@prisma/adapter-libsql": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "csv-parse": "^6.2.1",
