@@ -1,7 +1,9 @@
-import { PDFParse } from "pdf-parse";
+import { DOMMatrix, ImageData, Path2D } from "@napi-rs/canvas";
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
+
+Object.assign(globalThis, { DOMMatrix, ImageData, Path2D });
 
 type ExtractResult = {
   plainText: string;
@@ -16,6 +18,7 @@ function toPlainText(text: string): string {
 }
 
 async function extractPdfText(data: Uint8Array): Promise<ExtractResult> {
+  const { PDFParse } = await import("pdf-parse");
   const parser = new PDFParse({ data });
   try {
     const result = await parser.getText({

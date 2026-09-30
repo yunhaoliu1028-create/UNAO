@@ -4,7 +4,7 @@ import path from "node:path";
 const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(__dirname, "../.."),
   reactStrictMode: true,
-  serverExternalPackages: ["pdf-parse"],
+  serverExternalPackages: ["@napi-rs/canvas", "pdf-parse"],
   turbopack: {
     root: path.join(__dirname, "../..")
   }
