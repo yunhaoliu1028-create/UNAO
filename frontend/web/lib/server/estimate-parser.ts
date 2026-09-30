@@ -68,6 +68,12 @@ const ACTION_STOP_WORDS = new Set([
   "reconnect"
 ]);
 
+const LOCATION_NOISE_WORDS = new Set([
+  "frm",
+  "from",
+  "built"
+]);
+
 function normalizeWhitespace(value: string): string {
   return value.replace(/\s+/g, " ").trim();
 }
@@ -80,6 +86,9 @@ function normalizeEstimatePayload(value: string): string {
   return normalizeText(value)
     .replace(/\bw\/o\b/g, "without")
     .replace(/\bw\//g, "with ")
+    .replace(/\blift[\s-]*gate\b/g, "liftgate")
+    .replace(/\btail[\s-]*gate\b/g, "tailgate")
+    .replace(/\bw['']?strip\b/g, "weatherstrip")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -130,14 +139,14 @@ function extractAction(line: string): string {
   if (line.includes("remove install")) {
     return "Remove Install";
   }
+  if (line.includes("section")) {
+    return "Replace";
+  }
   if (line.includes("replace")) {
     return "Replace";
   }
   if (line.includes("repair")) {
     return "Repair";
-  }
-  if (line.includes("section")) {
-    return "Section";
   }
   if (line.includes("overhaul")) {
     return "Overhaul";
@@ -159,6 +168,9 @@ function extractAction(line: string): string {
 
 function shouldDropLine(normalizedLine: string): boolean {
   if (!normalizedLine) {
+    return true;
+  }
+  if (/\brivets?\b/.test(normalizedLine)) {
     return true;
   }
   if (/\bnote\s*:/.test(normalizedLine)) {
@@ -188,16 +200,17 @@ function extractLocation(normalizedLine: string): string {
     .replace(/\|\s*[a-z]\d{2}\s*\|/g, " ")
     .replace(/\b(remove install|replace|repair|refinish|blend|section|overhaul|disconnect reconnect|sublet)\b/g, " ")
     .replace(
-      /\b(line#?\s*\d{1,4}|qty|hours?|hr|body|paint|labor|diag|elec|mech|struc|misc|oem|a\/m|lkq|glass|other)\b/g,
+      /\b(line#?\s*\d{1,4}|qty|hours?|hr|body|paint|labor|diag|elec|mech|struc|misc|oem|a\/m|lkq|other)\b/g,
       " "
     )
     .replace(/\b[a-z]\d{2}\b/g, " ")
+    .replace(/\b\d{1,2}\/\d{1,2}\/\d{2,4}\b/g, " ")
     .replace(/\b\d+(?:\.\d+)?t?\b/g, " ")
     .replace(/\|/g, " ")
     .replace(/[^\w\s/-]/g, " ");
   const tokens = normalizeWhitespace(withoutAction)
     .split(" ")
-    .filter((token) => token.length > 1 && !ACTION_STOP_WORDS.has(token));
+    .filter((token) => token.length > 1 && !ACTION_STOP_WORDS.has(token) && !LOCATION_NOISE_WORDS.has(token));
   return tokens.slice(0, 8).join(" ");
 }
 
@@ -213,24 +226,87 @@ function parseTableCells(rawLine: string): ParsedTableCells | null {
     return null;
   }
   const cells = rawLine.split("|").map((part) => normalizeWhitespace(part));
-  if (cells.length < 4) {
+  if (cells.length < 3) {
     return null;
   }
   const lineNo = Number.parseInt(cells[0] || "", 10);
   if (!Number.isFinite(lineNo)) {
     return null;
   }
+  const searchable = [1, 2, 3].filter((index) => index < cells.length);
+  let actionIndex = -1;
+  for (const index of searchable) {
+    const normalized = applyTokenMap(normalizeEstimatePayload(cells[index] || ""), config.actionMap);
+    if (hasActionToken(normalized)) {
+      actionIndex = index;
+      break;
+    }
+  }
+  if (actionIndex < 0) {
+    return null;
+  }
+  const descriptionCandidates = [actionIndex + 1, actionIndex + 2].filter((index) => index < cells.length);
+  const descriptionCell = descriptionCandidates.map((index) => cells[index] || "").find((value) => normalizeWhitespace(value).length > 0) || "";
+  if (!descriptionCell) {
+    return null;
+  }
+  const ver = actionIndex >= 2 ? normalizeWhitespace(cells[1] || "").toUpperCase() : "";
   return {
     lineNo,
-    ver: normalizeWhitespace(cells[1] || "").toUpperCase(),
-    operationCell: normalizeWhitespace(cells[2] || ""),
-    descriptionCell: normalizeWhitespace(cells[3] || "")
+    ver,
+    operationCell: normalizeWhitespace(cells[actionIndex] || ""),
+    descriptionCell: normalizeWhitespace(descriptionCell)
+  };
+}
+
+function extractGroupHeading(rawLine: string): string {
+  if (parseLineNo(rawLine) === null) {
+    return "";
+  }
+
+  let label = "";
+  if (rawLine.includes("|")) {
+    const cells = rawLine.split("|").map((part) => normalizeWhitespace(part));
+    label = normalizeWhitespace(
+      cells
+        .slice(1)
+        .filter((cell) => cell && !/^[a-z]\d{2}$/i.test(cell))
+        .join(" ")
+    );
+  } else {
+    label = normalizeWhitespace(rawLine.replace(/^\s*\d{1,4}\s+/, "").replace(/^[a-z]\d{2}\s+/i, ""));
+  }
+
+  if (!label || label.length > 48 || /[#\d]/.test(label)) {
+    return "";
+  }
+  const letters = label.replace(/[^A-Za-z]/g, "");
+  const normalizedActionLine = applyTokenMap(normalizeEstimatePayload(label), config.actionMap);
+  if (letters.length < 3 || label !== label.toUpperCase() || hasActionToken(normalizedActionLine)) {
+    return "";
+  }
+  return label;
+}
+
+function qualifyDoorCandidateWithGroup(candidate: Candidate, groupHeading: string): Candidate {
+  const groupMatch = normalizeText(groupHeading).match(/\b(front|rear)\s+door\b/);
+  if (!groupMatch || !/\bdoor\b/i.test(candidate.location) || /\b(front|rear)\b/i.test(candidate.location)) {
+    return candidate;
+  }
+
+  const direction = toTitleCase(groupMatch[1]);
+  const location = candidate.location.replace(/\bdoor\b/i, `${direction} Door`);
+  return {
+    ...candidate,
+    location,
+    canonical: `${candidate.action} ${location}`.replace(/\s+/g, " ").trim(),
+    reason: `${candidate.reason}; ${direction.toLowerCase()} door group context`
   };
 }
 
 function operationLooksRelevant(normalizedLine: string, location: string): boolean {
   const hasKeyword = config.operationKeywords.some((keyword) => normalizedLine.includes(keyword) || location.includes(keyword));
-  return hasKeyword || /\b(door|panel|bumper|fender|quarter|glass|windshield|rocker|hood|roof)\b/.test(location);
+  return hasKeyword || /\b(door|panel|bumper|fender|quarter|glass|windshield|rocker|hood|roof|liftgate|tailgate|trunk|pillar|cab|bed)\b/.test(location);
 }
 
 function buildCandidate(rawLine: string): Candidate | null {
@@ -245,19 +321,28 @@ function buildCandidate(rawLine: string): Candidate | null {
       return null;
     }
     const descNormalized = applyTokenMap(normalizeEstimatePayload(tableCells.descriptionCell), config.locationMap);
-    if (shouldDropLine(descNormalized)) {
+    if (shouldDropLine(descNormalized) && shouldDropLine(normalizedActionCell)) {
       return null;
     }
-    const locationRaw = extractLocation(descNormalized);
+    let locationRaw = extractLocation(descNormalized);
+    // Some OCR/table rows keep the main location in the operation cell, while
+    // the description cell only contains a tail token like "opening".
+    if (!locationRaw || !operationLooksRelevant(descNormalized, locationRaw)) {
+      const actionCellWithLocationMap = applyTokenMap(normalizedActionCell, config.locationMap);
+      const actionCellLocationRaw = extractLocation(actionCellWithLocationMap);
+      if (actionCellLocationRaw && operationLooksRelevant(actionCellWithLocationMap, actionCellLocationRaw)) {
+        locationRaw = actionCellLocationRaw;
+      }
+    }
     const location = toTitleCase(locationRaw);
-    if (!location || !operationLooksRelevant(descNormalized, locationRaw)) {
+    if (!location || (!operationLooksRelevant(descNormalized, locationRaw) && !operationLooksRelevant(normalizedActionCell, locationRaw))) {
       return null;
     }
     const canonical = `${action} ${location}`.replace(/\s+/g, " ").trim();
     let confidence = 0;
-    confidence += 3;
-    confidence += 3;
-    confidence += 1;
+    confidence += action ? 3 : 0;
+    confidence += location ? 2 : 0;
+    confidence += tableCells.lineNo !== null ? 1 : 0;
     confidence += operationLooksRelevant(descNormalized, locationRaw) ? 2 : 0;
     if (tableCells.ver) {
       confidence += 1;
@@ -278,7 +363,7 @@ function buildCandidate(rawLine: string): Candidate | null {
   }
 
   const lineNo = parseLineNo(rawLine);
-  const normalizedBase = normalizeText(rawLine);
+  const normalizedBase = normalizeEstimatePayload(rawLine);
   const withActions = applyTokenMap(normalizedBase, config.actionMap);
   const normalizedLine = applyTokenMap(withActions, config.locationMap);
   if (shouldDropLine(normalizedLine) || !hasActionToken(normalizedLine)) {
@@ -388,10 +473,17 @@ export function parseEstimateOperationsWithRules(input: {
   const notesByLine = buildLineNotes(lines);
 
   const rawCandidates: Candidate[] = [];
+  let currentGroupHeading = "";
   for (const line of lines) {
+    const groupHeading = extractGroupHeading(line);
+    if (groupHeading) {
+      currentGroupHeading = groupHeading;
+      continue;
+    }
     const candidate = buildCandidate(line);
     if (candidate) {
-      rawCandidates.push(applyNoteOverride(candidate, notesByLine));
+      const overriddenCandidate = applyNoteOverride(candidate, notesByLine);
+      rawCandidates.push(qualifyDoorCandidateWithGroup(overriddenCandidate, currentGroupHeading));
     }
   }
 

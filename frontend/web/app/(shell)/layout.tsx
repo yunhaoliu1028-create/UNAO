@@ -4,7 +4,7 @@ import { PageContainer } from "@/components/layout/page-container";
 
 export default function ShellLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-appbg text-apptext">
+    <div className="min-h-screen bg-gradient-to-b from-appcard to-appbg text-apptext">
       <AppHeader />
       <PageContainer>{children}</PageContainer>
     </div>

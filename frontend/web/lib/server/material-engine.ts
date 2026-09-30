@@ -1,6 +1,7 @@
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { parse } from "csv-parse/sync";
+import { findMatchingRules, deduplicateRules, recordRuleUsage } from "@/lib/server/material-rules";
 
 export type Tier = "T1" | "T2" | "T3";
 
@@ -28,11 +29,20 @@ export type GeneratedLine = {
   id: string;
   operation: string;
   group?: string;
+  partNo?: string;
   description: string;
   qty: number;
   unit: string;
   unitPrice: number;
   source: string;
+};
+
+export type MaterialPartLookup = {
+  partNo: string;
+  description: string;
+  unit: string;
+  unitPrice: number;
+  found: boolean;
 };
 
 type ParsedLogicItem = {
@@ -43,8 +53,16 @@ type ParsedLogicItem = {
   explicitEachPrice: number | null;
 };
 
-const logicRowsCache: { value: LogicRow[] | null } = { value: null };
-const materialInfoCache: { value: Map<string, MaterialInfoRow> | null } = { value: null };
+const logicRowsCache: { value: LogicRow[] | null; sourcePath: string | null; mtimeMs: number } = {
+  value: null,
+  sourcePath: null,
+  mtimeMs: -1
+};
+const materialInfoCache: { value: Map<string, MaterialInfoRow> | null; sourcePath: string | null; mtimeMs: number } = {
+  value: null,
+  sourcePath: null,
+  mtimeMs: -1
+};
 const locationStopWords = new Set([
   "left",
   "right",
@@ -56,19 +74,110 @@ const locationStopWords = new Set([
   "outer",
   "side"
 ]);
+// ── SUB_COMPONENT_KEYWORDS ──────────────────────────────────────────
+// Comprehensive blacklist of sub-component keywords.  Any operation whose
+// normalised text contains one of these tokens is almost certainly about a
+// small sub-part (bolt, hinge, sensor…) rather than a core structural
+// panel that requires consumable materials.
+//
+// Maintain in alphabetical order within each category.
+// When adding new entries, verify against CCC ONE parts data that the
+// keyword never appears in a core panel name (e.g. "bumper cover" IS a
+// panel, so "bumper" alone must NOT be listed here).
 const irrelevantPartKeywords = [
-  "weatherstrip",
-  "hinge",
-  "reflector",
-  "emblem",
-  "molding",
+  // ── Fasteners & hardware ──
+  "bolt",
   "clip",
-  "bracket",
+  "fastener",
+  "grommet",
+  "nut",
+  "pin",
+  "retainer",
+  "rivet",
+  "screw",
+  "shim",
+  "spacer",
+  "staple",
+  "stud",
+  "u-nut",
+  "washer",
+  // ── Mechanical hardware ──
+  "anchor",
+  "cable",
+  "dampener",
+  "hinge",
+  "latch",
+  "lock",
+  "pivot",
+  "rod",
+  "roller",
+  "spring",
+  "striker",
+  "strut",
+  // ── Electrical & sensors ──
+  "antenna",
+  "bulb",
+  "camera",
+  "harness",
   "lamp",
+  "led",
   "light",
+  "module",
+  "sensor",
+  "wiring",
+  // ── Trim & cosmetic ──
+  "applique",
+  "badge",
   "bezel",
+  "decal",
+  "emblem",
+  "garnish",
+  "molding",
+  "nameplate",
+  "ornament",
+  "stripe",
   "trim",
-  "garnish"
+  // ── Glass & mirrors ──
+  "glass",
+  "mirror",
+  "windshield",
+  // ── Seals & weatherstrips ──
+  "gasket",
+  "insulator",
+  "seal",
+  "weatherstrip",
+  // ── Brackets & mounts ──
+  "bracket",
+  "brace",
+  "mount",
+  // ── Shields & liners ──
+  "deflector",
+  "fender liner",
+  "liner",
+  "shield",
+  "splash shield",
+  // ── Reflectors ──
+  "reflector",
+  // ── Interior ──
+  "carpet",
+  "headliner",
+  "insulation",
+  "mat",
+  "visor",
+  // ── Covers (non-panel – "bumper cover" protected by multi-word check) ──
+  "access cover",
+  // ── Running boards ──
+  "running board",
+  "step pad",
+  // ── Seats & restraints ──
+  "airbag",
+  "seat belt",
+  "seat",
+  // ── Misc small parts ──
+  "plug",
+  "protector",
+  "tow hook",
+  "skid plate",
 ];
 const operationNoiseWords = new Set([
   "line",
@@ -87,6 +196,7 @@ const operationNoiseWords = new Set([
   "inner",
   "panel"
 ]);
+const genericLocationTokens = new Set(["panel", "cover", "assembly", "grille", "bumper", "outer", "inner"]);
 const majorGroupPatterns: Array<{ pattern: RegExp; label: string }> = [
   { pattern: /\bfront\s+door\b/i, label: "Front Door" },
   { pattern: /\brear\s+door\b/i, label: "Rear Door" },
@@ -95,13 +205,24 @@ const majorGroupPatterns: Array<{ pattern: RegExp; label: string }> = [
   { pattern: /\bfender\b/i, label: "Fender" },
   { pattern: /\bhood\b/i, label: "Hood" },
   { pattern: /\blift[\s-]*gate\b/i, label: "Liftgate" },
+  { pattern: /\btail[\s-]*gate\b/i, label: "Tail Gate" },
   { pattern: /\bquarter\s+panel\b/i, label: "Quarter Panel" },
   { pattern: /\bfront\s+bumper\b/i, label: "Front Bumper" },
   { pattern: /\brear\s+bumper\b/i, label: "Rear Bumper" },
   { pattern: /\bbumper\s+cover\b/i, label: "Bumper Cover" },
   { pattern: /\brear\s+body\b/i, label: "Rear Body" },
   { pattern: /\brocker\s+panel\b/i, label: "Rocker Panel" },
-  { pattern: /\broof\b/i, label: "Roof" }
+  { pattern: /\broof\b/i, label: "Roof" },
+  { pattern: /\bradiator\s+support\b/i, label: "Radiator Support" },
+  { pattern: /\bpick[\s-]*up\s+box\b/i, label: "Pick Up Box" },
+  { pattern: /\btruck\s+bed\b/i, label: "Pick Up Box" },
+  { pattern: /\bcab\b/i, label: "Cab" },
+  { pattern: /\bframe\s+rail\b/i, label: "Frame Rail" },
+  { pattern: /\bhinge\s+pillar\b/i, label: "Hinge Pillar" },
+  { pattern: /\baperture\s+panel\b/i, label: "Aperture Panel" },
+  { pattern: /\b[abc][\s-]*pillar\b/i, label: "Pillar" },
+  { pattern: /\bfloor\s+pan\b/i, label: "Floor Pan" },
+  { pattern: /\btrunk\b/i, label: "Trunk" }
 ];
 
 type OperationContextHint = {
@@ -121,7 +242,7 @@ function normalizeWhitespace(value: string): string {
 }
 
 function hasActionToken(value: string): boolean {
-  return /\b(replace|repair|remove|install|refinish|blend|patch)\b/.test(value);
+  return /\b(replace|repair|remove|install|section|refinish|blend|patch)\b/.test(value);
 }
 
 function parseLeadingLineNo(value: string): number | null {
@@ -158,23 +279,30 @@ function parseNumber(value: unknown): number | null {
 }
 
 function normalizePartNumber(value: string | null | undefined): string {
-  const digits = String(value ?? "").replace(/[^\d]/g, "");
+  const raw = String(value ?? "").trim();
+  if (!raw) {
+    return "";
+  }
+  const prefixed = raw.match(/\b3m\s*([0-9]{3,6})\b/i);
+  const digits = prefixed ? prefixed[1] : raw.replace(/[^\d]/g, "");
   if (!digits) {
     return "";
   }
   return String(Number.parseInt(digits, 10));
 }
 
-async function readAssetCsv(fileName: string): Promise<string> {
+async function resolveAssetCsv(fileName: string): Promise<{ path: string; content: string; mtimeMs: number }> {
   const candidates = [
-    path.resolve(/* turbopackIgnore: true */ process.cwd(), "..", "..", "assets", fileName),
-    path.resolve(/* turbopackIgnore: true */ process.cwd(), "assets", fileName)
+    path.resolve(/*turbopackIgnore: true*/ process.cwd(), "..", "..", "assets", fileName),
+    path.resolve(/*turbopackIgnore: true*/ process.cwd(), "assets", fileName)
   ];
 
   let lastError: unknown = null;
   for (const candidate of candidates) {
     try {
-      return await readFile(candidate, "utf-8");
+      const fileStat = await stat(candidate);
+      const content = await readFile(candidate, "utf-8");
+      return { path: candidate, content, mtimeMs: fileStat.mtimeMs };
     } catch (error) {
       lastError = error;
     }
@@ -184,12 +312,19 @@ async function readAssetCsv(fileName: string): Promise<string> {
 }
 
 async function loadLogicRows(): Promise<LogicRow[]> {
-  if (logicRowsCache.value) {
-    return logicRowsCache.value;
+  if (logicRowsCache.value && logicRowsCache.sourcePath) {
+    try {
+      const currentStat = await stat(logicRowsCache.sourcePath);
+      if (currentStat.mtimeMs === logicRowsCache.mtimeMs) {
+        return logicRowsCache.value;
+      }
+    } catch {
+      // If stat fails, fall through and reload from candidate paths.
+    }
   }
 
-  const csvText = await readAssetCsv("material_logic.csv");
-  const records = parse(csvText, {
+  const resolved = await resolveAssetCsv("material_logic.csv");
+  const records = parse(resolved.content, {
     columns: true,
     skip_empty_lines: true,
     bom: true,
@@ -205,16 +340,25 @@ async function loadLogicRows(): Promise<LogicRow[]> {
   }));
 
   logicRowsCache.value = rows;
+  logicRowsCache.sourcePath = resolved.path;
+  logicRowsCache.mtimeMs = resolved.mtimeMs;
   return rows;
 }
 
 async function loadMaterialInfoMap(): Promise<Map<string, MaterialInfoRow>> {
-  if (materialInfoCache.value) {
-    return materialInfoCache.value;
+  if (materialInfoCache.value && materialInfoCache.sourcePath) {
+    try {
+      const currentStat = await stat(materialInfoCache.sourcePath);
+      if (currentStat.mtimeMs === materialInfoCache.mtimeMs) {
+        return materialInfoCache.value;
+      }
+    } catch {
+      // If stat fails, fall through and reload from candidate paths.
+    }
   }
 
-  const csvText = await readAssetCsv("material_info.csv");
-  const records = parse(csvText, {
+  const resolved = await resolveAssetCsv("material_info.csv");
+  const records = parse(resolved.content, {
     columns: (headers: string[]) => headers.map((h) => normalizeHeader(h)),
     skip_empty_lines: true,
     bom: true,
@@ -246,6 +390,8 @@ async function loadMaterialInfoMap(): Promise<Map<string, MaterialInfoRow>> {
   }
 
   materialInfoCache.value = map;
+  materialInfoCache.sourcePath = resolved.path;
+  materialInfoCache.mtimeMs = resolved.mtimeMs;
   return map;
 }
 
@@ -317,11 +463,25 @@ function calcUnitPrice(item: ParsedLogicItem, materialInfo: MaterialInfoRow | un
   return materialInfo.containerCost / pieces;
 }
 
+function calcUnitPriceFromMaterialInfo(materialInfo: MaterialInfoRow): number {
+  if (materialInfo.containerCost === null) {
+    return 0;
+  }
+  const removeBy = (materialInfo.removeBy || "").toLowerCase();
+  if (removeBy === "percent") {
+    return materialInfo.containerCost;
+  }
+  const pieces = materialInfo.piecesPerContainer && materialInfo.piecesPerContainer > 0 ? materialInfo.piecesPerContainer : 1;
+  return materialInfo.containerCost / pieces;
+}
+
 function normalizeOperationText(value: string): string {
   return value
     .toLowerCase()
     .replace(/\bline#?\s*\d{1,4}\b/g, " ")
     .replace(/^\s*\d{1,4}\s+/, "")
+    .replace(/\bsect\b/g, "section")
+    .replace(/\bsection\b/g, "replace")
     .replace(/\b(repl|rpl)\b/g, "replace")
     .replace(/\b(r&r|r\/r|remove\s*&\s*replace)\b/g, "replace")
     .replace(/\b(r&i|r\/i|remove\s*&\s*install)\b/g, "remove install")
@@ -329,10 +489,14 @@ function normalizeOperationText(value: string): string {
     .replace(/\brefin\b/g, "refinish")
     .replace(/\bblnd\b/g, "blend")
     .replace(/\bsublt\b/g, "sublet")
+    .replace(/\bw['']?strip\b/g, "weatherstrip")
     .replace(/\ba\/m\b/g, " ")
     .replace(/\b(capa|keysiq|nsf|oem|opt\s+oem|alt\s+oem)\b/g, " ")
     .replace(/\blift[\s-]*gate\b/g, "liftgate")
+    .replace(/\btail[\s-]*gate\b/g, "tailgate")
     .replace(/\bbumper[\s-]*cover\b/g, "bumper cover")
+    .replace(/\bpick[\s-]*up\s+box\b/g, "pickup box")
+    .replace(/\btruck\s+bed\b/g, "pickup box")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -361,6 +525,8 @@ function normalizeLocationForCanonical(value: string): string {
     .replace(/\ba\/m\b/g, " ")
     .replace(/[^\w\s-]/g, " ")
     .replace(/\blift[\s-]*gate\b/g, "liftgate")
+    .replace(/\btail[\s-]*gate\b/g, "tailgate")
+    .replace(/\bpick[\s-]*up\s+box\b/g, "pickup box")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -380,23 +546,77 @@ function toTitleCasePreserveSlash(value: string): string {
 
 function canonicalizeOperationLabel(normalizedOp: string): string {
   const action =
-    normalizedOp.includes("replace") || /\b(remove|install)\b/.test(normalizedOp)
+    normalizedOp.includes("replace") || normalizedOp.includes("section")
       ? "Replace"
-      : normalizedOp.includes("repair")
-        ? "Repair"
-        : "Repair";
-  let location = normalizeWhitespace(normalizedOp.replace(/\b(replace|repair|refinish|blend|patch|remove|install)\b/g, " "));
+      : normalizedOp.includes("remove install")
+        ? "Remove Install"
+        : /\b(remove|install)\b/.test(normalizedOp)
+          ? "Replace"
+          : normalizedOp.includes("repair")
+            ? "Repair"
+            : "Repair";
+  let location = normalizeWhitespace(normalizedOp.replace(/\b(replace|repair|section|refinish|blend|patch|remove|install)\b/g, " "));
   location = normalizeLocationForCanonical(location);
   if (location.includes("liftgate")) {
     location = "liftgate";
   }
+  if (location.includes("tailgate")) {
+    location = "tailgate";
+  }
   return `${action} ${toTitleCase(location)}`.trim();
+}
+
+// ── Core panel whitelist (multi-word phrases) ──
+// If an operation contains one of these phrases, it is a legitimate panel
+// even if a sub-component keyword also matches (e.g. "bumper cover" contains
+// the word "cover", but is itself a core panel).
+const corePanelPhrases = [
+  "bumper cover",
+  "door shell",
+  "door skin",
+  "quarter panel",
+  "rocker panel",
+  "rear body panel",
+  "floor pan",
+  "frame rail",
+  "radiator support",
+  "hinge pillar",
+  "aperture panel",
+  "pick up box",
+  "pickup box",
+  "tail gate",
+  "tailgate",
+  "liftgate",
+  "lift gate",
+];
+
+/**
+ * Returns true if the normalised operation text refers to a sub-component
+ * (bolt, sensor, hinge…) rather than a core structural panel.
+ *
+ * Multi-word blacklist entries (e.g. "fender liner") are checked first so
+ * they take priority over single-token matches.  A core-panel whitelist
+ * protects legitimate panels like "bumper cover" from being filtered out.
+ */
+function isSubComponentOperation(normalizedOp: string): boolean {
+  // Whitelist check — if the operation IS a core panel, never filter it.
+  if (corePanelPhrases.some((phrase) => normalizedOp.includes(phrase))) {
+    return false;
+  }
+
+  // Multi-word blacklist entries first (longest match wins).
+  // Then single-word entries.
+  return irrelevantPartKeywords.some((keyword) => normalizedOp.includes(keyword));
 }
 
 function isCosmeticOnlyOperation(normalizedOp: string): boolean {
   const hasBlendOrRefinish = /\b(blend|refinish)\b/.test(normalizedOp);
   const hasStructuralAction = /\b(replace|repair|remove|install|patch)\b/.test(normalizedOp);
   return hasBlendOrRefinish && !hasStructuralAction;
+}
+
+function isNoConsumablePlasticOperation(normalizedOp: string): boolean {
+  return /\bfender liner\b/.test(normalizedOp);
 }
 
 function hasRelevantLocationToken(op: string, location: string): boolean {
@@ -422,12 +642,28 @@ function hasActionMatch(op: string, action: string): boolean {
     return true;
   }
   if (action === "replace") {
-    return /\b(replace|remove|install)\b/.test(op);
+    return /\b(replace|remove|install|section)\b/.test(op);
   }
   if (action === "repair") {
     return /\b(repair|refinish|blend|patch)\b/.test(op);
   }
   return false;
+}
+
+function toLocationTokens(value: string): string[] {
+  return normalizeOperationText(value)
+    .split(/[^a-z0-9]+/i)
+    .map((token) => token.trim().toLowerCase())
+    .filter((token) => token.length > 2 && !locationStopWords.has(token));
+}
+
+function hasStrongGroupLocationMatch(groupLabel: string, rowLocation: string): boolean {
+  const groupTokens = toLocationTokens(groupLabel).filter((token) => !genericLocationTokens.has(token));
+  const locationTokens = new Set(toLocationTokens(rowLocation).filter((token) => !genericLocationTokens.has(token)));
+  if (groupTokens.length === 0 || locationTokens.size === 0) {
+    return false;
+  }
+  return groupTokens.some((token) => locationTokens.has(token));
 }
 
 function scoreOperationMatch(operationText: string, row: LogicRow): number {
@@ -607,10 +843,35 @@ function makeLineId(): string {
   return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 }
 
+function normalizeOperationHintKey(value: string): string {
+  return normalizeOperationText(value).replace(/\s+/g, " ").trim();
+}
+
+function resolveOperationGroupHint(operationText: string, operationGroupHints?: Record<string, string>): string {
+  if (!operationGroupHints) {
+    return "";
+  }
+  const direct = String(operationGroupHints[operationText] || "").trim();
+  if (direct) {
+    return direct;
+  }
+  const normalizedKey = normalizeOperationHintKey(operationText);
+  for (const [key, group] of Object.entries(operationGroupHints)) {
+    if (normalizeOperationHintKey(key) === normalizedKey) {
+      return String(group || "").trim();
+    }
+  }
+  return "";
+}
+
 export async function generateInvoiceLinesFromLogic(input: {
   operations: string[];
   tier: Tier;
   estimateText?: string;
+  operationGroupHints?: Record<string, string>;
+  /** Vehicle context for DB rule matching (three-layer learning). */
+  vehicle?: { make?: string; model?: string; year?: number; bodyMaterial?: string };
+  orgId?: string;
 }): Promise<{ lines: GeneratedLine[]; unmatchedOperations: string[]; warnings: string[] }> {
   const [logicRows, materialInfoMap] = await Promise.all([loadLogicRows(), loadMaterialInfoMap()]);
   const contextHints = extractOperationContextHints(String(input.estimateText || ""));
@@ -635,47 +896,172 @@ export async function generateInvoiceLinesFromLogic(input: {
       warnings.push(`Skipped cosmetic-only operation (no consumables): ${operationText}`);
       continue;
     }
-    const inferredGroup = inferOperationGroup(operationText, contextHints);
+    if (isNoConsumablePlasticOperation(normalizedOp)) {
+      warnings.push(`Skipped plastic/cosmetic operation (no consumables): ${operationText}`);
+      continue;
+    }
+    if (isSubComponentOperation(normalizedOp)) {
+      warnings.push(`Skipped sub-component operation (no consumables): ${operationText}`);
+      continue;
+    }
+    const hintedGroup = resolveOperationGroupHint(operationText, input.operationGroupHints);
+    const inferredGroup = hintedGroup || inferOperationGroup(operationText, contextHints);
     const groupedOperation =
       inferredGroup && !normalizedOp.includes(normalizeOperationText(inferredGroup)) ? `${inferredGroup} ${operationText}` : operationText;
-    const logicRow = pickBestLogicRow(groupedOperation, logicRows) || pickBestLogicRow(operationText, logicRows);
+    const scopedRows =
+      inferredGroup && inferredGroup.trim()
+        ? logicRows.filter((row) => hasStrongGroupLocationMatch(inferredGroup, row.LOCATION))
+        : [];
+    const searchRows = scopedRows.length > 0 ? scopedRows : logicRows;
+    const logicRow = pickBestLogicRow(groupedOperation, searchRows) || pickBestLogicRow(operationText, searchRows);
     if (!logicRow) {
       unmatchedOperations.push(operationText);
       continue;
     }
-    if (inferredGroup && !hasRelevantLocationToken(normalizeOperationText(inferredGroup), logicRow.LOCATION.toLowerCase())) {
-      warnings.push(`Skipped low-confidence mapping: ${operationText} (group=${inferredGroup}, matched=${logicRow.LOCATION})`);
-      unmatchedOperations.push(operationText);
-      continue;
+    if (inferredGroup && !hasStrongGroupLocationMatch(inferredGroup, logicRow.LOCATION)) {
+      // If the operation text itself clearly matches the logic location, keep it.
+      // Group inference can be noisy across estimate formats and should not block valid door/rail/etc mappings.
+      const opTextMatchesLocation = hasRelevantLocationToken(normalizedOp, logicRow.LOCATION.toLowerCase());
+      if (!opTextMatchesLocation) {
+        warnings.push(`Skipped low-confidence mapping: ${operationText} (group=${inferredGroup}, matched=${logicRow.LOCATION})`);
+        unmatchedOperations.push(operationText);
+        continue;
+      }
+      warnings.push(`Relaxed group mismatch: ${operationText} (group=${inferredGroup}, matched=${logicRow.LOCATION})`);
     }
 
-    const tierCell = resolveTierCell(logicRow, input.tier);
-    const materialLines = tierCell
-      .split(/\r?\n/)
-      .map((line) => parseLogicLine(line))
-      .filter((line): line is ParsedLogicItem => Boolean(line));
+    // ── Three-layer DB rule lookup ──────────────────────────────────
+    // Extract canonical location + operation for DB query.
+    const canonLabel = canonicalizeOperationLabel(normalizedOp);
+    const canonParts = canonLabel.match(/^(Replace|Repair|Remove Install)\s+(.+)$/i);
+    const dbOperation = canonParts ? canonParts[1].toLowerCase() : "";
+    const dbLocationFull = canonParts ? canonParts[2].toLowerCase() : "";
+    // Also try the CSV logic row's location for broader matching (e.g. "trunk" instead of "trunk lid")
+    const dbLocationFromCsv = logicRow.LOCATION.toLowerCase().trim();
+    // Pick the shorter/broader one first, then try the full one
+    const dbLocation = dbLocationFromCsv || dbLocationFull;
 
-    for (const materialLine of materialLines) {
-      const info = materialLine.partNumber ? materialInfoMap.get(materialLine.partNumber) : undefined;
-      const unitPrice = calcUnitPrice(materialLine, info);
-      if (materialLine.partNumber && !info) {
-        warnings.push(`Part ${materialLine.partNumber} not found in material_info`);
+    let usedDbRules = false;
+
+    if (dbLocation && dbOperation) {
+      try {
+        let dbMatches = await findMatchingRules({
+          location: dbLocation,
+          operation: dbOperation,
+          make: input.vehicle?.make,
+          model: input.vehicle?.model,
+          year: input.vehicle?.year,
+          bodyMaterial: input.vehicle?.bodyMaterial,
+          orgId: input.orgId,
+        });
+        // If no matches with CSV location, try the full canonical location
+        if (dbMatches.length === 0 && dbLocationFull && dbLocationFull !== dbLocation) {
+          dbMatches = await findMatchingRules({
+            location: dbLocationFull,
+            operation: dbOperation,
+            make: input.vehicle?.make,
+            model: input.vehicle?.model,
+            year: input.vehicle?.year,
+            bodyMaterial: input.vehicle?.bodyMaterial,
+            orgId: input.orgId,
+          });
+        }
+        const dbRules = deduplicateRules(dbMatches);
+
+        // Prefer user-learned rules over csv_seed when available.
+        const hasUserRules = dbRules.some((r) => r.source === "user_learned" || r.source === "brand_preset");
+
+        if (hasUserRules) {
+          // Use ONLY user-learned/brand rules (skip csv_seed to avoid duplicates).
+          const priorityRules = dbRules.filter((r) => r.source === "user_learned" || r.source === "brand_preset");
+          for (const rule of priorityRules) {
+            lines.push({
+              id: makeLineId(),
+              operation: operationText,
+              group: inferredGroup || toTitleCasePreserveSlash(logicRow.LOCATION) || undefined,
+              partNo: rule.productPartNo,
+              description: normalizeDisplayText(rule.description),
+              qty: Number(rule.qty.toFixed(3)),
+              unit: rule.unit,
+              unitPrice: Number(rule.unitPrice.toFixed(2)),
+              source: `db:${rule.source}:${rule.id}`,
+            });
+            // Record usage asynchronously (fire-and-forget).
+            recordRuleUsage(rule.id).catch(() => {});
+          }
+          usedDbRules = true;
+          warnings.push(`Used ${priorityRules.length} learned rules for: ${canonLabel}`);
+        }
+      } catch (dbErr) {
+        // DB query failed — fall through to CSV logic silently.
+        warnings.push(`DB rule lookup failed for ${canonLabel}: ${dbErr instanceof Error ? dbErr.message : "unknown"}`);
       }
+    }
 
-      lines.push({
-        id: makeLineId(),
-        operation: operationText,
-        group: inferredGroup || toTitleCasePreserveSlash(logicRow.LOCATION) || undefined,
-        description: normalizeDisplayText(info?.description || materialLine.description),
-        qty: Number(materialLine.qty.toFixed(3)),
-        unit: materialLine.unit || info?.invoiceUnit || "Each",
-        unitPrice: Number(unitPrice.toFixed(2)),
-        source: `logic:${logicRow.LOCATION}:${logicRow.OPERATION}:${input.tier}${materialLine.partNumber ? `:3m${materialLine.partNumber}` : ""}${inferredGroup ? `:group=${inferredGroup}` : ""}`
-      });
+    // ── Fallback to CSV-based logic rows ─────────────────────────────
+    if (!usedDbRules) {
+      const tierCell = resolveTierCell(logicRow, input.tier);
+      const materialLines = tierCell
+        .split(/\r?\n/)
+        .map((line) => parseLogicLine(line))
+        .filter((line): line is ParsedLogicItem => Boolean(line));
+
+      for (const materialLine of materialLines) {
+        const info = materialLine.partNumber ? materialInfoMap.get(materialLine.partNumber) : undefined;
+        const unitPrice = calcUnitPrice(materialLine, info);
+        if (materialLine.partNumber && !info) {
+          warnings.push(`Part ${materialLine.partNumber} not found in material_info`);
+        }
+
+        lines.push({
+          id: makeLineId(),
+          operation: operationText,
+          group: inferredGroup || toTitleCasePreserveSlash(logicRow.LOCATION) || undefined,
+          description: normalizeDisplayText(info?.description || materialLine.description),
+          qty: Number(materialLine.qty.toFixed(3)),
+          unit: materialLine.unit || info?.invoiceUnit || "Each",
+          unitPrice: Number(unitPrice.toFixed(2)),
+          source: `logic:${logicRow.LOCATION}:${logicRow.OPERATION}:${input.tier}${materialLine.partNumber ? `:3m${materialLine.partNumber}` : ""}${inferredGroup ? `:group=${inferredGroup}` : ""}`,
+        });
+      }
     }
   }
 
   return { lines, unmatchedOperations, warnings: Array.from(new Set(warnings)) };
+}
+
+export async function lookupMaterialByPartNo(partNoInput: string): Promise<MaterialPartLookup> {
+  const normalizedPartNo = normalizePartNumber(partNoInput);
+  if (!normalizedPartNo) {
+    return {
+      partNo: "",
+      description: "",
+      unit: "Each",
+      unitPrice: 0,
+      found: false
+    };
+  }
+
+  const materialInfoMap = await loadMaterialInfoMap();
+  const info = materialInfoMap.get(normalizedPartNo);
+  if (!info) {
+    return {
+      partNo: `3M ${normalizedPartNo}`,
+      description: "",
+      unit: "Each",
+      unitPrice: 0,
+      found: false
+    };
+  }
+
+  const unitPrice = calcUnitPriceFromMaterialInfo(info);
+  return {
+    partNo: `3M ${normalizedPartNo}`,
+    description: normalizeDisplayText(info.description || ""),
+    unit: normalizeWhitespace(info.invoiceUnit || "") || "Each",
+    unitPrice: Number(unitPrice.toFixed(2)),
+    found: true
+  };
 }
 
 export async function filterMaterialRelevantOperations(operations: string[]): Promise<string[]> {
@@ -693,7 +1079,10 @@ export async function filterMaterialRelevantOperations(operations: string[]): Pr
     if (isCosmeticOnlyOperation(normalizedOp)) {
       continue;
     }
-    if (irrelevantPartKeywords.some((keyword) => normalizedOp.includes(keyword))) {
+    if (isNoConsumablePlasticOperation(normalizedOp)) {
+      continue;
+    }
+    if (isSubComponentOperation(normalizedOp)) {
       continue;
     }
 

@@ -3,7 +3,9 @@ import { AccountMenu } from "@/components/layout/account-menu";
 
 const navItems = [
   { href: "/dashboard", label: "Home" },
-  { href: "/history", label: "History" }
+  { href: "/history", label: "History" },
+  { href: "/rules", label: "Rules" },
+  { href: "/knowledge", label: "Knowledge" },
 ];
 
 export function AppHeader() {

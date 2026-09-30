@@ -68,6 +68,53 @@
         "Repair Windshield"
       ],
       "notes": "Note keyword 'rope' should downgrade glass repair semantics."
+    },
+    {
+      "id": "layoutB-lift-gate-variant",
+      "format_hint": "Estimate of Record",
+      "input_text": "Estimate of Record\n68 Repl Lift Gate W/Power (ALU) 4.2 B",
+      "expected_keep_operations": [
+        "Replace Liftgate With Power Alu"
+      ],
+      "expected_review_operations": [],
+      "expected_drop_contains": [],
+      "notes": "Lift gate with spacing/hyphen variants should normalize to liftgate and be kept."
+    },
+    {
+      "id": "layoutB-section-quarter-drops-rivets",
+      "format_hint": "Preliminary Estimate",
+      "input_text": "Preliminary Estimate\n31 QUARTER PANEL\n32 Sect RT Quarter panel cut in window opening\n35 Repl A/M RT Quarter panel rivet structural 4.8mm\n36 Repl A/M RT Quarter panel rivet flow form S08",
+      "expected_keep_operations": [
+        "Replace Right Quarter Panel Cut In Window Opening"
+      ],
+      "expected_review_operations": [],
+      "expected_drop_contains": [
+        "rivet"
+      ],
+      "notes": "Section operation should be kept while rivet fastener lines are dropped."
+    },
+    {
+      "id": "layoutB-section-location-in-action-cell",
+      "format_hint": "Preliminary Estimate",
+      "input_text": "Preliminary Estimate\n31 | QUARTER PANEL\n32 | Sect RT Quarter panel cut in window | opening | 1073678S0B | 1",
+      "expected_keep_operations": [
+        "Replace Right Quarter Panel Cut In Window"
+      ],
+      "expected_review_operations": [],
+      "expected_drop_contains": [],
+      "notes": "When description tail is isolated in next cell, parser should still keep section quarter panel from action cell."
+    },
+    {
+      "id": "layoutA-front-rear-door-same-label",
+      "format_hint": "Estimate",
+      "input_text": "Estimate\n40 | E01 | FRONT DOOR\n41 | E01 | Remove/Replace | LT door assy | 1 | 450.00T | LKQ | 1.8 Body | 3.0\n54 | E01 | REAR DOOR\n55 | S02 | Remove/Replace | LT door assy | 1 | 625.00T | LKQ | 1.6 Body | 3.0",
+      "expected_keep_operations": [
+        "Replace Left Front Door Assy",
+        "Replace Left Rear Door Assy"
+      ],
+      "expected_review_operations": [],
+      "expected_drop_contains": [],
+      "notes": "Front and rear doors with the same action and side must remain distinct through canonical dedupe."
     }
   ]
 }

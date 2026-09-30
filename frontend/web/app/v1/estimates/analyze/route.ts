@@ -51,11 +51,15 @@ export async function POST(request: Request): Promise<NextResponse> {
           note: "No low-confidence operations required LLM review."
         };
 
-    const filteredOperations = await filterMaterialRelevantOperations([
-      ...rulesResult.operations,
-      ...result.operations,
-      ...fallbackOperations
-    ]);
+    const parserDrivenOperations = [...rulesResult.operations, ...result.operations].filter(Boolean);
+    const operationsBeforeMaterialFilter = parserDrivenOperations.length > 0 ? parserDrivenOperations : fallbackOperations;
+    const filteredOperations = await filterMaterialRelevantOperations(operationsBeforeMaterialFilter);
+    const operationsForUi =
+      filteredOperations.length > 0
+        ? filteredOperations
+        : rulesResult.operations.length > 0
+          ? rulesResult.operations
+          : operationsBeforeMaterialFilter;
 
     const notes = [result.note, ...rulesResult.warnings].filter(Boolean).slice(0, 8);
 
@@ -65,7 +69,7 @@ export async function POST(request: Request): Promise<NextResponse> {
         : rulesResult.debugCandidates;
 
     return NextResponse.json({
-      operations: filteredOperations,
+      operations: operationsForUi,
       source: shouldUseLlmReview ? `rules+${result.source}` : "rules",
       note: notes.length > 0 ? notes.join(" | ") : null,
       ruleset_version: rulesResult.rulesetVersion,

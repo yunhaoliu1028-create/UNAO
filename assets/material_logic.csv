@@ -1,4 +1,4 @@
-﻿LOCATION,OPERATION,T1,T2,T3
+LOCATION,OPERATION,T1,T2,T3
 Rear Body Panel,Replace,"Adhesive 3m8115 1 Cartridge(s)
 Seam Sealer 3m8360 1.20 Sachet(s)
 Weld Thru Primer 3m5917 0.30 Can(s)
@@ -75,14 +75,13 @@ Quarter Panel,Replace,"Flexible Foam 3m8463 0.5 Unit(s)
 Cavity Wax 3m8852 1 Can(s)
 Seam Sealer 3m8360 1 Sachet(s)
 Adhesive 3m8115 1 Cartridge(s)
-Weld Thru Primer 3m5917 1 Can(s)
-Cavity Wax 3m8852 1 Can(s)","Flexible Foam 3m8463 0.5 Unit(s)
+Weld Thru Primer 3m5917 1 Can(s)","Flexible Foam 3m8463 0.5 Unit(s)
 Cavity Wax 3m8852 1 Can(s)
 Seam Sealer 3m8360 1 Sachet(s)
 OEM Match Wide Stream 1K Tip 3m33993 1 Piece(s)
 Adhesive 3m8115 1 Cartridge(s)
 Weld Thru Primer 3m5917 1 Can(s)
-Cavity Wax 3m8852 1 Can(s)","Flexible Foam 3m8463 0.5 Unit(s)
+Cavity Wax Wand 3m8851 1 Nozzle(s) ($13/each)","Flexible Foam 3m8463 0.5 Unit(s)
 Cavity Wax 3m8852 1 Can(s)
 OEM Match Seam Sealer 3m08524 1.5 Sachet(s)
 OEM Match Adjustable Ripple Tip 3m33995 1 Piece(s)
@@ -169,6 +168,21 @@ Static Mixing Nozzle 3m8194 1 Nozzle(s)
 Cavity Wax 3m8852 0.33 Can(s)
 Cavity Wax Wand 3m8851 1 Nozzle(s) ($13/each)"
 Liftgate,Repair,Cavity Wax 3m8852 0.33 Can(s),SAME,SAME
+Hood,Replace,"Adhesive 3m8115 0.5 Cartridge(s)
+Seam Sealer 3m8360 0.3 Sachet(s)
+Weld Thru Primer 3m5917 0.10 Can(s)
+Cavity Wax 3m8852 0.5 Can(s)","Adhesive 3m8115 0.5 Cartridge(s)
+Static Mixing Nozzle 3m8194 1 Nozzle(s)
+Seam Sealer 3m8360 0.3 Sachet(s)
+OEM Match Wing Nozzle 1K Tip 3m33992 1 Piece(s)
+Weld Thru Primer 3m5917 0.10 Can(s)
+Cavity Wax 3m8852 0.5 Can(s)","Adhesive 3m8115 0.5 Cartridge(s)
+Static Mixing Nozzle 3m8194 2 Nozzle(s)
+OEM Match Seam Sealer 3m08524 0.5 Sachet(s)
+OEM Match Wing Nozzle 2K Tip 3m33997 1 Piece(s)
+Weld Thru Primer 3m5917 0.10 Can(s)
+Cavity Wax 3m8852 0.5 Can(s)
+Cavity Wax Wand 3m8851 1 Nozzle(s) ($13/each)"
 Hood,Repair,Cavity Wax 3m8852 0.5 Can(s),SAME,SAME
 Fender,Replace,Cavity Wax 3m8852 0.1 Can(s),SAME,SAME
 Fender,Repair,Cavity Wax 3m8852 0.1 Can(s),SAME,SAME

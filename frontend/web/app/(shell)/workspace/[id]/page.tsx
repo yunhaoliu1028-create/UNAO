@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { use, useMemo, useState } from "react";
 import { Tabs } from "@/components/ui/tabs";
 
 const tabItems = [
@@ -45,10 +45,11 @@ const resources = [
 ];
 
 type WorkspacePageProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export default function WorkspacePage({ params }: WorkspacePageProps) {
+  const { id } = use(params);
   const [activeTab, setActiveTab] = useState("report");
   const total = useMemo(() => invoiceRows.reduce((sum, row) => sum + row.qty * row.unitPrice, 0), []);
 
@@ -57,7 +58,7 @@ export default function WorkspacePage({ params }: WorkspacePageProps) {
       <section className="rounded-3xl border border-appline bg-white p-7 shadow-card sm:p-8">
         <h1 className="text-3xl font-semibold tracking-[-0.03em] text-apptext">Workspace View</h1>
         <p className="mt-2 text-sm text-appmuted">
-          Workspace ID: <span className="font-medium text-apptext">{params.id}</span>
+          Workspace ID: <span className="font-medium text-apptext">{id}</span>
         </p>
       </section>
 

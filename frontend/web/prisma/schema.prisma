@@ -1,0 +1,237 @@
+// Prisma schema — unao Collision Repair Revenue Optimization Platform
+// Provider: SQLite for dev, switch to PostgreSQL for production.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// ─── Organization (tenant placeholder) ───────────────────────────────
+// Nullable orgId on most tables: single-tenant now, multi-tenant later.
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  invoices      SavedInvoice[]
+  materialRules MaterialRule[]
+  claimOutcomes ClaimOutcome[]
+}
+
+// ─── Saved Invoices (replaces assets/info/saved-invoices.json) ───────
+model SavedInvoice {
+  id     String             @id @default(cuid())
+  status SavedInvoiceStatus @default(Completed)
+
+  // Meta
+  invoiceNo        String  @default("INV-DRAFT-001")
+  roNo             String  @default("")
+  vin              String  @default("")
+  yearMakeModel    String  @default("")
+  insuranceCompany String  @default("")
+  repairDate       String  @default("")
+  currency         String  @default("USD")
+  notes            String  @default("")
+
+  // Body shop
+  shopName     String @default("")
+  shopAddress  String @default("")
+
+  // Parse state (stored as JSON string)
+  rawText            String @default("")
+  operations         String @default("[]")
+  selectedOperations String @default("[]")
+
+  // Invoice lines (stored as JSON string — array of InvoiceLine)
+  linesJson String @default("[]")
+
+  total Float @default(0)
+
+  // Tenant
+  orgId String?
+  org   Organization? @relation(fields: [orgId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([orgId])
+  @@index([status])
+}
+
+enum SavedInvoiceStatus {
+  Completed
+  Processing
+  NeedsReview
+}
+
+// ─── Material Rules (three-layer learning engine) ────────────────────
+// Layer 1: source="csv_seed"       — imported from CSV baseline
+// Layer 2: source="brand_preset"   — platform brand/model rules
+// Layer 3: source="user_learned"   — saved from invoice editing
+model MaterialRule {
+  id String @id @default(cuid())
+
+  // Match dimensions
+  location  String // "Trunk", "Door Shell", "Quarter Panel"
+  operation String // "Replace", "Repair"
+  make      String? // null = universal, "Honda" = brand-specific
+  model     String? // null = all models, "Civic" = model-specific
+  yearFrom  Int? // null = any year
+  yearTo    Int? // null = any year
+  bodyMaterial String? // "steel" | "aluminum" | "composite"
+
+  // Material line
+  productPartNo String // "3M 5887"
+  description   String
+  qty           Float
+  unit          String
+  unitPrice     Float
+
+  // Source & learning
+  source        String @default("csv_seed") // "csv_seed" | "brand_preset" | "user_learned"
+  usageCount    Int    @default(0)
+  lastUsedAt    DateTime?
+  negativeCount Int    @default(0)
+  learnedFromInvoiceId String?
+
+  // Tenant
+  orgId String?
+  org   Organization? @relation(fields: [orgId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([location, operation])
+  @@index([make, model])
+  @@index([orgId])
+  @@index([source])
+}
+
+// ─── Claim Outcomes (data flywheel — future) ─────────────────────────
+model ClaimOutcome {
+  id String @id @default(cuid())
+
+  invoiceId       String
+  operation       String
+  category        String  // "consumable" | "labor"
+  insurer         String
+  drpStatus       String  @default("Non-DRP")
+  region          String?
+  lineDescription String
+  lineAmount      Float
+  outcome         String  // "approved" | "denied" | "partial"
+  partialAmount   Float?
+  denialReason    String?
+
+  // Tenant
+  orgId String?
+  org   Organization? @relation(fields: [orgId], references: [id])
+
+  recordedAt DateTime @default(now())
+
+  @@index([orgId])
+  @@index([operation, insurer])
+}
+
+// ─── Custom Logic Templates (replaces assets/info/custom-logic-templates.json)
+model CustomLogicTemplate {
+  id                String @id @default(cuid())
+  name              String
+  estimateKeywords  String @default("[]") // JSON array
+  operationKeywords String @default("[]") // JSON array
+  linesJson         String @default("[]") // JSON array of template lines
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ─── Brand Knowledge Documents (repair manuals, usage guides, approved lists)
+model BrandKnowledgeDoc {
+  id String @id @default(cuid())
+
+  // Vehicle scope
+  make     String  // "ram", "ford", "tesla"
+  model    String? // null = all models
+  yearFrom Int?
+  yearTo   Int?
+
+  // Document info
+  title            String // "RAM Approved Consumables"
+  docType          String @default("repair_manual") // "repair_manual" | "usage_guide" | "approved_list" | "other"
+  originalFileName String @default("")
+  fileSize         Int    @default(0) // bytes
+  pageCount        Int    @default(0)
+
+  // Extracted content
+  extractedText String @default("") // full text extracted from PDF
+  extractionStatus String @default("pending") // "pending" | "extracted" | "failed"
+
+  // AI extraction
+  aiExtractionStatus String @default("none") // "none" | "pending" | "completed" | "failed"
+  noteCount          Int    @default(0) // cached count of confirmed BrandMaterialNotes
+
+  // Dedup tracking
+  contentHash String @default("") // SHA-256 of PDF content for duplicate detection
+
+  // Tenant
+  orgId String?
+
+  // Relations
+  notes BrandMaterialNote[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([make])
+  @@index([make, model])
+  @@index([orgId])
+  @@index([contentHash])
+  @@index([docType])
+}
+
+// ─── Brand Material Notes (structured knowledge extracted from documents)
+model BrandMaterialNote {
+  id String @id @default(cuid())
+
+  // Vehicle scope (inherited from parent doc, can be overridden)
+  make     String
+  model    String?
+  yearFrom Int?
+  yearTo   Int?
+
+  // Material knowledge
+  location      String // "body side aperture", "hood", "quarter panel"
+  operation     String // "section", "replace", "repair"
+  materialType  String // "structural_adhesive", "cavity_wax", "seam_sealer", "weld_thru_primer"
+  productPartNo String? // "3M 7333", "3M 8852" — null if document only mentions type
+  specification String @default("") // "10-13mm bead", "1/2 can", "apply to all bare metal surfaces"
+  qty           Float? // extracted numeric quantity if available
+  unit          String? // "can", "cartridge", "sachet"
+
+  // Confirmation
+  reviewStatus String @default("pending_review") // "pending_review" | "confirmed" | "rejected"
+
+  // Source reference
+  sourcePageNo  Int? // page number in the PDF
+  sourceExcerpt String @default("") // relevant text snippet from the document
+
+  // Parent document
+  docId String
+  doc   BrandKnowledgeDoc @relation(fields: [docId], references: [id], onDelete: Cascade)
+
+  // Tenant
+  orgId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([make, location, operation])
+  @@index([docId])
+  @@index([reviewStatus])
+  @@index([orgId])
+}

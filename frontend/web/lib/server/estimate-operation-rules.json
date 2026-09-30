@@ -48,7 +48,9 @@
     "w/": "with",
     "qtr": "quarter",
     "pnl": "panel",
-    "w'shield": "windshield"
+    "w'shield": "windshield",
+    "w'strip": "weatherstrip",
+    "wstrip": "weatherstrip"
   },
   "lineDropContains": [
     "paint overlap",
@@ -79,10 +81,15 @@
     "roof",
     "floor",
     "liftgate",
+    "tailgate",
+    "trunk",
     "rocker",
     "glass",
     "windshield",
-    "body"
+    "body",
+    "pillar",
+    "cab",
+    "bed"
   ],
   "lineNoteOverrideKeywords": {
     "downgradeToRemoveInstall": [

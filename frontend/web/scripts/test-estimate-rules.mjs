@@ -29,6 +29,7 @@ async function run() {
   const root = process.cwd();
   const casesPath = path.resolve(root, "..", "..", "assets", "info", "estimate-rule-test-cases.json");
   const apiBase = process.env.TEST_API_BASE_URL || "http://localhost:3000";
+  const requestTimeoutMs = Number(process.env.TEST_API_TIMEOUT_MS || "20000");
   const testFile = JSON.parse(await readFile(casesPath, "utf-8"));
   const cases = Array.isArray(testFile.cases) ? testFile.cases : [];
   if (cases.length === 0) {
@@ -38,15 +39,40 @@ async function run() {
 
   const results = [];
   for (const item of cases) {
-    const response = await fetch(`${apiBase}/v1/estimates/analyze?debug=true`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        estimateText: item.input_text,
-        localOperations: []
-      })
-    });
-    const body = await response.json();
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), requestTimeoutMs);
+    let body;
+    try {
+      const response = await fetch(`${apiBase}/v1/estimates/analyze?debug=true`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          estimateText: item.input_text,
+          localOperations: []
+        }),
+        signal: controller.signal
+      });
+      body = await response.json();
+    } catch (error) {
+      const message =
+        error && typeof error === "object" && "name" in error && error.name === "AbortError"
+          ? `Request timeout after ${requestTimeoutMs}ms.`
+          : String(error);
+      results.push({
+        id: item.id,
+        pass: false,
+        keepPass: false,
+        reviewPass: false,
+        dropPass: false,
+        operationCount: 0,
+        source: "error",
+        error: message
+      });
+      clearTimeout(timeoutId);
+      continue;
+    } finally {
+      clearTimeout(timeoutId);
+    }
     const operations = Array.isArray(body.operations) ? body.operations : [];
     const expectedKeep = toSet(item.expected_keep_operations);
     const expectedReview = toSet(item.expected_review_operations);
@@ -72,7 +98,8 @@ async function run() {
       reviewPass,
       dropPass,
       operationCount: operations.length,
-      source: body.source || "unknown"
+      source: body.source || "unknown",
+      error: null
     });
   }
 

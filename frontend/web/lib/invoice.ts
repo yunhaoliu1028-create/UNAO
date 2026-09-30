@@ -3,6 +3,7 @@ export type InvoiceMeta = {
   roNo: string;
   vin: string;
   yearMakeModel: string;
+  insuranceCompany?: string;
   repairDate: string;
   currency: string;
   notes: string;
@@ -12,12 +13,53 @@ export type InvoiceLine = {
   id: string;
   operation: string;
   group?: string;
+  partNo?: string;
   description: string;
   qty: number;
   unit: string;
   unitPrice: number;
   source: string;
 };
+
+/**
+ * Parse a "Year Make Model" string (e.g. "2022 HONDA CIVIC") into
+ * structured vehicle context for three-layer rule matching.
+ * Handles CCC ONE abbreviated makes (HOND→HONDA, TOYO→TOYOTA, etc.).
+ */
+export function parseVehicleFromYMM(yearMakeModel: string): {
+  make?: string;
+  model?: string;
+  year?: number;
+} {
+  const text = String(yearMakeModel || "").trim();
+  if (!text) return {};
+
+  // Resolve CCC abbreviated make into canonical form for consistent DB matching.
+  function resolveMake(raw: string): string {
+    const upper = raw.toUpperCase();
+    return KNOWN_MAKES[upper] || upper;
+  }
+
+  // Try "YEAR MAKE MODEL" pattern
+  const match = text.match(/^(\d{4})\s+(\S+)\s+(.+)$/i);
+  if (match) {
+    const year = parseInt(match[1], 10);
+    return {
+      year: year >= 1980 && year <= 2040 ? year : undefined,
+      make: resolveMake(match[2].trim()) || undefined,
+      model: match[3].trim() || undefined,
+    };
+  }
+  // Try "MAKE MODEL" without year
+  const noYear = text.match(/^([A-Za-z]+)\s+(.+)$/);
+  if (noYear) {
+    return {
+      make: resolveMake(noYear[1].trim()) || undefined,
+      model: noYear[2].trim() || undefined,
+    };
+  }
+  return {};
+}
 
 export type OperationDetectionCandidate = {
   source: "direct" | "line";
@@ -98,6 +140,8 @@ export function detectOperationsDetailed(rawText: string): {
     "replace"
   ];
   const operationSynonyms: Array<[RegExp, string]> = [
+    [/\bsect\b/gi, "section"],
+    [/\bsection\b/gi, "replace"],
     [/\b(repl|rpl)\b/gi, "replace"],
     [/\b(r&r|r\/r|remove\s*&\s*replace)\b/gi, "replace"],
     [/\b(r&i|r\/i|remove\s*&\s*install)\b/gi, "remove install"],
@@ -112,14 +156,16 @@ export function detectOperationsDetailed(rawText: string): {
     return normalized
       .replace(/\bline#?\s*\d{1,4}\b/gi, " ")
       .replace(/^\s*\d{1,4}\s+/g, "")
+      .replace(/\b\d{1,2}\/\d{1,2}\/\d{2,4}\b/gi, " ")
       .replace(/\ba\/m\b/gi, " ")
+      .replace(/\b(?:frm|from)\b/gi, " ")
       .replace(/\b(capa|keysiq|nsf|oem|opt\s+oem|alt\s+oem)\b/gi, " ")
       .replace(/\blift[\s\-]*gate\b/gi, "liftgate")
       .replace(/\bbumper[\s\-]*cover\b/gi, "bumper cover");
   }
 
   function hasActionToken(value: string): boolean {
-    return /\b(replace|repair|remove|install|refinish|blend|patch)\b/i.test(value);
+    return /\b(replace|repair|remove|install|section|refinish|blend|patch)\b/i.test(value);
   }
 
   function looksLikeSectionHeading(value: string): boolean {
@@ -142,11 +188,11 @@ export function detectOperationsDetailed(rawText: string): {
   const normalizedRaw = normalizeOperationText(rawText);
   const keywordPattern = opKeywords.join("|");
   const leadingActionPattern = new RegExp(
-    `\\b(?:replace|repair|refinish|blend)\\b(?:[\\s:/\\-]+[a-z0-9]+){0,6}[\\s:/\\-]+(?:${keywordPattern})\\b`,
+    `\\b(?:replace|repair|section|refinish|blend)\\b(?:[\\s:/\\-]+[a-z0-9]+){0,6}[\\s:/\\-]+(?:${keywordPattern})\\b`,
     "gi"
   );
   const trailingActionPattern = new RegExp(
-    `\\b(?:${keywordPattern})\\b(?:[\\s:/\\-]+[a-z0-9]+){0,4}[\\s:/\\-]+(?:replace|repair|refinish|blend)\\b`,
+    `\\b(?:${keywordPattern})\\b(?:[\\s:/\\-]+[a-z0-9]+){0,4}[\\s:/\\-]+(?:replace|repair|section|refinish|blend)\\b`,
     "gi"
   );
 
@@ -267,26 +313,224 @@ function sanitizeTextForDisplay(value: string): string {
     .trim();
 }
 
+function extractInsuranceCompany(rawText: string): string {
+  const source = String(rawText || "");
+  const upperSource = source.toUpperCase();
+  const compactSource = upperSource.replace(/[^A-Z]/g, "");
+  const knownCarriers: Array<{ pattern: RegExp; compactKey: string; label: string }> = [
+    { pattern: /\bSTATE\s*FARM\b/i, compactKey: "STATEFARM", label: "STATE FARM" },
+    { pattern: /\bAMERICAN\s+FAMILY(?:\s+INSURANCE)?\b/i, compactKey: "AMERICANFAMILY", label: "AMERICAN FAMILY" },
+    { pattern: /\bAUTO\s+CLUB\s+ENTERPRISES\b/i, compactKey: "AUTOCLUBENTERPRISES", label: "AUTO CLUB ENTERPRISES" },
+    { pattern: /\bAAA\b/i, compactKey: "AAA", label: "AAA" },
+    { pattern: /\bALLSTATE\b/i, compactKey: "ALLSTATE", label: "ALLSTATE" },
+    { pattern: /\bGEICO\b/i, compactKey: "GEICO", label: "GEICO" },
+    { pattern: /\bPROGRESSIVE\b/i, compactKey: "PROGRESSIVE", label: "PROGRESSIVE" },
+    { pattern: /\bLIBERTY\s+MUTUAL\b/i, compactKey: "LIBERTYMUTUAL", label: "LIBERTY MUTUAL" },
+    { pattern: /\bNATIONWIDE\b/i, compactKey: "NATIONWIDE", label: "NATIONWIDE" },
+    { pattern: /\bFARMERS\s+INSURANCE\b/i, compactKey: "FARMERSINSURANCE", label: "FARMERS INSURANCE" },
+    { pattern: /\bTRAVELERS\b/i, compactKey: "TRAVELERS", label: "TRAVELERS" }
+  ];
+
+  // Prefer known carrier names first so person names in nearby fields
+  // (e.g. Insured/Owner) do not override carrier detection.
+  for (const carrier of knownCarriers) {
+    if (carrier.pattern.test(upperSource) || compactSource.includes(carrier.compactKey)) {
+      return carrier.label;
+    }
+  }
+
+  function sanitizeInsuranceCandidate(value: string): string {
+    const cleaned = String(value || "")
+      .replace(/\b(insured|owner|policy|claim|type of loss|date of loss)\b.*$/i, "")
+      .replace(/\s+-\s+[A-Z0-9]{2,8}\b.*$/i, "")
+      .replace(/\s+\d{4,}.*$/i, "")
+      .replace(/\s{2,}.*/g, "")
+      .replace(/[|]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (!cleaned) {
+      return "";
+    }
+    for (const carrier of knownCarriers) {
+      if (carrier.pattern.test(cleaned) || cleaned.toUpperCase().replace(/[^A-Z]/g, "").includes(carrier.compactKey)) {
+        return carrier.label;
+      }
+    }
+    const likelyPersonName = /^[A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,2}$/.test(cleaned);
+    if (likelyPersonName && !/\binsurance|ins\b/i.test(cleaned)) {
+      return "";
+    }
+    if (/,/.test(cleaned) && !/\binsurance|ins\b/i.test(cleaned)) {
+      return "";
+    }
+    return cleaned;
+  }
+
+  const lines = source
+    .split(/\r?\n/)
+    .flatMap((line) => line.split("|"))
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    if (!/\b(insurance\s*company|insurance\s*co\.?|insurer|carrier)\b/i.test(line)) {
+      continue;
+    }
+    const afterLabel = line.replace(/^.*?\b(insurance\s*company|insurance\s*co\.?|insurer|carrier)\b\s*[:\-]?\s*/i, "").trim();
+    if (afterLabel) {
+      const candidate = afterLabel
+        .split(/\s{2,}|,\s*(?=[A-Z][a-z])|\s+\d{4,}|\s+-\s+[A-Z0-9]{2,8}\b/)
+        .map((part) => part.trim())
+        .map((part) => sanitizeInsuranceCandidate(part))
+        .find((part) => part.length >= 3);
+      if (candidate) {
+        return candidate;
+      }
+    } else {
+      // Some PDFs render "Insurance Company:" in one token and the actual
+      // company name in the next token/line. Probe a short lookahead window.
+      for (let lookahead = 1; lookahead <= 3; lookahead += 1) {
+        const nextLine = lines[index + lookahead];
+        if (!nextLine) {
+          break;
+        }
+        if (/\b(owner|insured|inspection location|repair facility|vehicle|claim|policy|date of loss)\b/i.test(nextLine)) {
+          break;
+        }
+        const candidate = sanitizeInsuranceCandidate(nextLine);
+        if (candidate.length >= 3) {
+          return candidate;
+        }
+      }
+    }
+  }
+
+  const fallbackMatch = source.match(/\b(?:insurance\s*company|insurance\s*co\.?|insurer|carrier)\s*[:\-]?\s*([A-Za-z0-9 .&'-]{3,80})/i);
+  return sanitizeInsuranceCandidate(fallbackMatch?.[1] || "");
+}
+
+// ── CCC ONE make abbreviation map ────────────────────────────────────
+// CCC ONE uses 4-letter abbreviated makes. Map both abbreviations and
+// full names so we can recognise either format from any estimate source.
+const KNOWN_MAKES: Record<string, string> = {
+  // CCC abbreviation → canonical display name
+  ACUR: "ACURA", ALFA: "ALFA ROMEO", AUDI: "AUDI", BMW: "BMW",
+  BUIC: "BUICK", CADI: "CADILLAC", CHEV: "CHEVROLET", CHRY: "CHRYSLER",
+  DODG: "DODGE", FIAT: "FIAT", FORD: "FORD", GENE: "GENESIS",
+  GMC: "GMC", HOND: "HONDA", HYUN: "HYUNDAI", INFI: "INFINITI",
+  JAGU: "JAGUAR", JEEP: "JEEP", KIA: "KIA", LAND: "LAND ROVER",
+  LEXU: "LEXUS", LINC: "LINCOLN", MAZD: "MAZDA", MERZ: "MERCEDES-BENZ",
+  MERC: "MERCURY", MINI: "MINI", MITS: "MITSUBISHI", NISS: "NISSAN",
+  PONT: "PONTIAC", PORS: "PORSCHE", RAM: "RAM", RIVN: "RIVIAN",
+  SATU: "SATURN", SUBA: "SUBARU", SUZU: "SUZUKI", TESL: "TESLA",
+  TOYO: "TOYOTA", VOLK: "VOLKSWAGEN", VOLV: "VOLVO",
+  // Full names → themselves (for non-CCC estimates)
+  ACURA: "ACURA", TOYOTA: "TOYOTA", HONDA: "HONDA", CHEVROLET: "CHEVROLET",
+  CHRYSLER: "CHRYSLER", DODGE: "DODGE", NISSAN: "NISSAN", HYUNDAI: "HYUNDAI",
+  LEXUS: "LEXUS", INFINITI: "INFINITI", LINCOLN: "LINCOLN", CADILLAC: "CADILLAC",
+  BUICK: "BUICK", MAZDA: "MAZDA", SUBARU: "SUBARU", MITSUBISHI: "MITSUBISHI",
+  VOLKSWAGEN: "VOLKSWAGEN", PORSCHE: "PORSCHE", JAGUAR: "JAGUAR",
+  SATURN: "SATURN", PONTIAC: "PONTIAC", MERCURY: "MERCURY", SUZUKI: "SUZUKI",
+  GENESIS: "GENESIS", TESLA: "TESLA", RIVIAN: "RIVIAN",
+  "MERCEDES-BENZ": "MERCEDES-BENZ", "LAND ROVER": "LAND ROVER",
+  "ALFA ROMEO": "ALFA ROMEO",
+};
+
+// Build a regex alternation of all known make tokens (longest first to prevent partial matches).
+const MAKE_TOKENS = Object.keys(KNOWN_MAKES)
+  .filter((k) => !k.includes(" ") && !k.includes("-"))
+  .sort((a, b) => b.length - a.length);
+const MAKE_PATTERN = new RegExp(`\\b(${MAKE_TOKENS.join("|")})\\b`, "i");
+
+/** Normalise a raw make string into its canonical form. */
+function normalizeMake(raw: string): string {
+  const upper = raw.trim().toUpperCase();
+  return KNOWN_MAKES[upper] || upper;
+}
+
 export function extractMetadata(rawText: string): Partial<InvoiceMeta> {
   const roMatch = rawText.match(/\b(?:RO\s*(?:Number)?|Repair\s*Order)\s*#?\s*[:\-]?\s*([A-Z0-9\-]+)/i);
   const vinMatch = rawText.match(/\bVIN\s*[:\-]?\s*([A-HJ-NPR-Z0-9]{11,17})/i);
-  const makeMatch = rawText.match(/\b(TOYOTA|HONDA|FORD|CHEVROLET|NISSAN|BMW|AUDI|LEXUS|KIA|HYUNDAI)\b/i);
-  const modelMatch = rawText.match(
-    /\b(RAV4|CAMRY|COROLLA|CIVIC|ACCORD|F150|SILVERADO|CR-V|MODEL\s?[A-Z0-9\-]+)\b/i
-  );
   const dateMatch = rawText.match(/\b([A-Za-z]+,\s+[A-Za-z]+\s+\d{1,2},\s+\d{4})\b/);
 
-  const anchorCandidates = [makeMatch?.index, modelMatch?.index].filter((value): value is number => typeof value === "number");
-  const anchorIndex = anchorCandidates.length > 0 ? Math.min(...anchorCandidates) : null;
-  const year = pickClosestYearToAnchor(rawText, anchorIndex);
-  const make = makeMatch ? makeMatch[1].toUpperCase() : "";
-  const model = modelMatch ? modelMatch[1].toUpperCase() : "";
+  let year = "";
+  let make = "";
+  let model = "";
+
+  // ── Strategy 1: CCC ONE structured fields ─────────────────────────
+  // "Year:  2008", "Make:  HOND", "Model:  ACCORD EX"
+  const yearField = rawText.match(/\bYear\s*[:\-]\s*((?:19|20)\d{2})\b/i);
+  const makeField = rawText.match(/\bMake\s*[:\-]\s*([A-Z]{2,20})\b/i);
+  const modelField = rawText.match(/\bModel\s*[:\-]\s*([A-Z0-9][A-Z0-9 \-\/]{0,40}?)(?:\s{2,}|$|\n)/i);
+
+  if (makeField) {
+    year = yearField?.[1] || "";
+    make = normalizeMake(makeField[1]);
+    model = (modelField?.[1] || "").trim().toUpperCase();
+  }
+
+  // ── Strategy 2: CCC ONE inline header ─────────────────────────────
+  // "Vehicle: 2008 HOND ACCORD EX 4D SED 6-3.5L-FI GOLD"
+  if (!make) {
+    const vehicleHeaderMatch = rawText.match(
+      /\bVehicle\s*[:\-]\s*((?:19|20)\d{2})\s+([A-Z]{2,20})\s+([A-Z0-9][A-Z0-9 \-\/]*?)(?:\s+(?:\d+D\s+\w+|\d+-[\d.]+L|[A-Z]{2,5}\s+\w+)\b)/i
+    );
+    if (vehicleHeaderMatch) {
+      year = vehicleHeaderMatch[1];
+      make = normalizeMake(vehicleHeaderMatch[2]);
+      model = vehicleHeaderMatch[3].trim().toUpperCase();
+    }
+  }
+
+  // ── Strategy 3: Generic "YEAR MAKE MODEL" anywhere in text ────────
+  // Works for any estimate format: "2022 HONDA CIVIC", "2019 TOYO RAV4"
+  if (!make) {
+    const genericMatch = rawText.match(
+      new RegExp(`\\b((?:19|20)\\d{2})\\s+(${MAKE_TOKENS.join("|")})\\s+([A-Z0-9][A-Z0-9 \\-\\/]{1,30}?)(?:\\s{2,}|\\s+\\d|\\s+[a-z]|$|\\n)`, "i")
+    );
+    if (genericMatch) {
+      year = genericMatch[1];
+      make = normalizeMake(genericMatch[2]);
+      // Clean model: remove trailing body-style/engine tokens like "4D SED", "6-3.5L"
+      model = genericMatch[3]
+        .replace(/\s+\d+D\s+.*$/i, "")
+        .replace(/\s+\d+-[\d.]+L.*$/i, "")
+        .trim()
+        .toUpperCase();
+    }
+  }
+
+  // ── Strategy 4: Individual field extraction (fallback) ────────────
+  if (!make) {
+    const makeMatch = rawText.match(MAKE_PATTERN);
+    if (makeMatch) {
+      make = normalizeMake(makeMatch[1]);
+      // Try to find model near the make match
+      const afterMake = rawText.slice((makeMatch.index ?? 0) + makeMatch[0].length);
+      const modelAfter = afterMake.match(/^\s+([A-Z0-9][A-Z0-9 \-\/]{1,25}?)(?:\s{2,}|\s+\d|$|\n)/i);
+      if (modelAfter) {
+        model = modelAfter[1].trim().toUpperCase();
+      }
+    }
+  }
+
+  // ── Year fallback: find closest year to make/model anchor ─────────
+  if (!year && make) {
+    const makeIdx = rawText.toUpperCase().indexOf(make.length <= 4 ? make.slice(0, 4).toUpperCase() : make.toUpperCase());
+    year = pickClosestYearToAnchor(rawText, makeIdx >= 0 ? makeIdx : null);
+  }
+  if (!year) {
+    year = pickClosestYearToAnchor(rawText, null);
+  }
+
   const yearMakeModel = [year, make, model].filter(Boolean).join(" ").trim();
 
   return {
     roNo: roMatch?.[1] ?? "",
     vin: vinMatch?.[1] ?? "",
     yearMakeModel,
+    insuranceCompany: extractInsuranceCompany(rawText),
     repairDate: dateMatch?.[1] ?? ""
   };
 }
@@ -328,6 +572,7 @@ export function generateFallbackLines(operations: string[]): InvoiceLine[] {
       lines.push({
         id: `${operation}-${index}-${Math.random().toString(16).slice(2)}`,
         operation,
+        partNo: "",
         description: item.description,
         qty: item.qty,
         unit: item.unit,
@@ -344,6 +589,9 @@ type GenerateInvoiceRequest = {
   estimateText: string;
   operations: string[];
   tier?: "T1" | "T2" | "T3";
+  operationGroupHints?: Record<string, string>;
+  vehicle?: { make?: string; model?: string; year?: number; bodyMaterial?: string };
+  orgId?: string;
 };
 
 type GenerateInvoiceResponse = {
@@ -356,10 +604,6 @@ export async function generateInvoiceViaApi(
   apiBaseUrl: string,
   payload: GenerateInvoiceRequest
 ): Promise<GenerateInvoiceResponse | null> {
-  if (!apiBaseUrl) {
-    return null;
-  }
-
   const url = `${apiBaseUrl.replace(/\/$/, "")}/v1/invoices/generate`;
 
   try {
@@ -379,16 +623,21 @@ export async function generateInvoiceViaApi(
     }
 
     return {
-      lines: data.lines.map((line, index) => ({
-        id: line.id || `api-${index}-${Math.random().toString(16).slice(2)}`,
-        operation: sanitizeTextForDisplay(line.operation || "Unknown"),
-        group: line.group ? sanitizeTextForDisplay(String(line.group)) : undefined,
-        description: sanitizeTextForDisplay(line.description || ""),
-        qty: parseNumber(line.qty, 0),
-        unit: sanitizeTextForDisplay(line.unit || "Each"),
-        unitPrice: parseNumber(line.unitPrice, 0),
-        source: sanitizeTextForDisplay(line.source || "api")
-      })),
+      lines: data.lines.map((line, index) => {
+        const lineWithLegacyPart = line as InvoiceLine & { part_no?: unknown };
+        const rawPartNo = lineWithLegacyPart.partNo ?? lineWithLegacyPart.part_no ?? "";
+        return {
+          id: line.id || `api-${index}-${Math.random().toString(16).slice(2)}`,
+          operation: sanitizeTextForDisplay(line.operation || "Unknown"),
+          group: line.group ? sanitizeTextForDisplay(String(line.group)) : undefined,
+          partNo: sanitizeTextForDisplay(String(rawPartNo || "")),
+          description: sanitizeTextForDisplay(line.description || ""),
+          qty: parseNumber(line.qty, 0),
+          unit: sanitizeTextForDisplay(line.unit || "Each"),
+          unitPrice: parseNumber(line.unitPrice, 0),
+          source: sanitizeTextForDisplay(line.source || "api")
+        };
+      }),
       unmatched_operations: Array.isArray(data.unmatched_operations)
         ? data.unmatched_operations.map((item) => sanitizeTextForDisplay(String(item || ""))).filter(Boolean)
         : [],
