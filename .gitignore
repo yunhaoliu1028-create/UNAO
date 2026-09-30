@@ -26,3 +26,5 @@ out/
 dist/
 build/
 coverage/
+.vercel
+.env*
